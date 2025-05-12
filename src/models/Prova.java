@@ -9,7 +9,7 @@ public class Prova {
     private String descricao;
     private LocalDateTime dataAplicacao;
     private Period duracao;
-    private boolean isRemoto; //ainda tô em dúvida de como implementar esse atributo
+    private boolean isRemoto;
     private Turma[] turmas;
     private Questao[] questoes;
 
@@ -92,12 +92,4 @@ public class Prova {
         this.questoes = questoes;
     }
 
-    /*  adicionar após a criação da classe questão
-    public Questao[] getQuestoes(){
-        return this.questoes;
-    }
-
-    public void setQuestoes(Questao[] questoes){
-        this.questoes = questoes;
-    }*/
 }
