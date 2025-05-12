@@ -1,31 +1,38 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.Period;
 
 public class Prova {
+    private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime dataAplicacao;
-    private LocalTime duracao;
-    private boolean tipoProva; //ainda tô em dúvida de como implementar esse atributo
-    //private Turma[] turmasDestino;
+    private Period duracao;
+    private boolean isRemoto; //ainda tô em dúvida de como implementar esse atributo
+    private Turma[] turmas;
+    //private Questao[] questoes;
 
 
     public Prova() {
-        this.titulo = "<indefinido>";
-        this.descricao = "<indefinido>";
-        this.dataAplicacao = LocalDateTime.of(0,1,1,0,0); //data indefinida
-        this.duracao = LocalTime.of(0,0);
-        this.tipoProva = false;
     }
 
-    public Prova(String titulo, String descricao, LocalDateTime dataAplicacao, LocalTime duracao, boolean tipoProva) {
+    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto,Turma[] turmas) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataAplicacao = dataAplicacao;
         this.duracao = duracao;
-        this.tipoProva = tipoProva;
+        this.isRemoto = isRemoto;
+        this.turmas = turmas;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -52,19 +59,36 @@ public class Prova {
         this.dataAplicacao = dataAplicacao;
     }
 
-    public LocalTime getDuracao() {
+    public Period getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(LocalTime duracao) {
+    public void setDuracao(Period duracao) {
         this.duracao = duracao;
     }
 
-    public boolean isTipoProva() {
-        return tipoProva;
+    public boolean isRemoto() {
+        return isRemoto;
     }
 
-    public void setTipoProva(boolean tipoProva) {
-        this.tipoProva = tipoProva;
+    public void setTipoProva(boolean isRemoto) {
+        this.isRemoto = isRemoto;
     }
+
+    public Turma[] getTurmas(){
+        return this.turmas;
+    }
+
+    public void setTurmas(Turma[] turmas){
+        this.turmas = turmas;
+    }
+
+    /*  adicionar após a criação da classe questão
+    public Questao[] getQuestoes(){
+        return this.questoes;
+    }
+
+    public void setQuestoes(Questao[] questoes){
+        this.questoes = questoes;
+    }*/
 }
