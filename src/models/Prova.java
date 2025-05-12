@@ -11,13 +11,13 @@ public class Prova {
     private Period duracao;
     private boolean isRemoto; //ainda tô em dúvida de como implementar esse atributo
     private Turma[] turmas;
-    //private Questao[] questoes;
+    private Questao[] questoes;
 
 
     public Prova() {
     }
 
-    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto,Turma[] turmas) {
+    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto,Turma[] turmas,Questao[] questoes) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -25,6 +25,7 @@ public class Prova {
         this.duracao = duracao;
         this.isRemoto = isRemoto;
         this.turmas = turmas;
+        this.questoes = questoes;
     }
 
     public int getId(){
@@ -71,7 +72,7 @@ public class Prova {
         return isRemoto;
     }
 
-    public void setTipoProva(boolean isRemoto) {
+    public void setIsRemoto(boolean isRemoto) {
         this.isRemoto = isRemoto;
     }
 
@@ -81,6 +82,14 @@ public class Prova {
 
     public void setTurmas(Turma[] turmas){
         this.turmas = turmas;
+    }
+
+    public Questao[] getQuestoes() {
+        return questoes;
+    }
+
+    public void setQuestoes(Questao[] questoes) {
+        this.questoes = questoes;
     }
 
     /*  adicionar após a criação da classe questão
