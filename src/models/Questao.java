@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 public class Questao {
     private int id;
     private String enunciado;
@@ -36,5 +38,14 @@ public class Questao {
 
     public void setIdAlternativas(int[] idAlternativas) {
         this.idAlternativas = idAlternativas;
+    }
+
+    @Override
+    public String toString() {
+        return "Questao{" +
+                "id=" + id +
+                ", enunciado='" + enunciado + '\'' +
+                ", idAlternativas=" + Arrays.toString(idAlternativas) +
+                '}';
     }
 }
