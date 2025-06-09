@@ -1,4 +1,4 @@
-import models.Questao;
+import models.provas.Questao;
 import repos.RepositorioQuestoes;
 
 public class teste {

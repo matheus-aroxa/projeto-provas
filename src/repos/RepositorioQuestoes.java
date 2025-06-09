@@ -1,6 +1,6 @@
 package repos;
 
-import models.Questao;
+import models.provas.Questao;
 
 public class RepositorioQuestoes {
     private Questao[] questoes;

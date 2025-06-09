@@ -1,5 +1,8 @@
 package models;
 
+import models.provas.Prova;
+import models.usuarios.professor.Professor;
+
 import java.util.ArrayList;
 import java.util.List;
 
