@@ -6,11 +6,12 @@ public class Aluno extends Usuario {
 
     private int idTurma;
 
-    public Aluno(String nome, int cpf, LocalDate dataDeNascimento, String email, int idTurma) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataDeNascimento = dataDeNascimento;
-        this.email = email;
+    public Aluno(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+        super(id, nome, cpf, dataDeNascimento, email, senha);
+        this.idTurma = idTurma;
+    }
+
+    public Aluno(int idTurma) {
         this.idTurma = idTurma;
     }
 
