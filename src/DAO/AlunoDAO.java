@@ -1,4 +1,4 @@
-package models.DAO;
+package DAO;
 
 import models.usuarios.Aluno;
 
