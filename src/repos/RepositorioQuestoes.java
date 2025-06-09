@@ -7,7 +7,7 @@ public class RepositorioQuestoes {
     private int tamanho;
     private static RepositorioQuestoes instance;
 
-    public static RepositorioQuestoes criaRepositorio(int tam){
+    public static RepositorioQuestoes criar(int tam){
         if(instance == null){
             instance = new RepositorioQuestoes(tam);
         }
@@ -19,16 +19,14 @@ public class RepositorioQuestoes {
         this.tamanho = 0;
     }
 
-    public boolean adicionarQuestao(Questao questao) {
+    public void adicionar(Questao questao) {
         if(tamanho < questoes.length) {
             this.questoes[this.tamanho] = questao;
             this.tamanho++;
-            return true;
-        }else
-            return false;
+        }
     }
 
-    public int buscarQuestao(int id) {
+    public int buscar(int id) {
         for (Questao q : this.questoes) {
             if (q.getId() == id) {
                 return q.getId();
@@ -37,8 +35,8 @@ public class RepositorioQuestoes {
         return -1;
     }
 
-    public boolean removerQuestao(int id) {
-        int ID = buscarQuestao(id);
+    public boolean remover(int id) {
+        int ID = buscar(id);
         if(ID != -1){
             this.questoes[ID] = null;
             return true;
@@ -47,7 +45,7 @@ public class RepositorioQuestoes {
             return false;
     }
 
-    public void listarQuestoes(){
+    public void listar(){
         for(Questao q : this.questoes){
             System.out.println(q);
         }

@@ -2,11 +2,15 @@ package models;
 
 public class CartaoResposta {
 	private int id;
+	private int idALuno;
+	private int idProva;
 	private int[] resposta;
 	
-	public CartaoResposta(int id, int[] resposta) {
+	public CartaoResposta(int id, int[] resposta,int idALuno, int idProva) {
 		this.id = id;
 		this.resposta = resposta;
+		this.idALuno = idALuno;
+		this.idProva = idProva;
 	}
 	
 	public CartaoResposta() {
