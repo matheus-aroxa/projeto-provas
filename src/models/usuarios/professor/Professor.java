@@ -1,24 +1,20 @@
-package models;
+package models.usuarios.professor;
+
+import models.usuarios.Usuario;
 
 import java.time.LocalDate;
 
-public class Professor {
+public abstract class Professor extends Usuario {
 
-    private String nome;
-    private int cpf;
-    private LocalDate dataDeNascimento;
-    private String email;
     private int idTurma;
-    private String login;
-    private String senha;
 
-    public Professor(String nome, int cpf, LocalDate dataDeNascimento, String email, int idTurma, String login, String senha) {
+
+    public Professor(String nome, int cpf, LocalDate dataDeNascimento, String email, int idTurma, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
         this.email = email;
         this.idTurma = idTurma;
-        this.login = login;
         this.senha = senha;
     }
 
@@ -65,13 +61,6 @@ public class Professor {
         this.idTurma = idTurma;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getSenha() {
         return senha;

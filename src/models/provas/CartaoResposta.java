@@ -1,4 +1,4 @@
-package models;
+package models.provas;
 
 public class CartaoResposta {
 	private int id;

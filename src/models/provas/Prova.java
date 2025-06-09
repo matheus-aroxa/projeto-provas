@@ -1,4 +1,6 @@
-package models;
+package models.provas;
+
+import models.Turma;
 
 import java.time.LocalDateTime;
 import java.time.Period;

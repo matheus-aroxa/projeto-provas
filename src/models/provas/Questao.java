@@ -1,4 +1,4 @@
-package models;
+package models.provas;
 
 import java.util.Arrays;
 

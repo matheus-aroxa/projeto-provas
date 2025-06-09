@@ -1,13 +1,9 @@
-package models;
+package models.usuarios;
 
 import java.time.LocalDate;
 
-public class Aluno {
+public class Aluno extends Usuario {
 
-    private String nome;
-    private int cpf;
-    private LocalDate dataDeNascimento;
-    private String email;
     private int idTurma;
 
     public Aluno(String nome, int cpf, LocalDate dataDeNascimento, String email, int idTurma) {
