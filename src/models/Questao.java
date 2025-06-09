@@ -42,7 +42,7 @@ public class Questao {
 
     @Override
     public String toString() {
-        return "Questao{" +
+        return "Questão{" +
                 "id=" + id +
                 ", enunciado='" + enunciado + '\'' +
                 ", idAlternativas=" + Arrays.toString(idAlternativas) +
