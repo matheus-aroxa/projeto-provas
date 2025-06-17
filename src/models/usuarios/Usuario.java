@@ -82,4 +82,16 @@ public abstract class Usuario {
     public int hashCode() {
         return Objects.hash(getId(), getNome(), getCpf(), getDataDeNascimento(), getEmail(), getSenha());
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf=" + cpf +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
+    }
 }
