@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public abstract class Usuario {
 
-    protected int id;
-    protected String nome;
-    protected int cpf;
-    protected LocalDate dataDeNascimento;
-    protected String email;
-    protected String senha;
+    public int id;
+    public String nome;
+    public int cpf;
+    public LocalDate dataDeNascimento;
+    public String email;
+    public String senha;
 
     public Usuario(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha) {
         this.id = id;
@@ -81,5 +81,17 @@ public abstract class Usuario {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getNome(), getCpf(), getDataDeNascimento(), getEmail(), getSenha());
+    }
+	
+	@Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf=" + cpf +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
     }
 }
