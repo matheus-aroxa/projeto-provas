@@ -51,10 +51,8 @@ public class RepositorioQuestoes {
         return null;
     }
 
-    public void listar(){
-        for(Questao q : this.questoes){
-            System.out.println(q);
-        }
+    public Questao[] listar(){
+       return questoes;
     }
 
     public void editarEnunciado(Questao questao, String enu){ questao.setEnunciado(enu);}
