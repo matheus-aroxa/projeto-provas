@@ -25,5 +25,5 @@ alunos, enquanto professores e administradores terão mais uma gama de possívei
 - REQ11: O sistema deve permitir o backup de dados e exportações de nota.
 
 ## Diagrama de Classes
-![alt text](<UML.drawio.png>)
-[_Diagrama de Classes do Código_](https://app.diagrams.net/#G1UR0WeJncplrqBgtVqP-xVBRjl2MO_r-_#%7B%22pageId%22%3A%22PoGswtwlKubVQst8P7u8%22%7D "link para o Draw.io")
+![Diagrama UML](Diagrama-de-Classes-Provas.drawio)
+[_Diagrama de Classes do Código_](https://drive.google.com/file/d/1UR0WeJncplrqBgtVqP-xVBRjl2MO_r-_/view "link para o Draw.io")
