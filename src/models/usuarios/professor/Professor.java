@@ -18,6 +18,11 @@ public class Professor extends Usuario {
 		this.idTurma = idTurma;
 	}
 
+    public Professor(int idTurma) {
+        this.idTurma = idTurma;
+    }
+
+
     public int getIdTurma() {
         return idTurma;
     }
@@ -37,8 +42,13 @@ public class Professor extends Usuario {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getIdTurma());
     }
+
 	
 	@Override
+
+
+    @Override
+
     public String toString() {
         return "Professor{" +
                 "id=" + id +

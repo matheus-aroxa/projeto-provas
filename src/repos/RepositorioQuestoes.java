@@ -1,5 +1,6 @@
 package repos;
 
+import models.provas.Prova;
 import models.provas.Questao;
 
 public class RepositorioQuestoes {
@@ -7,7 +8,7 @@ public class RepositorioQuestoes {
     private int tamanho;
     private static RepositorioQuestoes instance;
 
-    public static RepositorioQuestoes criar(int tam){
+    public static RepositorioQuestoes getInstance(int tam){
         if(instance == null){
             instance = new RepositorioQuestoes(tam);
         }
@@ -26,23 +27,28 @@ public class RepositorioQuestoes {
         }
     }
 
-    public int buscar(int id) {
+    public Questao buscar(int id) {
         for (Questao q : this.questoes) {
             if (q.getId() == id) {
-                return q.getId();
+                return q;
             }
         }
-        return -1;
+        return null;
     }
 
-    public boolean remover(int id) {
-        int ID = buscar(id);
-        if(ID != -1){
-            this.questoes[ID] = null;
-            return true;
+    public Questao remover(int id) {
+        for (int i = 0; i < tamanho; i++) {
+            if (questoes[i].getId() == id) {
+                Questao questR = questoes[i];
+                for (int j = i; j < tamanho - 1; j++) {
+                    questoes[j] = questoes[j + 1];
+                }
+                questoes[tamanho - 1] = null;
+                tamanho--;
+                return questR;
+            }
         }
-        else
-            return false;
+        return null;
     }
 
     public void listar(){
@@ -50,5 +56,9 @@ public class RepositorioQuestoes {
             System.out.println(q);
         }
     }
+
+    public void editarEnunciado(Questao questao, String enu){ questao.setEnunciado(enu);}
+
+    public void editarAlternativas(Questao questao, int[] id){ questao.setIdAlternativas(id);} // isso aqui ta zoado
 
 }

@@ -34,8 +34,13 @@ public class Aluno extends Usuario {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getIdTurma());
     }
+
 	
 	@Override
+
+
+    @Override
+
     public String toString() {
         return "Aluno{" +
                 "id=" + id +
