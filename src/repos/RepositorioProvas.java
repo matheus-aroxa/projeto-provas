@@ -17,10 +17,10 @@ public class RepositorioProvas {
         return instance;
     }
 
-     private RepositorioProvas(int tam){
-     this.provas = new Prova[tam];
-     this.tam = 0;
-     }
+    private RepositorioProvas(int tam){
+    	this.provas = new Prova[tam];
+    	this.tam = 0;
+    }
 
     public void adicionar(Prova prova){
         if(tam < provas.length) {
