@@ -2,7 +2,7 @@ package models.usuarios.professor;
 
 import java.time.LocalDate;
 
-public class ProfessorSalarioFixo extends Professor implements Salario{
+public class ProfessorSalarioFixo extends Professor{
     private double salario;
 
     public ProfessorSalarioFixo(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma,double salario) {

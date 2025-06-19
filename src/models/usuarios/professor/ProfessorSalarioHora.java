@@ -2,7 +2,7 @@ package models.usuarios.professor;
 
 import java.time.LocalDate;
 
-public class ProfessorSalarioHora extends Professor implements Salario {
+public class ProfessorSalarioHora extends Professor{
     private double salario;
     private int horas;
 
