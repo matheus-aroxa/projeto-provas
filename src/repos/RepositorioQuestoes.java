@@ -1,12 +1,16 @@
 package repos;
 
+import controller.CadastroQuestao;
 import models.provas.Prova;
 import models.provas.Questao;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class RepositorioQuestoes {
     private Questao[] questoes;
     private int tamanho;
     private static RepositorioQuestoes instance;
+    private static AtomicInteger contador = new AtomicInteger();
 
     public static RepositorioQuestoes getInstance(int tam){
         if(instance == null){
@@ -20,9 +24,9 @@ public class RepositorioQuestoes {
         this.tamanho = 0;
     }
 
-    public void adicionar(Questao questao) {
+    public void adicionar(String enunciado, int[] idAlternativas) {
         if(tamanho < questoes.length) {
-            this.questoes[this.tamanho] = questao;
+            this.questoes[this.tamanho] = CadastroQuestao.cadastro(instance,contador.incrementAndGet(),enunciado,idAlternativas);
             this.tamanho++;
         }
     }

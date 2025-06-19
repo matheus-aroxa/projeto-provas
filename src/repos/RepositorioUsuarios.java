@@ -3,12 +3,8 @@ package repos;
 import controller.CadastroAdmin;
 import controller.CadastroAluno;
 import controller.CadastroProfessor;
-import models.usuarios.Administrador;
-import models.usuarios.Aluno;
 import models.usuarios.Usuario;
-import models.usuarios.professor.Professor;
-import models.usuarios.professor.ProfessorSalarioFixo;
-import models.usuarios.professor.ProfessorSalarioHora;
+
 
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
