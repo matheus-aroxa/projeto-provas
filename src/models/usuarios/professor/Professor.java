@@ -21,6 +21,9 @@ public class Professor extends Usuario {
         this.salario = salario;
     }
 
+    public void setSalario(Salario salario){
+        this.salario = salario;
+    }
     public double getSalario() {
         return salario.getPagamento();
     }
