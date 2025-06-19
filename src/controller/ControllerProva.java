@@ -5,13 +5,12 @@ import models.provas.Questao;
 
 public class ControllerProva {    
     public void removerQuestao(Prova Prova, Questao questao) {
-    	Questao[] questoes = Prova.getQuestoes();
-    	for (int i = 0; i < questoes.length; i++) {
-    		if (questoes[i].getId() == questao.getId()) {
-    			for (int j = i; j < questoes.length; j++) {
-    				questoes[j] = questoes[j + 1];
+    	for (int i = 0; i < Prova.getQuestoes().length; i++) {
+    		if (Prova.getQuestoes()[i].getId() == questao.getId()) {
+    			for (int j = i; j < Prova.getQuestoes().length; j++) {
+    				Prova.getQuestoes()[j] = Prova.getQuestoes()[j + 1];
     			}
-    			questoes[questoes.length - 1] = null;
+    			Prova.getQuestoes()[Prova.getQuestoes().length - 1] = null;
     		}
     	}
     }
