@@ -1,6 +1,7 @@
 package models.usuarios;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Aluno extends Usuario {
 
@@ -11,43 +12,7 @@ public class Aluno extends Usuario {
         this.idTurma = idTurma;
     }
 
-    public Aluno(int idTurma) {
-        this.idTurma = idTurma;
-    }
-
     public Aluno() {
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
-    }
-
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getIdTurma() {
@@ -56,5 +21,30 @@ public class Aluno extends Usuario {
 
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Aluno aluno)) return false;
+        if (!super.equals(o)) return false;
+        return getIdTurma() == aluno.getIdTurma();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getIdTurma());
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf=" + cpf +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", idTurma=" + idTurma +
+                '}';
     }
 }
