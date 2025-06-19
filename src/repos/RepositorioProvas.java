@@ -57,13 +57,6 @@ public class RepositorioProvas {
         return null;
     }
 
-    public void editarDescricao(Prova prova, String des){ prova.setDescricao(des);}
+    public void editarProva(Prova prova){};
 
-    public void editarTitulo(Prova prova, String tit){ prova.setTitulo(tit);}
-
-    public void editarDuracao(Prova prova, Period dur){ prova.setDuracao(dur);}
-
-    public void editarData(Prova prova, LocalDateTime data){ prova.setDataAplicacao(data);}
-
-    public void editarTipo(Prova prova, boolean type){ prova.setIsRemoto(type);}
 }
