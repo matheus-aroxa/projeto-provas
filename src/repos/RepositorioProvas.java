@@ -10,19 +10,19 @@ public class RepositorioProvas {
     private int tam;
     private static RepositorioProvas instance;
 
-    public static RepositorioProvas getInstance(int tam){
+    public static RepositorioProvas getInstance(int tam) {
         if (instance == null){
             instance = new RepositorioProvas(tam);
         }
         return instance;
     }
 
-    private RepositorioProvas(int tam){
+    private RepositorioProvas(int tam) {
     	this.provas = new Prova[tam];
     	this.tam = 0;
     }
 
-    public void adicionar(Prova prova){
+    public void adicionar(Prova prova) {
         if(tam < provas.length) {
             this.provas[this.tam] = prova;
             this.tam++;
@@ -33,7 +33,7 @@ public class RepositorioProvas {
         return provas;
     }
 
-    public Prova getProvaById(int id){
+    public Prova getProvaById(int id) {
         for(int i = 0;i < tam; i++){
             if(provas[i].getId() == id){
                 return provas[i];
@@ -56,14 +56,14 @@ public class RepositorioProvas {
         }
         return null;
     }
+    
+	public void editarTitulo(Prova prova, String tit) { prova.setTitulo(tit); }
+	
+    public void editarDescricao(Prova prova, String des) { prova.setDescricao(des); }
+    
+    public void editarData(Prova prova, LocalDateTime data) { prova.setDataAplicacao(data); }
 
-    public void editarDescricao(Prova prova, String des){ prova.setDescricao(des);}
+    public void editarDuracao(Prova prova, Period dur) { prova.setDuracao(dur); }
 
-    public void editarTitulo(Prova prova, String tit){ prova.setTitulo(tit);}
-
-    public void editarDuracao(Prova prova, Period dur){ prova.setDuracao(dur);}
-
-    public void editarData(Prova prova, LocalDateTime data){ prova.setDataAplicacao(data);}
-
-    public void editarTipo(Prova prova, boolean type){ prova.setIsRemoto(type);}
+    public void editarTipo(Prova prova, boolean type) { prova.setIsRemoto(type); }
 }
