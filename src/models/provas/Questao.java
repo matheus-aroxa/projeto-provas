@@ -48,4 +48,8 @@ public class Questao {
                 ", idAlternativas=" + Arrays.toString(idAlternativas) +
                 '}';
     }
+    
+    public void editarEnunciado(Questao questao, String enu){ questao.setEnunciado(enu);}
+
+    public void editarAlternativas(Questao questao, int[] id){ questao.setIdAlternativas(id);} // isso aqui ta zoado
 }
