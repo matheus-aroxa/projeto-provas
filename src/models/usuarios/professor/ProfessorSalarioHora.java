@@ -6,7 +6,7 @@ public class ProfessorSalarioHora extends Professor implements Salario {
     private double salario;
     private int horas;
 
-    public ProfessorSalarioHora(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma,double salario, int horas) {
+    public ProfessorSalarioHora(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma,double salario, int horas) {
         super(id, nome, cpf, dataDeNascimento, email, senha, idTurma);
         this.salario = salario;
         this.horas = horas;

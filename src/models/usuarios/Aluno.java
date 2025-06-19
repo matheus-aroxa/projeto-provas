@@ -7,7 +7,7 @@ public class Aluno extends Usuario {
 
     private int idTurma;
 
-    public Aluno(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+    public Aluno(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
     }

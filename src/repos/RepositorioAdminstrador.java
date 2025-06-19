@@ -25,7 +25,7 @@ public class RepositorioAdminstrador {
         return instancia;
     }
 
-    private void criar(String nome, int cpf, LocalDate dataDeNascimento, String email, String senha){
+    private void criar(String nome, long cpf, LocalDate dataDeNascimento, String email, String senha){
         Administrador administrador = new Administrador();
 
         administrador.setId(contador.incrementAndGet());

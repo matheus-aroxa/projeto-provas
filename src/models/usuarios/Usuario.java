@@ -7,12 +7,12 @@ public abstract class Usuario {
 
     public int id;
     public String nome;
-    public int cpf;
+    public long cpf;
     public LocalDate dataDeNascimento;
     public String email;
     public String senha;
 
-    public Usuario(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha) {
+    public Usuario(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -40,11 +40,11 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 

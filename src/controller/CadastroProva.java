@@ -12,7 +12,7 @@ import repos.RepositorioProvas;
 public class CadastroProva {
 	
 	public static Prova cadastro(RepositorioProvas repo, int id, String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
-		if (repo.getProvaById(id) != null
+		if (repo.getProvaById(id) == null
 				&& titulo != null
 				&& dataAplicacao != null
 				&& duracao != null) {
