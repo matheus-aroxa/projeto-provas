@@ -8,10 +8,21 @@ import java.util.Objects;
 public class Professor extends Usuario {
 
     private int idTurma;
+    private Salario salario;
 
     public Professor(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
+    }
+
+    public Professor(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma,Salario salario){
+        super(id, nome, cpf, dataDeNascimento, email, senha);
+        this.idTurma = idTurma;
+        this.salario = salario;
+    }
+
+    public double getSalario() {
+        return salario.getPagamento();
     }
 
     public Professor(int idTurma) {
