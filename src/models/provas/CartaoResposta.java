@@ -31,4 +31,20 @@ public class CartaoResposta {
 	public void setResposta(int[] resposta) {
 		this.resposta = resposta;
 	}
+	
+	public int getIdAluno() {
+		return idAluno;
+	}
+	
+	public void setIdAluno(int idAluno) {
+		this.idAluno = idAluno;
+	}
+	
+	public int getIdProva() {
+		return idProva;
+	}
+	
+	public void setIdProva(int idProva) {
+		this.idProva = idProva;
+	}
 }
