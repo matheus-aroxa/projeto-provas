@@ -8,78 +8,81 @@ import java.util.Scanner;
 
 public class CadastroUsuariosView {
 
-    private String nome, email, senha;
-    private Integer idTurma;
-    private Long cpf;
-    private LocalDate data;
+    private record Dados(    //struct para armazenar os dados em comum
+        String nome, Long cpf, LocalDate dataNascimento, String email, String senha
+    ) {}
 
-    {   //bloco de inicialização para cadastrar os dados em comum dos usuários
-        nome = lerString("Digite seu nome: ");
-        cpf = lerLong("Digite o seu Cpf: ");
+    private static Dados cadastro() {   //bloco de inicialização para cadastrar os dados sem comum dos usuários
+        String nome = lerString("Digite seu nome: ");
+        Long cpf = lerLong("Digite o seu Cpf: ");
         ler.nextLine();
         System.out.println("Digite sua data de Nascimento:");
-        data = LocalDate.of(lerInt("Ano: "),lerInt("Mês: "),lerInt("Dia: "));
+        LocalDate data = LocalDate.of(
+            lerInt("Ano: "), lerInt("Mês: "), lerInt("Dia: "));
         ler.nextLine();
-        email = lerString("Digite seu e-mail: ");
-        senha = lerString("Digite sua senha: ");
+        String email = lerString("Digite seu e-mail: ");
+        String senha = lerString("Digite sua senha: ");
+        return new Dados(nome, cpf, data, email, senha);
     }
 
-    public void cadastroAdministrador(UsuarioService servico) {
-        idTurma = lerInt("Digite o ID da turma: ");
-        ler.nextLine();
-        servico.criarAdministrador(nome, cpf, data, email, senha);
+    public static void cadastroAdministrador(UsuarioService service) {
+        Dados dados = cadastro();
+        service.criarAdministrador(dados.nome(), dados.cpf(), dados.dataNascimento(), dados.email(), dados.senha());
     }
 
-    public void cadastroAluno(UsuarioService servico) {
-        idTurma = lerInt("Digite o ID da turma: ");
+    public static void cadastroAluno(UsuarioService service) {
+        Dados dados = cadastro();
+        Integer idTurma = lerInt("Digite o ID da turma: ");
         ler.nextLine();
-        servico.criarAluno(nome, cpf, data, email, senha, idTurma);
+        service.criarAluno(dados.nome(), dados.cpf(), dados.dataNascimento(), dados.email(), dados.senha(), idTurma);
     }
 
-    public void cadastroProfessor(UsuarioService servico) {
-        idTurma = lerInt("Digite o ID da turma: ");
+    public static void cadastroProfessor(UsuarioService service) {
+        Dados dados = cadastro();
+        Integer idTurma = lerInt("Digite o ID da turma: ");
         ler.nextLine();
-        servico.criarProfessor(nome, cpf, data, email, senha, idTurma);
+        service.criarProfessor(dados.nome(), dados.cpf(), dados.dataNascimento(), dados.email(), dados.senha(), idTurma);
     }
 
-    //métodos utilitários e variáveis utilitárias
+
+    //métodos e variáveis utilitárias
     private static Scanner ler = new Scanner(System.in);
     private static final String VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
-    private static String lerString(String mensagem){
+    private static String lerString(String mensagem) {
         String valor;
-        do{
+        do {
             System.out.println(mensagem);
             valor = ler.nextLine();
-        }while (valor == null);
+        } while (valor == null);
         return valor;
     }
 
-    private static Long lerLong(String mensagem){
+    private static Long lerLong(String mensagem) {
         Long valor = null;
-        do{
-            try{
+        do {
+            try {
                 System.out.println(mensagem);
                 valor = ler.nextLong();
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.printf("%sErro: O valor precisa ser Long!%s\n", VERMELHO, NEUTRO);
                 ler.nextLine();
             }
-        }while (valor == null);
+        } while (valor == null);
         return valor;
     }
 
-    private static Integer lerInt(String mensagem){
+    private static Integer lerInt(String mensagem) {
         Integer valor = null;
-        do{
-            try{
+        do {
+            try {
                 System.out.println(mensagem);
                 valor = ler.nextInt();
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.printf("%sErro: O valor precisa ser Long!%s\n", VERMELHO, NEUTRO);
                 ler.nextLine();
             }
-        }while (valor == null);
+        } while (valor == null);
         return valor;
     }
 

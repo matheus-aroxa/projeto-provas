@@ -9,13 +9,14 @@ public class MenuPrincipal {
 
     public static void start(UsuarioService usuarioService) {
         int opcao;
-        CadastroUsuariosView cadastro;
         do {
             System.out.printf("\n%sBem vindo ao gerenciador de Provas!%s\n", VERDE, NEUTRO);
             System.out.println("\nDeseja Cadastrar qual classe?\n" +
                     "1 ⟶ Administrador\n" +
                     "2 ⟶ Aluno\n" +
                     "3 ⟶ Professor\n" +
+                    "4 ⟶ Questão\n" +
+                    "5 ⟶ Prova\n" +
                     "0 ⟶ Sair\n");
 
             opcao = lerOpcao();
@@ -23,18 +24,23 @@ public class MenuPrincipal {
             switch (opcao) {
                 case ADMINISTRADOR:
                     System.out.println("Cadastrando Administrador...");
-                    cadastro = new CadastroUsuariosView();
-                    cadastro.cadastroAdministrador(usuarioService);
+                    CadastroUsuariosView.cadastroAdministrador(usuarioService);
                     break;
                 case ALUNO:
                     System.out.println("Cadastrando Aluno...");
-                    cadastro = new CadastroUsuariosView();
-                    cadastro.cadastroAluno(usuarioService);
+                    CadastroUsuariosView.cadastroAluno(usuarioService);
                     break;
                 case PROFESSOR:
                     System.out.println("Cadastrando Professor...");
-                    cadastro = new CadastroUsuariosView();
-                    cadastro.cadastroProfessor(usuarioService);
+                    CadastroUsuariosView.cadastroProfessor(usuarioService);
+                    break;
+                case QUESTAO:
+                    System.out.println("Cadastrando Questão...");
+                    CadastroProvaView.cadatro();
+                    break;
+                case PROVA:
+                    System.out.println("Cadastrando Prova...");
+                    CadastroProvaView.cadatro();
                     break;
                 case SAIR:
                     System.out.println("Saindo...");
@@ -50,7 +56,7 @@ public class MenuPrincipal {
     //métodos e variáveis utilitárias
     private static Scanner ler = new Scanner(System.in);
     private static final int //constantes lógicas
-            SAIR = 0,ADMINISTRADOR = 1, ALUNO = 2, PROFESSOR = 3;
+            SAIR = 0,ADMINISTRADOR = 1, ALUNO = 2, PROFESSOR = 3, QUESTAO = 4, PROVA = 5;
     private static final String //contantes de cores
             VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
@@ -60,7 +66,7 @@ public class MenuPrincipal {
                 int opcao = ler.nextInt();
                 ler.nextLine();
 
-                if (opcao >= MenuPrincipal.SAIR && opcao <= MenuPrincipal.PROFESSOR) {
+                if (opcao >= MenuPrincipal.SAIR && opcao <= MenuPrincipal.PROVA) {
                     return opcao;
                 } else {
                     //pode ser uma exceção, só fiz desse jeito porque não vejo um lugar onde pode ser reutilizado

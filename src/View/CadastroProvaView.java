@@ -6,24 +6,26 @@ import models.provas.Questao;
 
 import java.time.LocalDateTime;
 import java.time.Period;
-import java.time.temporal.TemporalAmount;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastroProvaView {
 
-    public static void cadatro(){
+    public static void cadatro(){ //ProvaService service
         String titulo = lerString("Digite o título da prova: ");
         String descricao = lerString("Digite a Descrição da prova: \n");
+
         System.out.println("Digite a data e hora da aplicação da prova");
         LocalDateTime dataAplicacao = LocalDateTime.of(
             lerInt("Ano: "),lerInt("Mês"),lerInt("Dia: "),lerInt("Hora"),lerInt("Minuto"));
-//        Period duracao = Period.
-//        boolean isRemoto;
+
+//        Period duracao = //period armazena apenas diferença de datas, não seria melhor Duration?
+        System.out.println("A prova será remota[s/n]? ");
+        boolean isRemoto = ler.nextLine().toLowerCase().indexOf(0) == 's';
 //        Turma[] turmas;
 //        Questao[] questoes;
 //        CartaoResposta[] respostas;
-
+        //service.criarProva(titulo, descricao, dataAplicacao, duracao, isRemoto, turmas, questoes, respostas);
     }
 
     //métodos utilitários e variáveis utilitárias
