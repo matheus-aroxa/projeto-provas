@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Questao {
     private int id;
     private String enunciado;
-    private int[] idAlternativas;
+    private Integer[] idAlternativas;
 
-    public Questao(int id, String enunciado, int[] idAlternativas) {
+    public Questao(int id, String enunciado, Integer[] idAlternativas) {
         this.id = id;
         this.enunciado = enunciado;
         this.idAlternativas = idAlternativas;
@@ -32,11 +32,11 @@ public class Questao {
         this.enunciado = enunciado;
     }
 
-    public int[] getIdAlternativas() {
+    public Integer[] getIdAlternativas() {
         return idAlternativas;
     }
 
-    public void setIdAlternativas(int[] idAlternativas) {
+    public void setIdAlternativas(Integer[] idAlternativas) {
         this.idAlternativas = idAlternativas;
     }
 
