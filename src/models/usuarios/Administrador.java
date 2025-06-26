@@ -11,5 +11,15 @@ public class Administrador extends Usuario {
     public Administrador() {
     }
 
-
+    @Override
+    public String toString() {
+        return "Administrador{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf=" + cpf +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
+    }
 }

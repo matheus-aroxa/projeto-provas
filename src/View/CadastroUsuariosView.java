@@ -6,18 +6,16 @@ import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CadastroView {
+public class CadastroUsuariosView {
 
     private static Scanner ler = new Scanner(System.in);
 
-    private static final String
-    VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
+    private static final String VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
     private String nome, email, senha;
     private Integer idTurma;
     private Long cpf;
     private LocalDate data;
-
     {
         nome = lerString("Digite seu nome: ");
         cpf = lerLong("Digite o seu Cpf: ");
@@ -27,20 +25,25 @@ public class CadastroView {
         ler.nextLine();
         email = lerString("Digite seu e-mail: ");
         senha = lerString("Digite sua senha: ");
-        idTurma = lerInt("Digite o ID da turma: ");
-        ler.nextLine();
     }
-
 
     public void cadastroAdministrador(UsuarioService servico) {
-        servico.criarAdministrador(nome, cpf, data, email, senha, idTurma);
+
+        idTurma = lerInt("Digite o ID da turma: ");
+        ler.nextLine();
+        servico.criarAdministrador(nome, cpf, data, email, senha);
     }
 
-    public void cadastroAluno(UsuarioService servico) {
+    public void cadastroAluno(UsuarioService servico)
+    {
+        idTurma = lerInt("Digite o ID da turma: ");
+        ler.nextLine();
         servico.criarAluno(nome, cpf, data, email, senha, idTurma);
     }
 
     public void cadastroProfessor(UsuarioService servico) {
+        idTurma = lerInt("Digite o ID da turma: ");
+        ler.nextLine();
         servico.criarProfessor(nome, cpf, data, email, senha, idTurma);
     }
 
@@ -50,7 +53,7 @@ public class CadastroView {
         do{
             System.out.println(mensagem);
             valor = ler.nextLine();
-        }while (valor == null && !valor.equals("\n"));
+        }while (valor == null);
         return valor;
     }
 

@@ -42,7 +42,7 @@ public class RepositorioUsuarios {
         usuarios[contador.get()] = new Administrador(contador.incrementAndGet(), nome, cpf, dataDeNascimento, email, senha);
     }
 
-    public void criarProfessor(String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma,double salario) {
+    public void criarProfessor(String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
         usuarios[contador.get()] = new Professor(contador.incrementAndGet(), nome, cpf, dataDeNascimento, email, senha, idTurma);
     }
 

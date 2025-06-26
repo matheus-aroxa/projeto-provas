@@ -10,7 +10,7 @@ public class Professor extends Usuario{
     private int idTurma;
     private Salario salario;
 
-    public Professor(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+    public Professor(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
     }
@@ -23,7 +23,7 @@ public class Professor extends Usuario{
         return idTurma;
     }
 
-    public void setIdTurma(int idTurma) {
+    public void setIdTurma(Integer idTurma) {
         this.idTurma = idTurma;
     }
 

@@ -18,7 +18,7 @@ public class MenuPrincipal {
 
     public static void inicio(UsuarioService usuarioService) {
         int opcao;
-        CadastroView cadastro;
+        CadastroUsuariosView cadastro;
         do {
             System.out.printf("\n%sBem vindo ao gerenciador de Provas!%s\n", VERDE, NEUTRO);
             System.out.println("\nDeseja Utilizar qual repositório?\n" +
@@ -32,17 +32,17 @@ public class MenuPrincipal {
             switch (opcao) {
                 case ADMINISTRADOR:
                     System.out.println("Cadastrando Administrador...");
-                    cadastro = new CadastroView();
+                    cadastro = new CadastroUsuariosView();
                     cadastro.cadastroAdministrador(usuarioService);
                     break;
                 case ALUNO:
                     System.out.println("Cadastrando Aluno...");
-                    cadastro = new CadastroView();
+                    cadastro = new CadastroUsuariosView();
                     cadastro.cadastroAluno(usuarioService);
                     break;
                 case PROFESSOR:
                     System.out.println("Cadastrando Professor...");
-                    cadastro = new CadastroView();
+                    cadastro = new CadastroUsuariosView();
                     cadastro.cadastroProfessor(usuarioService);
                     break;
                 case SAIR:

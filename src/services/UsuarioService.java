@@ -46,7 +46,7 @@ public class UsuarioService {
 			throw new ArrayIsFullException();
 		}
 
-		repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
+		repositorio.criarProfessor(nome, cpf, dataDeNascimento, email, senha, idTurma);
 
 		for(Usuario u : repositorio.getUsuarios()){
 			System.out.println(u);
@@ -54,8 +54,8 @@ public class UsuarioService {
 		System.out.println("--------------------");
 	}
 
-	public void criarAdministrador(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
+	public void criarAdministrador(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha) {
+		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null ) {
 			throw new RequiredArgumentIsNullException();
 		}
 
@@ -68,7 +68,7 @@ public class UsuarioService {
 			throw new ArrayIsFullException();
 		}
 
-		repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
+		repositorio.criarAdministrador(nome, cpf, dataDeNascimento, email, senha);
 
 		for(Usuario u : repositorio.getUsuarios()){
 			System.out.println(u);
