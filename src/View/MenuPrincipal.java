@@ -18,7 +18,7 @@ public class MenuPrincipal {
                     "3 ⟶ Professor\n" +
                     "0 ⟶ Sair\n");
 
-            opcao = lerOpcao(SAIR, PROFESSOR);
+            opcao = lerOpcao();
 
             switch (opcao) {
                 case ADMINISTRADOR:
@@ -54,18 +54,18 @@ public class MenuPrincipal {
     private static final String //contantes de cores
             VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
-    private static int lerOpcao(int inicio, int fim) {
+    private static int lerOpcao() {
         while (true) {
             try {
                 int opcao = ler.nextInt();
                 ler.nextLine();
 
-                if (opcao >= inicio && opcao <= fim) {
+                if (opcao >= MenuPrincipal.SAIR && opcao <= MenuPrincipal.PROFESSOR) {
                     return opcao;
                 } else {
                     //pode ser uma exceção, só fiz desse jeito porque não vejo um lugar onde pode ser reutilizado
                     System.out.printf("%sErro: Digite um valor entre %d e %d!%s\n",
-                            VERMELHO, inicio, fim, NEUTRO);
+                            VERMELHO, MenuPrincipal.SAIR, MenuPrincipal.PROFESSOR, NEUTRO);
                 }
             } catch (InputMismatchException e) {
                 System.out.printf("%sErro: O valor precisa ser inteiro!%s\n", VERMELHO, NEUTRO);
