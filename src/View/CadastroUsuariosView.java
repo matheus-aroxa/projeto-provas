@@ -8,15 +8,12 @@ import java.util.Scanner;
 
 public class CadastroUsuariosView {
 
-    private static Scanner ler = new Scanner(System.in);
-
-    private static final String VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
-
     private String nome, email, senha;
     private Integer idTurma;
     private Long cpf;
     private LocalDate data;
-    {
+
+    {   //bloco de inicialização para cadastrar os dados em comum dos usuários
         nome = lerString("Digite seu nome: ");
         cpf = lerLong("Digite o seu Cpf: ");
         ler.nextLine();
@@ -28,14 +25,12 @@ public class CadastroUsuariosView {
     }
 
     public void cadastroAdministrador(UsuarioService servico) {
-
         idTurma = lerInt("Digite o ID da turma: ");
         ler.nextLine();
         servico.criarAdministrador(nome, cpf, data, email, senha);
     }
 
-    public void cadastroAluno(UsuarioService servico)
-    {
+    public void cadastroAluno(UsuarioService servico) {
         idTurma = lerInt("Digite o ID da turma: ");
         ler.nextLine();
         servico.criarAluno(nome, cpf, data, email, senha, idTurma);
@@ -47,6 +42,9 @@ public class CadastroUsuariosView {
         servico.criarProfessor(nome, cpf, data, email, senha, idTurma);
     }
 
+    //métodos utilitários e variáveis utilitárias
+    private static Scanner ler = new Scanner(System.in);
+    private static final String VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
     private static String lerString(String mensagem){
         String valor;

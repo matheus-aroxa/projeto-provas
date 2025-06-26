@@ -6,22 +6,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuPrincipal {
-    //variáveis da classe
-    private static Scanner ler = new Scanner(System.in);
-    //constantes
-    private static final int
-        SAIR = 0,ADMINISTRADOR = 1, ALUNO = 2, PROFESSOR = 3;
 
-    private static final String
-        VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
-
-
-    public static void inicio(UsuarioService usuarioService) {
+    public static void start(UsuarioService usuarioService) {
         int opcao;
         CadastroUsuariosView cadastro;
         do {
             System.out.printf("\n%sBem vindo ao gerenciador de Provas!%s\n", VERDE, NEUTRO);
-            System.out.println("\nDeseja Utilizar qual repositório?\n" +
+            System.out.println("\nDeseja Cadastrar qual classe?\n" +
                     "1 ⟶ Administrador\n" +
                     "2 ⟶ Aluno\n" +
                     "3 ⟶ Professor\n" +
@@ -56,6 +47,13 @@ public class MenuPrincipal {
         } while (opcao != SAIR);
     }
 
+    //métodos e variáveis utilitárias
+    private static Scanner ler = new Scanner(System.in);
+    private static final int //constantes lógicas
+            SAIR = 0,ADMINISTRADOR = 1, ALUNO = 2, PROFESSOR = 3;
+    private static final String //contantes de cores
+            VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
+
     private static int lerOpcao(int inicio, int fim) {
         while (true) {
             try {
@@ -65,6 +63,7 @@ public class MenuPrincipal {
                 if (opcao >= inicio && opcao <= fim) {
                     return opcao;
                 } else {
+                    //pode ser uma exceção, só fiz desse jeito porque não vejo um lugar onde pode ser reutilizado
                     System.out.printf("%sErro: Digite um valor entre %d e %d!%s\n",
                             VERMELHO, inicio, fim, NEUTRO);
                 }
