@@ -1,14 +1,14 @@
 package repos;
 
-import controller.CadastroAdmin;
-import controller.CadastroAluno;
-import controller.CadastroProfessor;
 import models.usuarios.Administrador;
 import models.usuarios.Aluno;
 import models.usuarios.Usuario;
 import models.usuarios.professor.Professor;
 import models.usuarios.professor.ProfessorSalarioFixo;
 import models.usuarios.professor.ProfessorSalarioHora;
+import services.CadastroAdmin;
+import services.CadastroAluno;
+import services.CadastroProfessor;
 
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,6 +28,14 @@ public class RepositorioUsuarios {
             instance = new RepositorioUsuarios(tam);
         }
         return instance;
+    }
+    
+    public AtomicInteger getContador() {
+    	return contador;
+    }
+    
+    public Usuario[] getUsuarios() {  //apagar no codigo oficial
+        return usuarios;
     }
 
     public void criarAdministrador(String nome, long cpf, LocalDate dataDeNascimento, String email, String senha) {
@@ -63,10 +71,5 @@ public class RepositorioUsuarios {
             usuarios[i] = usuarios[i + 1]; // remove os buracos apos a remocao
         }
         usuarios[usuarios.length - 1] = null; // remove o usuario do array
-    }
-
-
-    public Usuario[] getUsuarios() {  //apagar no codigo oficial
-        return usuarios;
     }
 }
