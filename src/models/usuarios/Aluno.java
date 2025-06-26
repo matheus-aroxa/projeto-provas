@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class Aluno extends Usuario {
 
-    private int idTurma;
+    private Integer idTurma;
 
-    public Aluno(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+    public Aluno(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
     }
@@ -19,7 +19,7 @@ public class Aluno extends Usuario {
         return idTurma;
     }
 
-    public void setIdTurma(int idTurma) {
+    public void setIdTurma(Integer idTurma) {
         this.idTurma = idTurma;
     }
 
