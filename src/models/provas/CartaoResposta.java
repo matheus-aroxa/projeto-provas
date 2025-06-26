@@ -2,14 +2,14 @@ package models.provas;
 
 public class CartaoResposta {
 	private int id;
-	private int idALuno;
+	private int idAluno;
 	private int idProva;
 	private int[] resposta;
 	
-	public CartaoResposta(int id, int[] resposta,int idALuno, int idProva) {
+	public CartaoResposta(int id, int[] resposta, int idAluno, int idProva) {
 		this.id = id;
 		this.resposta = resposta;
-		this.idALuno = idALuno;
+		this.idAluno = idAluno;
 		this.idProva = idProva;
 	}
 	
@@ -30,5 +30,21 @@ public class CartaoResposta {
 
 	public void setResposta(int[] resposta) {
 		this.resposta = resposta;
+	}
+	
+	public int getIdAluno() {
+		return idAluno;
+	}
+	
+	public void setIdAluno(int idAluno) {
+		this.idAluno = idAluno;
+	}
+	
+	public int getIdProva() {
+		return idProva;
+	}
+	
+	public void setIdProva(int idProva) {
+		this.idProva = idProva;
 	}
 }

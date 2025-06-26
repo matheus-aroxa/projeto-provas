@@ -5,11 +5,12 @@ import models.usuarios.Usuario;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Professor extends Usuario {
+public abstract class Professor extends Usuario implements Salario {
 
     private int idTurma;
+    private Salario salario;
 
-    public Professor(int id, String nome, int cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+    public Professor(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
     }

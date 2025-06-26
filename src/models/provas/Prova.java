@@ -14,12 +14,13 @@ public class Prova {
     private boolean isRemoto;
     private Turma[] turmas;
     private Questao[] questoes;
+    private CartaoResposta[] respostas;
 
 
     public Prova() {
     }
 
-    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto,Turma[] turmas,Questao[] questoes) {
+    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -28,6 +29,7 @@ public class Prova {
         this.isRemoto = isRemoto;
         this.turmas = turmas;
         this.questoes = questoes;
+        this.respostas = respostas;
     }
 
     public int getId(){
@@ -92,6 +94,14 @@ public class Prova {
 
     public void setQuestoes(Questao[] questoes) {
         this.questoes = questoes;
+    }
+    
+    public CartaoResposta[] getRespostas() {
+    	return respostas;
+    }
+    
+    public void setRespostas(CartaoResposta[] respostas) {
+    	this.respostas = respostas;
     }
 
 }
