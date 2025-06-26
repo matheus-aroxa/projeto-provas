@@ -16,7 +16,7 @@ public class UsuarioService {
 		}
 		
 		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new UserAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
 		}
 
 		//verificar se tem espaço no array
@@ -38,7 +38,7 @@ public class UsuarioService {
 		}
 
 		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new UserAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
 		}
 
 		//verificar se tem espaço no array
@@ -60,7 +60,7 @@ public class UsuarioService {
 		}
 
 		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new UserAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
 		}
 
 		//verificar se tem espaço no array

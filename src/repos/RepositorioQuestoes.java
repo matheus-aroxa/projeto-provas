@@ -9,9 +9,9 @@ public class RepositorioQuestoes {
     private Questao[] questoes;
     private static AtomicInteger contador = new AtomicInteger();
     private static RepositorioQuestoes instance;
-    private int tamanho;
+    private Integer tamanho;
 
-    public static RepositorioQuestoes getInstance(int tam){
+    public static RepositorioQuestoes getInstance(Integer tam){
         if(instance == null){
             instance = new RepositorioQuestoes(tam);
         }
@@ -22,8 +22,20 @@ public class RepositorioQuestoes {
         this.questoes = new Questao[tamanho];
         this.tamanho = 0;
     }
+    
+    public Questao[] getAllQuestoes() {
+    	return questoes;
+    }
+    
+    public AtomicInteger getContador() {
+    	return contador;
+    }
+    
+    public Integer getTamanho() {
+    	return tamanho;
+    }
 
-    public void adicionar(String enunciado, int[] idAlternativas) {
+    public void adicionar(String enunciado, Integer[] idAlternativas) {
         questoes[contador.get()] = new Questao(contador.getAndIncrement(),enunciado,idAlternativas);
     }
 
