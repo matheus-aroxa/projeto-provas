@@ -1,13 +1,85 @@
 package View;
 
+import services.UsuarioService;
+
+import java.time.LocalDate;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class CadastroView {
-    public static void cadastroAdministrador(){
-        //interface de cadastro
+
+    private static Scanner ler = new Scanner(System.in);
+
+    private static final String
+    VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
+
+    private String nome, email, senha;
+    private Integer idTurma;
+    private Long cpf;
+    private LocalDate data;
+
+    {
+        nome = lerString("Digite seu nome: ");
+        cpf = lerLong("Digite o seu Cpf: ");
+        ler.nextLine();
+        System.out.println("Digite sua data de Nascimento:");
+        data = LocalDate.of(lerInt("Ano: "),lerInt("Mês: "),lerInt("Dia: "));
+        ler.nextLine();
+        email = lerString("Digite seu e-mail: ");
+        senha = lerString("Digite sua senha: ");
+        idTurma = lerInt("Digite o ID da turma: ");
+        ler.nextLine();
     }
-    public static void cadastroAluno(){
-        //interface de cadastro
+
+
+    public void cadastroAdministrador(UsuarioService servico) {
+        servico.criarAdministrador(nome, cpf, data, email, senha, idTurma);
     }
-    public static void cadastroProfessor(){
-        //interface de cadastro
+
+    public void cadastroAluno(UsuarioService servico) {
+        servico.criarAluno(nome, cpf, data, email, senha, idTurma);
     }
+
+    public void cadastroProfessor(UsuarioService servico) {
+        servico.criarProfessor(nome, cpf, data, email, senha, idTurma);
+    }
+
+
+    private static String lerString(String mensagem){
+        String valor;
+        do{
+            System.out.println(mensagem);
+            valor = ler.nextLine();
+        }while (valor == null && !valor.equals("\n"));
+        return valor;
+    }
+
+    private static Long lerLong(String mensagem){
+        Long valor = null;
+        do{
+            try{
+                System.out.println(mensagem);
+                valor = ler.nextLong();
+            }catch (InputMismatchException e){
+                System.out.printf("%sErro: O valor precisa ser Long!%s\n", VERMELHO, NEUTRO);
+                ler.nextLine();
+            }
+        }while (valor == null);
+        return valor;
+    }
+
+    private static Integer lerInt(String mensagem){
+        Integer valor = null;
+        do{
+            try{
+                System.out.println(mensagem);
+                valor = ler.nextInt();
+            }catch (InputMismatchException e){
+                System.out.printf("%sErro: O valor precisa ser Long!%s\n", VERMELHO, NEUTRO);
+                ler.nextLine();
+            }
+        }while (valor == null);
+        return valor;
+    }
+
 }

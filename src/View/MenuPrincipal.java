@@ -1,12 +1,13 @@
 package View;
 
+import services.UsuarioService;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuPrincipal {
     //variáveis da classe
     private static Scanner ler = new Scanner(System.in);
-
     //constantes
     private static final int
         SAIR = 0,ADMINISTRADOR = 1, ALUNO = 2, PROFESSOR = 3;
@@ -15,8 +16,9 @@ public class MenuPrincipal {
         VERMELHO = "\033[31m", VERDE = "\033[32m", NEUTRO = "\033[m";
 
 
-    public static void inicio() {
+    public static void inicio(UsuarioService usuarioService) {
         int opcao;
+        CadastroView cadastro;
         do {
             System.out.printf("\n%sBem vindo ao gerenciador de Provas!%s\n", VERDE, NEUTRO);
             System.out.println("\nDeseja Utilizar qual repositório?\n" +
@@ -26,27 +28,29 @@ public class MenuPrincipal {
                     "0 ⟶ Sair\n");
 
             opcao = lerOpcao(SAIR, PROFESSOR);
-            //ler.close();
 
             switch (opcao) {
-                default:
-                    System.out.printf("%s<erro indeterminado>%s", VERMELHO, NEUTRO);
-                    break;
                 case ADMINISTRADOR:
                     System.out.println("Cadastrando Administrador...");
-                    CadastroView.cadastroAdministrador();
+                    cadastro = new CadastroView();
+                    cadastro.cadastroAdministrador(usuarioService);
                     break;
                 case ALUNO:
                     System.out.println("Cadastrando Aluno...");
-                    CadastroView.cadastroAluno();
+                    cadastro = new CadastroView();
+                    cadastro.cadastroAluno(usuarioService);
                     break;
                 case PROFESSOR:
                     System.out.println("Cadastrando Professor...");
-                    CadastroView.cadastroProfessor();
+                    cadastro = new CadastroView();
+                    cadastro.cadastroProfessor(usuarioService);
                     break;
                 case SAIR:
                     System.out.println("Saindo...");
                     System.out.printf("%sAté a próxima!%s\n", VERDE, NEUTRO);
+                    break;
+                default:
+                    System.out.printf("%s<erro indeterminado>%s", VERMELHO, NEUTRO);
                     break;
             }
         } while (opcao != SAIR);
@@ -71,7 +75,4 @@ public class MenuPrincipal {
         }
     }
 
-    public static void start(){
-        inicio();
-    }
 }
