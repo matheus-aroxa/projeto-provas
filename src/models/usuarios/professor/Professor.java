@@ -5,7 +5,7 @@ import models.usuarios.Usuario;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class Professor extends Usuario implements Salario {
+public class Professor extends Usuario{
 
     private int idTurma;
     private Salario salario;
