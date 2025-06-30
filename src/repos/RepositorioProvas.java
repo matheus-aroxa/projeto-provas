@@ -4,6 +4,8 @@ import models.Turma;
 import models.provas.CartaoResposta;
 import models.provas.Prova;
 import models.provas.Questao;
+
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,7 +29,7 @@ public class RepositorioProvas {
         return instance;
     }
 
-    public void adicionar(String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
+    public void adicionar(String titulo, String descricao, LocalDateTime dataAplicacao, Duration duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
         provas[contador.get()] = new Prova(contador.getAndIncrement(),titulo,  descricao,  dataAplicacao,  duracao,  isRemoto, turmas,  questoes, respostas);
     }
 

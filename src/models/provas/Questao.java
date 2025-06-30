@@ -51,5 +51,5 @@ public class Questao {
     
     public void editarEnunciado(Questao questao, String enu){ questao.setEnunciado(enu);}
 
-    public void editarAlternativas(Questao questao, int[] id){ questao.setIdAlternativas(id);} // isso aqui ta zoado
+    public void editarAlternativas(Questao questao, Integer[] id){ questao.setIdAlternativas(id);} // isso aqui ta zoado
 }

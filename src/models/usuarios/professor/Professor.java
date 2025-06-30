@@ -15,9 +15,14 @@ public class Professor extends Usuario{
         this.idTurma = idTurma;
     }
 
+    public Professor(Integer idTurma) {
+		this.idTurma = idTurma;
+	}
+
     public Professor(int idTurma) {
         this.idTurma = idTurma;
     }
+
 
     public int getIdTurma() {
         return idTurma;
@@ -39,7 +44,10 @@ public class Professor extends Usuario{
         return Objects.hash(super.hashCode(), getIdTurma());
     }
 
+
+
     @Override
+
     public String toString() {
         return "Professor{" +
                 "id=" + id +

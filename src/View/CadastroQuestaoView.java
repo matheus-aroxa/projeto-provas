@@ -1,14 +1,16 @@
 package View;
 
+import services.QuestaoService;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastroQuestaoView {
 
-    public static void cadatro(){
+    public static void cadatro(QuestaoService service){
         String enunciado = lerString("Digite o enunciado da questão:\n");
-        //ler o int das alternativas ou criar elas aqui mesmo?
-        //questaoService.criarQuestao(enunciado, alternativas[]);
+        //alterar este pedaço para criar as alternativas apartir daqui
+        //service.criarQuestao(enunciado, null);
     }
 
     //métodos utilitários e variáveis utilitárias

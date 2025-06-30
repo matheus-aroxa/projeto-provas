@@ -1,11 +1,9 @@
 package services;
 
-import java.time.LocalDate;
-
 import Exceptions.ArrayIsFullException;
 import Exceptions.RequiredArgumentIsNullException;
-import Exceptions.UserAlreadyExistsException;
-import models.usuarios.Usuario;
+import Exceptions.ObjectAlreadyExistsException;
+import models.provas.Questao;
 import repos.RepositorioQuestoes;
 
 public class QuestaoService {
@@ -17,38 +15,19 @@ public class QuestaoService {
 			throw new RequiredArgumentIsNullException();
 		}
 		
+		if (repositorio.procurar(repositorio.getContador().get() + 1) != null) {
+			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+		}
+		
 		if(repositorio.getContador().get() >= 10){
 			throw new ArrayIsFullException();
 		}
 		
-//		repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
-//
-//		for(Usuario u : repositorio.get){
-//			System.out.println(u);
-//		}
-//		System.out.println("--------------------");
+		repositorio.adicionar(enunciado, idAlternativas);
+		
+		for(Questao q : repositorio.getAllQuestoes()) {
+			System.out.println(q);
+		}
+		System.out.println("---------------------------");
 	}
-	/*
-	 	public void criarAluno(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
-			throw new RequiredArgumentIsNullException();
-		}
-		
-		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new UserAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
-		}
-
-		//verificar se tem espaço no array
-		if(repositorio.getContador().get() >= 10){
-			throw new ArrayIsFullException();
-		}
-
-		repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
-
-		for(Usuario u : repositorio.getUsuarios()){
-			System.out.println(u);
-		}
-		System.out.println("--------------------");
-	} 
-	*/
 }

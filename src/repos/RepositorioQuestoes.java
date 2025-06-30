@@ -23,8 +23,20 @@ public class RepositorioQuestoes {
         this.tamanho = 0;
     }
 
-    public void adicionar(String enunciado, int[] idAlternativas) {
+    public void adicionar(String enunciado, Integer[] idAlternativas) {
         questoes[contador.get()] = new Questao(contador.getAndIncrement(),enunciado,idAlternativas);
+    }
+
+    public Questao[] getAllQuestoes() {
+        return questoes;
+    }
+
+    public AtomicInteger getContador() {
+        return contador;
+    }
+
+    public Integer getTamanho() {
+        return tamanho;
     }
 
     public Questao procurar(int id) {
@@ -51,11 +63,12 @@ public class RepositorioQuestoes {
         return null;
     }
 
+
+
     public Questao[] listar(){
        return questoes;
     }
 
     public void editar(Questao quest){};
-
 
 }

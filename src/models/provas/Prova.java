@@ -2,6 +2,7 @@ package models.provas;
 
 import models.Turma;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 
@@ -10,7 +11,7 @@ public class Prova {
     private String titulo;
     private String descricao;
     private LocalDateTime dataAplicacao;
-    private Period duracao;
+    private Duration duracao;
     private boolean isRemoto;
     private Turma[] turmas;
     private Questao[] questoes;
@@ -20,7 +21,7 @@ public class Prova {
     public Prova() {
     }
 
-    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Period duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
+    public Prova(int id,String titulo, String descricao, LocalDateTime dataAplicacao, Duration duracao, boolean isRemoto, Turma[] turmas, Questao[] questoes, CartaoResposta[] respostas) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -64,11 +65,11 @@ public class Prova {
         this.dataAplicacao = dataAplicacao;
     }
 
-    public Period getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(Period duracao) {
+    public void setDuracao(Duration duracao) {
         this.duracao = duracao;
     }
 

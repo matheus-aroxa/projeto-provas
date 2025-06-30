@@ -1,12 +1,8 @@
 package View;
 
-import models.Turma;
-import models.provas.CartaoResposta;
-import models.provas.Questao;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,9 +16,10 @@ public class CadastroProvaView {
         LocalDateTime dataAplicacao = LocalDateTime.of(
             lerInt("Ano: "),lerInt("Mês"),lerInt("Dia: "),lerInt("Hora"),lerInt("Minuto"));
 
-//        Period duracao = //period armazena apenas diferença de datas, não seria melhor Duration?
+        Duration duracao = Duration.ofHours(lerLong("Quantas horas a prova irá durar?:"));
 
         System.out.println("A prova será remota[s/n]? ");
+        ler.next();
         boolean isRemoto = ler.nextLine().toLowerCase().indexOf(0) == 's';
 //        Turma[] turmas;
 //        Questao[] questoes;

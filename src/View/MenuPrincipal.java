@@ -1,5 +1,6 @@
 package View;
 
+import services.QuestaoService;
 import services.UsuarioService;
 
 import java.util.InputMismatchException;
@@ -7,7 +8,10 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 
-    public static void start(UsuarioService usuarioService) {
+    private static UsuarioService usuarioService = new UsuarioService();
+    private static QuestaoService questaoService = new QuestaoService();
+
+    public static void start() {
         int opcao;
         do {
             System.out.printf("\n%sBem vindo ao gerenciador de Provas!%s\n", VERDE, NEUTRO);
@@ -36,7 +40,7 @@ public class MenuPrincipal {
                     break;
                 case QUESTAO:
                     System.out.println("Cadastrando Questão...");
-                    CadastroQuestaoView.cadatro();
+                    CadastroQuestaoView.cadatro(questaoService);
                     break;
                 case PROVA:
                     System.out.println("Cadastrando Prova...");
