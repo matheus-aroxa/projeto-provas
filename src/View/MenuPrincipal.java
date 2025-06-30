@@ -36,7 +36,7 @@ public class MenuPrincipal {
                     break;
                 case QUESTAO:
                     System.out.println("Cadastrando Questão...");
-                    CadastroProvaView.cadatro();
+                    CadastroQuestaoView.cadatro();
                     break;
                 case PROVA:
                     System.out.println("Cadastrando Prova...");

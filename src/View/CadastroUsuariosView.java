@@ -12,7 +12,7 @@ public class CadastroUsuariosView {
         String nome, Long cpf, LocalDate dataNascimento, String email, String senha
     ) {}
 
-    private static Dados cadastro() {   //bloco de inicialização para cadastrar os dados sem comum dos usuários
+    private static Dados cadastro() {   //bloco de inicialização para cadastrar os dados em comum dos usuários
         String nome = lerString("Digite seu nome: ");
         Long cpf = lerLong("Digite o seu Cpf: ");
         ler.nextLine();

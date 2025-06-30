@@ -4,6 +4,7 @@ import models.Turma;
 import models.provas.CartaoResposta;
 import models.provas.Questao;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.InputMismatchException;
@@ -20,6 +21,7 @@ public class CadastroProvaView {
             lerInt("Ano: "),lerInt("Mês"),lerInt("Dia: "),lerInt("Hora"),lerInt("Minuto"));
 
 //        Period duracao = //period armazena apenas diferença de datas, não seria melhor Duration?
+
         System.out.println("A prova será remota[s/n]? ");
         boolean isRemoto = ler.nextLine().toLowerCase().indexOf(0) == 's';
 //        Turma[] turmas;
