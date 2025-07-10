@@ -1,4 +1,6 @@
-import View.MenuPrincipal;
+package com.src.main.java;
+
+import view.MenuPrincipal;
 import services.QuestaoService;
 import services.UsuarioService;
 

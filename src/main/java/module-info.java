@@ -7,6 +7,11 @@ module com.example.projetoprovas {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.projetoprovas to javafx.fxml;
-    exports com.example.projetoprovas;
+    //opens com.example.projetoprovas to javafx.fxml;
+    exports DAO;
+    exports Exceptions;
+    exports models;
+    exports repos;
+    exports services;
+    exports view;
 }
