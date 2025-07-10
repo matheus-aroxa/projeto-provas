@@ -8,6 +8,8 @@ module com.example.projetoprovas {
     requires org.kordamp.bootstrapfx.core;
 
     //opens com.example.projetoprovas to javafx.fxml;
+    opens teste to javafx.fxml;
+    exports teste;
     exports DAO;
     exports Exceptions;
     exports models;
