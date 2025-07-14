@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class CadastroController implements Initializable {
     private Parent root;
     @FXML
     private ChoiceBox<String> escolhaUsuario;
-    private String[] tipos = {"Administrador","Aluno","Professor"};
+    private String[] tipos = {"Aluno","Professor"};
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,6 +45,18 @@ public class CadastroController implements Initializable {
         aba = new Scene(root);
         janela.setScene(aba);
         janela.show();
+    }
+
+    @FXML
+    void cadastro(ActionEvent evento){
+        if(escolhaUsuario.getValue() != null){
+            //implementação futura
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setContentText("Por favor selecione uma opção válida!");
+            alerta.setHeaderText("Opção de tipo de usuário vazia");
+            alerta.show();
+        }
     }
 
 }
