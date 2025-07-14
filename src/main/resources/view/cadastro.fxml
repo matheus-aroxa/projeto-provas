@@ -78,7 +78,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <ChoiceBox prefWidth="150.0" />
+                  <ChoiceBox fx:id="escolhaUsuario" prefWidth="150.0" />
                   <Button mnemonicParsing="false" text="Cadastrar" />
                </children>
                <padding>
