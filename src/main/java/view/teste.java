@@ -11,10 +11,10 @@ public class teste extends Application {
     
     @Override
     public void start(Stage janela1) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
         Scene aba1 = new Scene(root);
         janela1.setScene(aba1);
-        janela1.setTitle("Login");
+        janela1.setTitle("Tela do Administrador");
         janela1.show();
     }
 
