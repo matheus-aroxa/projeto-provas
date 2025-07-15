@@ -7,53 +7,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TelaAdmController">
    <children>
       <AnchorPane prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #708090;" AnchorPane.bottomAnchor="358.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <VBox alignment="TOP_CENTER" layoutY="42.0" prefHeight="358.0" prefWidth="44.0" spacing="10.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="556.0" AnchorPane.topAnchor="42.0">
          <children>
             <ImageView fitHeight="46.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Pictures/icons_IPII/user.png" />
+                  <Image url="@imagens/user.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="46.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Pictures/icons_IPII/professor.png" />
+                  <Image url="@imagens/professor.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="46.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Pictures/icons_IPII/aluno.png" />
+                  <Image url="@imagens/aluno.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="46.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Pictures/icons_IPII/turma.png" />
+                  <Image url="@imagens/turma.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="46.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Pictures/icons_IPII/settings.png" />
+                  <Image url="@imagens/settings.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
       <VBox layoutX="44.0" layoutY="42.0" prefHeight="358.0" prefWidth="99.0" spacing="9.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="457.0" AnchorPane.topAnchor="42.0">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Usuário" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Professores" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Alunos" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Turmas" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Configurações" />
+            <Button fx:id="btnUser" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#usuarios" prefHeight="36.0" prefWidth="95.0" text="Usuário" />
+            <Button fx:id="btnProf" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#professores" prefHeight="36.0" prefWidth="95.0" text="Professores" />
+            <Button fx:id="btnAluno" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#alunos" prefHeight="36.0" prefWidth="95.0" text="Alunos" />
+            <Button fx:id="btnTurma" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#turmas" prefHeight="36.0" prefWidth="95.0" text="Turmas" />
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#settings" prefHeight="36.0" prefWidth="95.0" text="Configurações" />
          </children>
       </VBox>
       <AnchorPane fx:id="contentArea" layoutX="144.0" layoutY="41.0" prefHeight="358.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
          <children>
             <AnchorPane layoutY="8.0" prefHeight="24.0" prefWidth="455.0" style="-fx-background-color: #B0C4DE;" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
                <children>
-                  <Label alignment="BASELINE_RIGHT" layoutX="214.0" layoutY="4.0" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="titleLabel" alignment="BASELINE_RIGHT" layoutX="214.0" layoutY="4.0" text="Home" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </children>

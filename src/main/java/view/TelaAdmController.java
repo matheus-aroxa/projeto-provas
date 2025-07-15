@@ -36,32 +36,32 @@ public class TelaAdmController  {
         janela.show();
     }
 
-    public void users (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+    public void usuarios (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneUsuarioAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
 
-    public void students (ActionEvent event) throws IOException {
-      //  Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+    public void alunos (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneAlunoAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
 
-    public void teachers (ActionEvent event) throws IOException {
-       // Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+    public void professores (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneProfeAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
 
-    public void classes (ActionEvent event) throws IOException {
-       // Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+    public void turmas (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneTurmaAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
 
     public void settings (ActionEvent event) throws IOException {
-      //  Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("paneSettingsAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }

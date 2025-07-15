@@ -21,32 +21,32 @@ public class ProvaService {
             throw new RequiredArgumentIsNullException();
         }
 
-        if(repositorio.getProvaById(repositorio.getContador().get() + 1) != -1){
-            //throw new ;
-        }
-
-        if(repositorio.getContador().get() >= 10){
-            throw new ArrayIsFullException();
-        }
-
-        repositorio.adicionar(titulo, descricao, dataAplicacao, duracao, isRemoto, turmas, questoes, respostas);
-    }
-
-    public void deletar(int id) {
-
-      if(id <= 0){
-          throw new InvalidIdException();
-      }
-
-      if(repositorio.getProvaById(id) != -1){
-          //throw new ;
-      }
-    }
-
-    public void getProvaById(int id) {
-        if(id <= 0){
-            throw new InvalidIdException();
-        }
-        repositorio.getProvaById(id);
+//        if(repositorio.getProvaById(repositorio.getContador().get() + 1) != -1){
+//            //throw new ;
+//        }
+//
+//        if(repositorio.getContador().get() >= 10){
+//            throw new ArrayIsFullException();
+//        }
+//
+//        repositorio.adicionar(titulo, descricao, dataAplicacao, duracao, isRemoto, turmas, questoes, respostas);
+//    }
+//
+//    public void deletar(int id) {
+//
+//      if(id <= 0){
+//          throw new InvalidIdException();
+//      }
+//
+//      if(repositorio.getProvaById(id) != -1){
+//          //throw new ;
+//      }
+//    }
+//
+//    public void getProvaById(int id) {
+//        if(id <= 0){
+//            throw new InvalidIdException();
+//        }
+//        repositorio.getProvaById(id);
     }
 }

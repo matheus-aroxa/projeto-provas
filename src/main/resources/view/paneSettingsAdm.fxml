@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.PaneSettingsAdm">
+
+    <AnchorPane fx:id="contentArea" layoutX="144.0" layoutY="41.0" prefHeight="358.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+        <children>
+            <AnchorPane layoutY="8.0" prefHeight="24.0" prefWidth="455.0" style="-fx-background-color: #B0C4DE;" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
+                <children>
+                    <Label fx:id="titleLabel" alignment="BASELINE_RIGHT" layoutX="214.0" layoutY="4.0" text="Settings" textAlignment="CENTER" />
+                </children>
+            </AnchorPane>
+        </children>
+    </AnchorPane>
+
+</AnchorPane>
