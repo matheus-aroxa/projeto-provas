@@ -42,13 +42,21 @@ public class LoginController {
     }
 
     @FXML
-    protected void onLoginButtonClick() {
+    void irTelaAdm(ActionEvent evento) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
+        aba = new Scene(root);
+        janela.setScene(aba);
+        janela.show();
+    }
+
+    @FXML
+    protected void onLoginButtonClick(ActionEvent event) throws IOException {
         String usuario = usernameField.getText();
         String senha = passwordField.getText();
 
         if ("admin".equals(usuario) && "123".equals(senha)) {
-            actionTargetText.setFill(Color.GREEN);
-            actionTargetText.setText("Login bem-sucedido!");
+            irTelaAdm(event);
         } else {
             actionTargetText.setFill(Color.RED);
             actionTargetText.setText("Usuário ou senha inválidos.");
