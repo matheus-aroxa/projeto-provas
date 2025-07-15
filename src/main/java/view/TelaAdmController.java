@@ -37,7 +37,7 @@ public class TelaAdmController  {
     }
 
     public void users (ActionEvent event) throws IOException {
-      //  Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("telaAdm.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }

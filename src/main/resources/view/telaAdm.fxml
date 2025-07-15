@@ -49,7 +49,7 @@
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" text="Configurações" />
          </children>
       </VBox>
-      <AnchorPane layoutX="144.0" layoutY="41.0" prefHeight="358.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+      <AnchorPane fx:id="contentArea" layoutX="144.0" layoutY="41.0" prefHeight="358.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
          <children>
             <AnchorPane layoutY="8.0" prefHeight="24.0" prefWidth="455.0" style="-fx-background-color: #B0C4DE;" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
                <children>
