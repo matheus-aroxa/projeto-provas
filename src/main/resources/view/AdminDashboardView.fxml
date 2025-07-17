@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminDashboardController">
+    <children>
+        <Label layoutX="149.0" layoutY="35.0" text="Selecione a opção que deseja gerenciar">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <VBox alignment="CENTER" layoutX="40.0" layoutY="138.0" spacing="10.0">
+            <children>
+                <Label text="admin" textFill="#555555">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="sairButton" mnemonicParsing="false" onAction="#handleSair" prefHeight="30.0" prefWidth="80.0" text="Sair" />
+            </children>
+        </VBox>
+
+        <VBox layoutX="220.0" layoutY="115.0" spacing="20.0">
+            <children>
+                <HBox spacing="20.0">
+                    <children>
+                        <Button fx:id="alunosButton" mnemonicParsing="false" onAction="#handleGerenciarAlunos" prefHeight="45.0" prefWidth="130.0" text="Alunos" />
+                        <Button fx:id="professoresButton" mnemonicParsing="false" onAction="#handleGerenciarProfessores" prefHeight="45.0" prefWidth="130.0" text="Professores" />
+                    </children>
+                </HBox>
+                <HBox spacing="20.0">
+                    <children>
+                        <Button fx:id="turmasButton" mnemonicParsing="false" onAction="#handleGerenciarTurmas" prefHeight="45.0" prefWidth="130.0" text="Nova Turma" />
+                        <Button fx:id="relatoriosButton" mnemonicParsing="false" onAction="#handleGerenciarRelatorios" prefHeight="45.0" prefWidth="130.0" text="Relatórios" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <Button fx:id="backupButton" layoutX="506.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleBackup" prefHeight="30.0" prefWidth="80.0" text="Backup" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+    </children>
+</AnchorPane>
