@@ -9,10 +9,13 @@ module com.example.projetoprovas {
 
     //opens com.example.projetoprovas to javafx.fxml;
     opens view to javafx.fxml;
+    opens view.cadastro to javafx.fxml;
     exports DAO;
     exports Exceptions;
     exports models;
     exports repos;
     exports services;
     exports view;
+    exports view.cadastro;
+
 }

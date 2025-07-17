@@ -60,18 +60,29 @@ public class GerenciarAlunosController {
     }
 
     @FXML
-    void handleNovoAluno(ActionEvent event) {
-        System.out.println("Ação: Novo Aluno");
+    void handleNovoAluno(ActionEvent event) throws IOException { //cadastroAluno.fxml
+        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroAluno.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setTitle("Cadastro do Aluno");
+        window.show();
     }
 
     @FXML
-    void handleEditarAluno(ActionEvent event) {
-        Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
-        if (selecionado != null) {
-            System.out.println("Ação: Editar Aluno: " + selecionado.getNome());
-        } else {
-            System.out.println("Nenhum aluno selecionado para editar.");
-        }
+    void handleEditarAluno(ActionEvent event) throws IOException {
+//        Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
+//        if (selecionado != null) {
+//            System.out.println("Ação: Editar Aluno: " + selecionado.getNome());
+//        } else {
+//            System.out.println("Nenhum aluno selecionado para editar.");
+//        }
+        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/edicaoAluno.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setTitle("Edição do Aluno");
+        window.show();
     }
 
     @FXML
