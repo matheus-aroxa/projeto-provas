@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GerenciarProfessoresController">
+    <children>
+        <Label layoutX="225.0" layoutY="28.0" text="Gerenciamento dos Professores">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="voltarButton" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="30.0" prefWidth="80.0" text="Voltar" />
+
+        <TableView fx:id="tabelaProfessores" layoutX="125.0" layoutY="85.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
+            <columns>
+                <TableColumn fx:id="colunaId" prefWidth="40.0" text="Id" />
+                <TableColumn fx:id="colunaNome" prefWidth="120.0" text="Nome" />
+                <TableColumn fx:id="colunaCpf" prefWidth="100.0" text="Cpf" />
+                <TableColumn fx:id="colunaEmail" prefWidth="130.0" text="E-mail" />
+                <TableColumn fx:id="colunaNascimento" prefWidth="110.0" text="Data de nascimento" />
+                <TableColumn fx:id="colunaDisciplina" prefWidth="80.0" text="Disciplina" />
+            </columns>
+        </TableView>
+
+        <VBox alignment="CENTER" layoutX="24.0" layoutY="145.0" spacing="10.0">
+            <children>
+                <Label text="admin" textFill="#555555">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="sairButton" mnemonicParsing="false" onAction="#handleSair" prefHeight="30.0" prefWidth="80.0" text="Sair" />
+            </children>
+        </VBox>
+
+        <Button fx:id="novoButton" layoutX="470.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleNovoProfessor" prefHeight="30.0" prefWidth="80.0" text="Novo" />
+        <Button fx:id="editarButton" layoutX="560.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleEditarProfessor" prefHeight="30.0" prefWidth="80.0" text="Editar" />
+        <Button fx:id="excluirButton" layoutX="650.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleExcluirProfessor" prefHeight="30.0" prefWidth="80.0" text="Excluir" />
+    </children>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package view;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class AdminDashboardController {
 
     // ... (seus outros @FXML e métodos permanecem os mesmos)
-
     @FXML
     void handleGerenciarAlunos(ActionEvent event) {
         System.out.println("DEBUG: Tentando abrir a tela de gerenciamento de alunos...");
@@ -41,7 +40,17 @@ public class AdminDashboardController {
 
     @FXML
     void handleGerenciarProfessores(ActionEvent event) {
-        System.out.println("Ação: Gerenciar Professores");
+        try {
+            Parent gerenciarProfessoresPage = FXMLLoader.load(getClass().getResource("GerenciarProfessoresView.fxml"));
+            Scene gerenciarProfessoresScene = new Scene(gerenciarProfessoresPage);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(gerenciarProfessoresScene);
+            System.out.println("Ação: Gerenciar Professores");
+        } catch (Exception e) {
+            System.err.println("\n--- OCORREU UM ERRO AO CARREGAR A TELA ---");
+            e.printStackTrace();
+            System.err.println("--- FIM DO ERRO ---");
+        }
     }
 
     @FXML
@@ -60,7 +69,8 @@ public class AdminDashboardController {
     }
 
     /**
-     * CORREÇÃO: Este método agora usa a forma padrão do JavaFX para trocar de tela.
+     * CORREÇÃO: Este método agora usa a forma padrão do JavaFX para trocar de
+     * tela.
      */
     @FXML
     void handleSair(ActionEvent event) throws IOException {
