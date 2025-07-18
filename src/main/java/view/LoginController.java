@@ -46,6 +46,14 @@ public class LoginController {
         aba = new Scene(root);
         janela.setScene(aba);
     }
+    
+    @FXML
+    void irTelaProfessor(ActionEvent evento) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ProfessorDashboardView.fxml"));
+        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
+        aba = new Scene(root);
+        janela.setScene(aba);
+    }
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
@@ -56,6 +64,8 @@ public class LoginController {
             irTelaAdm(event);
         }else if ("aluno".equals(usuario) && "123".equals(senha)) {
             irTelaAluno(event);
+        }else if ("professor".equals(usuario) && "123".equals(senha)) {
+            irTelaProfessor(event);
         } else {
             actionTargetText.setFill(Color.RED);
             actionTargetText.setText("Usuário ou senha inválidos.");
