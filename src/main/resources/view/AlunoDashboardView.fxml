@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AlunoDashboardController">
     <children>
         <Label layoutX="158.0" layoutY="37.0" text="Selecione a opção que deseja">
             <font>
@@ -22,7 +22,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="sairButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Sair" />
+                <Button fx:id="sairButton" mnemonicParsing="false" onAction="#handleSair" prefHeight="30.0" prefWidth="80.0" text="Sair" />
             </children>
         </VBox>
 
