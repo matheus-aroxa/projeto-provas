@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminDashboardController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminDashboardController">
     <children>
         <Label layoutX="149.0" layoutY="35.0" text="Selecione a opção que deseja gerenciar">
             <font>
@@ -37,7 +36,7 @@
                 </HBox>
                 <HBox spacing="20.0">
                     <children>
-                        <Button fx:id="turmasButton" mnemonicParsing="false" onAction="#handleGerenciarTurmas" prefHeight="45.0" prefWidth="130.0" text="Nova Turma" />
+                        <Button fx:id="turmasButton" mnemonicParsing="false" onAction="#handleNovaTurma" prefHeight="45.0" prefWidth="130.0" text="Nova Turma" />
                         <Button fx:id="relatoriosButton" mnemonicParsing="false" onAction="#handleGerenciarRelatorios" prefHeight="45.0" prefWidth="130.0" text="Relatórios" />
                     </children>
                 </HBox>

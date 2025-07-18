@@ -54,8 +54,18 @@ public class AdminDashboardController {
     }
 
     @FXML
-    void handleGerenciarTurmas(ActionEvent event) {
-        System.out.println("Ação: Gerenciar Turmas");
+    void handleNovaTurma(ActionEvent event) {
+        try {
+            Parent novaTurmaPage = FXMLLoader.load(getClass().getResource("cadastro/cadastroTurma.fxml"));
+            Scene novaTurmaScene = new Scene(novaTurmaPage);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(novaTurmaScene);
+            System.out.println("Ação: Cadastrar Turma");
+        } catch (Exception e) {
+            System.err.println("\n--- OCORREU UM ERRO AO CARREGAR A TELA ---");
+            e.printStackTrace();
+            System.err.println("--- FIM DO ERRO ---");
+        }
     }
 
     @FXML
