@@ -11,7 +11,7 @@
         <children>
             <AnchorPane layoutY="8.0" prefHeight="24.0" prefWidth="455.0" style="-fx-background-color: #B0C4DE;" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
                 <children>
-                    <Label fx:id="titleLabel" alignment="BASELINE_RIGHT" layoutX="206.0" layoutY="4.0" text="Settings" textAlignment="CENTER" />
+                    <Label fx:id="titleLabel" alignment="BASELINE_RIGHT" layoutX="190.0" layoutY="4.0" text="Configurações" textAlignment="CENTER" />
                 </children>
             </AnchorPane>
          <AnchorPane layoutY="75.0" prefHeight="24.0" prefWidth="455.0" style="-fx-background-color: #C0C0C0;">

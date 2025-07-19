@@ -4,37 +4,60 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-public class AdminDashboardController extends FuncoesComuns {
+public class AdminDashboardController extends FuncoesComuns{
 
     @FXML
-    void handleGerenciarAlunos(ActionEvent event) throws IOException {
-        System.out.println("DEBUG: Tentando abrir a tela de gerenciamento de alunos...");
-        trocarTela(event, "GerenciarAlunosView.fxml", "Gerenciamento de Alunos");
+    private Stage janela;
+    @FXML
+    private Scene aba;
+    @FXML
+    private Parent root;
+
+    @FXML
+    private AnchorPane contentArea;
+
+    @FXML
+    private Label tabTitle;
+
+    @FXML
+    void irTelaAdmController (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AdminDashboardView.fxml"));
+        janela = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        aba = new Scene(root);
+        janela.setScene(aba);
+        janela.show();
     }
 
-    @FXML
-    void handleGerenciarProfessores(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarProfessoresView.fxml", "Gerenciamento de Professores");
+    public void usuarios (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneUsuarios.fxml"));
+        contentArea.getChildren().setAll(root);
     }
 
-    @FXML
-    void handleNovaTurma(ActionEvent event) throws IOException {
-        trocarTela(event, "cadastro/cadastroTurma.fxml", "Cadastro de Turma");
+    public void alunos (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneAlunoAdm.fxml"));
+        contentArea.getChildren().setAll(root);
     }
 
-    @FXML
-    void handleGerenciarRelatorios(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarRelatoriosView.fxml", "Gerenciamento de Relatórios");
+    public void professores (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneProfeAdm.fxml"));
+        contentArea.getChildren().setAll(root);
     }
 
-    @FXML
-    void handleBackup(ActionEvent event) {
-        System.out.println("Ação: Realizar Backup");
+    public void turmas (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneTurmaAdm.fxml"));
+        contentArea.getChildren().setAll(root);
     }
 
-    @FXML
-    void handleSair(ActionEvent event) throws IOException {
-        trocarTela(event, "login.fxml", "Login");
+    public void settings (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("paneSettingsAdm.fxml"));
+        contentArea.getChildren().setAll(root);
     }
 }
