@@ -5,8 +5,8 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class GerenciarQuestoesController extends FuncoesComuns{
-    
+public class GerenciarQuestoesController extends FuncoesComuns {
+
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
         trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciar Provas");
