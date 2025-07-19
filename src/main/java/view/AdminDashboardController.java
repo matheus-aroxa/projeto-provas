@@ -21,15 +21,15 @@ public class AdminDashboardController extends FuncoesComuns {
     }
 
     public void usuarios(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "paneUsuarios.fxml");
+        trocarAba(contentArea, "GerenciarUsuariosView.fxml");
     }
 
     public void alunos(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "paneAlunoAdm.fxml");
+        trocarAba(contentArea, "GerenciarAlunosView.fxml");
     }
 
     public void professores(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "paneProfeAdm.fxml");
+        trocarAba(contentArea, "GerenciarProfessoresView.fxml");
     }
 
     public void turmas(ActionEvent event) throws IOException {
