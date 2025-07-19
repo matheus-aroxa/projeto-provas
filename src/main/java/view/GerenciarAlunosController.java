@@ -15,7 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.usuarios.Aluno;
 
-public class GerenciarAlunosController extends FuncoesComuns{
+public class GerenciarAlunosController extends FuncoesComuns {
 
     @FXML
     private TableView<Aluno> tabelaAlunos;

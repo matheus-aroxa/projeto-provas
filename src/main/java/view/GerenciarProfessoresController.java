@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import models.usuarios.professor.Professor;
 
 public class GerenciarProfessoresController extends FuncoesComuns {
+
     @FXML
     private TableView<Professor> tabelaProfessores;
     @FXML

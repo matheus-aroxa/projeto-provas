@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class ProfessorDashboardController extends FuncoesComuns{
+public class ProfessorDashboardController extends FuncoesComuns {
 
     @FXML
     private AnchorPane contentArea;
@@ -18,30 +18,30 @@ public class ProfessorDashboardController extends FuncoesComuns{
     private Label tabTitle;
 
     @FXML
-    void irTelaAdmController (ActionEvent event) throws IOException {
+    void irTelaAdmController(ActionEvent event) throws IOException {
         trocarTela(event, "ProfessorDashboardView.fxml", "Menu do professor");
     }
 
-    public void usuarios (ActionEvent event) throws IOException {
+    public void usuarios(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneUsuarios.fxml");
     }
 
-    public void provas (ActionEvent event) throws IOException {
+    public void provas(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(""));
         contentArea.getChildren().setAll(root);
     }
 
-    public void notas (ActionEvent event) throws IOException {
+    public void notas(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(""));
         contentArea.getChildren().setAll(root);
     }
 
-    public void relatorios (ActionEvent event) throws IOException {
+    public void relatorios(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(""));
         contentArea.getChildren().setAll(root);
     }
 
-    public void notificacoes (ActionEvent event) throws IOException {
+    public void notificacoes(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(""));
         contentArea.getChildren().setAll(root);
     }

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class AdminDashboardController extends FuncoesComuns{
+public class AdminDashboardController extends FuncoesComuns {
 
     @FXML
     private AnchorPane contentArea;
@@ -16,27 +16,28 @@ public class AdminDashboardController extends FuncoesComuns{
     private Label tabTitle;
 
     @FXML
-    void irTelaAdmController (ActionEvent event) throws IOException {
+    void irTelaAdmController(ActionEvent event) throws IOException {
         trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
     }
 
-    public void usuarios (ActionEvent event) throws IOException {
+    public void usuarios(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneUsuarios.fxml");
     }
 
-    public void alunos (ActionEvent event) throws IOException {
+    public void alunos(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneAlunoAdm.fxml");
     }
 
-    public void professores (ActionEvent event) throws IOException {
+    public void professores(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneProfeAdm.fxml");
     }
 
-    public void turmas (ActionEvent event) throws IOException {
+    public void turmas(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneTurmaAdm.fxml");
     }
 
-    public void settings (ActionEvent event) throws IOException {
+    public void settings(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneSettingsAdm.fxml");
     }
+
 }

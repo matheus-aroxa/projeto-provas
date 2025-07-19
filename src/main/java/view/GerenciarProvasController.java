@@ -5,7 +5,8 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class GerenciarProvasController extends FuncoesComuns{
+public class GerenciarProvasController extends FuncoesComuns {
+
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
         trocarTela(event, "ProfessorDashboardView.fxml", "Menu do professor");
