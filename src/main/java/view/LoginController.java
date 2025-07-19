@@ -4,55 +4,34 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController extends FuncoesComuns{
 
     @FXML
     private TextField usernameField;
-
     @FXML
     private PasswordField passwordField;
-
     @FXML
     private Text actionTargetText;
 
-    @FXML
-    Stage janela;
-    @FXML
-    Scene aba;
-
-
+    
     @FXML
     void irTelaAdm(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AdminDashboardView.fxml"));
-        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "AdminDashboardView.fxml", "Menu do Administrador");
     }
 
     @FXML
     void irTelaAluno(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AlunoDashboardView.fxml"));
-        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "AlunoDashboardView.fxml", "Menu do Aluno");
     }
     
     @FXML
     void irTelaProfessor(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ProfessorDashboardView.fxml"));
-        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "ProfessorDashboardView.fxml", "Menu do Professor");
     }
 
     @FXML

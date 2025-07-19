@@ -4,31 +4,18 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import view.FuncoesComuns;
 
-public class CadastroProvaController {
+public class CadastroProvaController extends FuncoesComuns {
 
     @FXML
     void cancelar(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarProvasView.fxml"));
-        Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
-        Scene aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "/view/GerenciarProvasView.fxml", "Gerenciamento de Provas");
     }
 
     @FXML
     void proximo(ActionEvent evento) throws IOException {
-        /*
-        Aqui chama a lógica de negócio mas também vai voltar depois do cadastro
-         */
-        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarQuestoesView.fxml"));
-        Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
-        Scene aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "/view/GerenciarQuestoesView.fxml", "Gerenciamento de Questões");
     }
 
 }

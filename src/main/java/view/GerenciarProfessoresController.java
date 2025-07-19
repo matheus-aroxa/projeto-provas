@@ -10,17 +10,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import models.usuarios.professor.Professor;
 
-public class GerenciarProfessoresController {
+public class GerenciarProfessoresController extends FuncoesComuns {
     @FXML
     private TableView<Professor> tabelaProfessores;
     @FXML
@@ -59,13 +54,8 @@ public class GerenciarProfessoresController {
     }
 
     @FXML
-    void handleNovoProfessor(ActionEvent event) throws IOException { //cadastroProfessor.fxml
-        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroProfessor.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setTitle("Cadastro do Professor");
-        window.show();
+    void handleNovoProfessor(ActionEvent event) throws IOException {
+        trocarTela(event, "cadastro/cadastroProfessor.fxml", "Cadastro do Professor");
     }
 
     @FXML
@@ -76,12 +66,7 @@ public class GerenciarProfessoresController {
 //        } else {
 //            System.out.println("Nenhum Professor selecionado para editar.");
 //        }
-        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroProfessor.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setTitle("Edição do Professor");
-        window.show();
+        trocarTela(event, "cadastro/cadastroProfessor.fxml", "Edição do Professor");
     }
 
     @FXML
@@ -98,19 +83,11 @@ public class GerenciarProfessoresController {
 
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
-        Parent dashboard = FXMLLoader.load(getClass().getResource("AdminDashboardView.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
     }
 
     @FXML
     void handleSair(ActionEvent event) throws IOException {
-        Parent loginPage = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(loginPage);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        trocarTela(event, "login.fxml", "Login");
     }
 }

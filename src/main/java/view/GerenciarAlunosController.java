@@ -1,26 +1,21 @@
 package view;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+
 import DAO.AlunoDAO;
 import DAO.AlunoDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import models.usuarios.Aluno;
 
-import java.io.IOException;
-import java.time.LocalDate; // Usei LocalDate para corresponder ao seu modelo
-import java.util.List;
-
-public class GerenciarAlunosController {
+public class GerenciarAlunosController extends FuncoesComuns{
 
     @FXML
     private TableView<Aluno> tabelaAlunos;
@@ -61,12 +56,7 @@ public class GerenciarAlunosController {
 
     @FXML
     void handleNovoAluno(ActionEvent event) throws IOException { //cadastroAluno.fxml
-        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroAluno.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setTitle("Cadastro do Aluno");
-        window.show();
+        trocarTela(event, "cadastro/cadastroAluno.fxml", "Cadastro do Aluno");
     }
 
     @FXML
@@ -77,12 +67,7 @@ public class GerenciarAlunosController {
 //        } else {
 //            System.out.println("Nenhum aluno selecionado para editar.");
 //        }
-        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/edicaoAluno.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setTitle("Edição do Aluno");
-        window.show();
+        trocarTela(event, "cadastro/edicaoAluno.fxml", "Edição do Aluno");
     }
 
     @FXML
@@ -99,19 +84,11 @@ public class GerenciarAlunosController {
 
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
-        Parent dashboard = FXMLLoader.load(getClass().getResource("AdminDashboardView.fxml"));
-        Scene scene = new Scene(dashboard);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
     }
 
     @FXML
     void handleSair(ActionEvent event) throws IOException {
-        Parent loginPage = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(loginPage);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        trocarTela(event, "login.fxml", "Login");
     }
 }

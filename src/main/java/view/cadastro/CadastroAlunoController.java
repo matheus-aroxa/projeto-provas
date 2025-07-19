@@ -1,32 +1,20 @@
 package view.cadastro;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import java.io.IOException;
 
-public class CadastroAlunoController {
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import view.FuncoesComuns;
+
+public class CadastroAlunoController extends FuncoesComuns {
 
     @FXML
     void cancelar(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarAlunosView.fxml"));
-        Stage janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        Scene aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "/view/GerenciarAlunosView.fxml","Gerenciamento de Alunos");
     }
 
     @FXML
     void cadastrar(ActionEvent evento) throws IOException {
-        /*
-        Aqui chama a lógica de negócio mas também vai voltar depois do cadastro
-        */
-        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarAlunosView.fxml"));
-        Stage janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        Scene aba = new Scene(root);
-        janela.setScene(aba);
+        trocarTela(evento, "/view/GerenciarAlunosView.fxml","Gerenciamento de Alunos");
     }
 }

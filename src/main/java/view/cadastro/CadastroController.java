@@ -1,28 +1,18 @@
 package view.cadastro;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CadastroController implements Initializable {
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import view.FuncoesComuns;
 
-    @FXML
-    private Stage janela;
-    @FXML
-    private Scene aba;
-    @FXML
-    private Parent root;
+public class CadastroController extends FuncoesComuns implements Initializable {
+
     @FXML
     private ChoiceBox<String> escolhaUsuario;
     private String[] tipos = {"Aluno","Professor"};
@@ -38,11 +28,7 @@ public class CadastroController implements Initializable {
 
     @FXML
     void irLogin(ActionEvent evento) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        janela = (Stage) ((Node)evento.getSource()).getScene().getWindow();
-        aba = new Scene(root);
-        janela.setScene(aba);
-        janela.show();
+        trocarTela(evento,"login.fxml", "Login");
     }
 
     @FXML
