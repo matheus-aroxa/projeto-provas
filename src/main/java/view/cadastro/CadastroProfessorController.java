@@ -10,12 +10,12 @@ public class CadastroProfessorController extends FuncoesComuns {
 
     @FXML
     void cancelar(ActionEvent evento) throws IOException {
-        trocarTela(evento, "/view/GerenciarProfessoresView.fxml", "Gerenciamento de Professores");
+        trocarTela(evento, "/view/AdminDashboardView.fxml", "Gerenciamento de Professores");
     }
 
     @FXML
     void cadastrar(ActionEvent evento) throws IOException {
-        trocarTela(evento, "/view/GerenciarProfessoresView.fxml", "Gerenciamento de Professores");
+        trocarTela(evento, "/view/AdminDashboardView.fxml", "Gerenciamento de Professores");
     }
 
 }

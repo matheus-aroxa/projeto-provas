@@ -9,7 +9,7 @@ public class GerenciarQuestoesController extends FuncoesComuns {
 
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarProvasView.fxml", "Gerenciar Provas");
+        trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciar Provas");
     }
 
     @FXML

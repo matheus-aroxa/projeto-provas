@@ -81,14 +81,4 @@ public class GerenciarProfessoresController extends FuncoesComuns {
             System.out.println("Nenhum Professor selecionado para excluir.");
         }
     }
-
-    @FXML
-    void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
-    }
-
-    @FXML
-    void handleSair(ActionEvent event) throws IOException {
-        trocarTela(event, "login.fxml", "Login");
-    }
 }

@@ -23,26 +23,22 @@ public class AlunoDashboardController extends FuncoesComuns {
     }
 
     public void usuarios(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "paneUsuarios.fxml");
+        trocarAba(contentArea, "GerenciarUsuariosView.fxml");
     }
 
     public void provas(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        contentArea.getChildren().setAll(root);
+        trocarAba(contentArea, "");
     }
 
     public void notas(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        contentArea.getChildren().setAll(root);
+        trocarAba(contentArea, "");
     }
 
     public void feedback(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        contentArea.getChildren().setAll(root);
+        trocarAba(contentArea, "");
     }
 
     public void notificacoes(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        contentArea.getChildren().setAll(root);
+        trocarAba(contentArea, "");
     }
 }

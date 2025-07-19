@@ -39,5 +39,4 @@ public class AdminDashboardController extends FuncoesComuns {
     public void settings(ActionEvent event) throws IOException {
         trocarAba(contentArea, "paneSettingsAdm.fxml");
     }
-
 }
