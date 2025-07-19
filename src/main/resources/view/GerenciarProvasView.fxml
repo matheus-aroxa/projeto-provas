@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #f0f2f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GerenciarProvasController">
     <children>
         <Label layoutX="270.0" layoutY="35.0" text="Gerenciamento dos Provas">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="voltarButton" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Voltar" />
+        <Button fx:id="voltarButton" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="30.0" prefWidth="80.0" text="Voltar" />
 
         <TableView fx:id="tabelaProvas" layoutX="125.0" layoutY="85.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
             <columns>
@@ -33,7 +33,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="sairButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Sair" />
+                <Button fx:id="sairButton" mnemonicParsing="false" onAction="#handleSair" prefHeight="30.0" prefWidth="80.0" text="Sair" />
             </children>
         </VBox>
 

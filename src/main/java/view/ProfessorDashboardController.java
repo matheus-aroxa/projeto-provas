@@ -21,4 +21,14 @@ public class ProfessorDashboardController {
         window.setScene(loginScene);
         window.show();
     }
+
+    @FXML
+    void handelGerenciarProvas(ActionEvent event) throws IOException{
+        System.out.println("Ação: Gerenciar Provas");
+        Parent GerenciarProvasPage = FXMLLoader.load(getClass().getResource("GerenciarProvasView.fxml"));
+        Scene GerenciarProvasScene = new Scene(GerenciarProvasPage);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(GerenciarProvasScene);
+        window.show();
+    }
 }

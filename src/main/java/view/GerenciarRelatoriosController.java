@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class GerenciamentoDeRelatoriosController {
+public class GerenciarRelatoriosController {
 
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
