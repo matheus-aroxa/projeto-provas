@@ -37,4 +37,13 @@ public class GerenciarProvasController {
         window.setScene(scene);
         window.show();
     }
+
+    @FXML
+    void handleEditarProva(ActionEvent event) throws IOException {
+        Parent loginPage = FXMLLoader.load(getClass().getResource("cadastro/cadastroProva.fxml"));
+        Scene scene = new Scene(loginPage);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 }

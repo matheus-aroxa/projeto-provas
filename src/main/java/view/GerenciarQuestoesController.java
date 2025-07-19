@@ -19,4 +19,31 @@ public class GerenciarQuestoesController {
         window.setScene(scene);
         window.show();
     }
+
+    @FXML
+    void handleAdicionarQuestao(ActionEvent event) throws IOException {
+        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroQuestao.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    void handleEditarQuestao(ActionEvent event) throws IOException {
+        Parent dashboard = FXMLLoader.load(getClass().getResource("cadastro/cadastroQuestao.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    void handleCadastrarQuestoes(ActionEvent event) throws IOException {
+        Parent dashboard = FXMLLoader.load(getClass().getResource("GerenciarProvasView.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 }
