@@ -30,7 +30,7 @@
             <children>
                 <HBox spacing="20.0">
                     <children>
-                        <Button fx:id="provaButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" text="Realizar Prova" />
+                        <Button fx:id="provaButton" mnemonicParsing="false" onAction="#handleRealizarProva" prefHeight="45.0" prefWidth="130.0" text="Realizar Prova" />
                         <Button fx:id="notasButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" text="Ver Notas" />
                     </children>
                 </HBox>

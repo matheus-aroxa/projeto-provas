@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GerenciarQuestoesController {
+    
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
         Parent dashboard = FXMLLoader.load(getClass().getResource("GerenciarProvasView.fxml"));

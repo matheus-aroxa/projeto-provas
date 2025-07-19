@@ -10,25 +10,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AlunoDashboardController {
-    
+public class EscolhaProvaController {
+
+    @FXML
+    void handleVoltar(ActionEvent event) throws IOException {
+        Parent dashboard = FXMLLoader.load(getClass().getResource("AlunoDashboardView.fxml"));
+        Scene scene = new Scene(dashboard);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
     @FXML
     void handleSair(ActionEvent event) throws IOException {
-        System.out.println("Ação: Sair (logout)");
         Parent loginPage = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene loginScene = new Scene(loginPage);
+        Scene scene = new Scene(loginPage);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
+        window.setScene(scene);
         window.show();
     }
 
     @FXML
     void handleRealizarProva(ActionEvent event) throws IOException {
-        System.out.println("Ação: Realizar Prova");
-        Parent loginPage = FXMLLoader.load(getClass().getResource("EscolhaProvaView.fxml"));
-        Scene loginScene = new Scene(loginPage);
+        Parent dashboard = FXMLLoader.load(getClass().getResource("AvaliacaoProvaView.fxml"));
+        Scene scene = new Scene(dashboard);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
+        window.setScene(scene);
         window.show();
     }
+
 }
