@@ -40,7 +40,7 @@
         <Button fx:id="novoButton" layoutX="125.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleNovaProva" prefHeight="30.0" prefWidth="80.0" text="Novo" />
         <Button fx:id="editarButton" layoutX="413.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleEditarProva" prefHeight="30.0" prefWidth="80.0" text="Editar" />
         <Button fx:id="excluirButton" layoutX="501.0" layoutY="395.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Excluir" />
-      <Button fx:id="novoButton1" layoutX="224.0" layoutY="395.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Enviar" />
+      <Button fx:id="enviarButton" layoutX="224.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleEnviarProva" prefHeight="30.0" prefWidth="80.0" text="Enviar" />
       <Button fx:id="novoButton11" layoutX="319.0" layoutY="395.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Detalhes" />
     </children>
 </AnchorPane>
