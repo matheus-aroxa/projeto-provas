@@ -37,12 +37,12 @@ public class ProfessorDashboardController extends FuncoesComuns{
     }
 
     public void usuarios (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("paneUsuarios.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GerenciarUsuariosView.fxml"));
         contentArea.getChildren().setAll(root);
     }
 
     public void provas (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
+        Parent root = FXMLLoader.load(getClass().getResource("GerenciarProvasView.fxml"));
         contentArea.getChildren().setAll(root);
     }
 

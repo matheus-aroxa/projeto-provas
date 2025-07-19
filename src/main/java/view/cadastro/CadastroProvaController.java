@@ -10,7 +10,7 @@ public class CadastroProvaController extends FuncoesComuns {
 
     @FXML
     void cancelar(ActionEvent evento) throws IOException {
-        trocarTela(evento, "/view/GerenciarProvasView.fxml", "Gerenciamento de Provas");
+        trocarTela(evento, "/view/ProfessorDashboardView.fxml", "Gerenciamento de Provas");
     }
 
     @FXML

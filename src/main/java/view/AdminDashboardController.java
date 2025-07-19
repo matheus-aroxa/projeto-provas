@@ -37,17 +37,17 @@ public class AdminDashboardController extends FuncoesComuns{
     }
 
     public void usuarios (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("paneUsuarios.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GerenciarUsuariosView.fxml"));
         contentArea.getChildren().setAll(root);
     }
 
     public void alunos (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("paneAlunoAdm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GerenciarAlunosView.fxml"));
         contentArea.getChildren().setAll(root);
     }
 
     public void professores (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("paneProfeAdm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GerenciarProfessoresView.fxml"));
         contentArea.getChildren().setAll(root);
     }
 

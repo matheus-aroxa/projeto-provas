@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import models.usuarios.professor.Professor;
 
 public class GerenciarProfessoresController extends FuncoesComuns {
+
     @FXML
     private TableView<Professor> tabelaProfessores;
     @FXML
@@ -79,15 +80,5 @@ public class GerenciarProfessoresController extends FuncoesComuns {
         } else {
             System.out.println("Nenhum Professor selecionado para excluir.");
         }
-    }
-
-    @FXML
-    void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
-    }
-
-    @FXML
-    void handleSair(ActionEvent event) throws IOException {
-        trocarTela(event, "login.fxml", "Login");
     }
 }

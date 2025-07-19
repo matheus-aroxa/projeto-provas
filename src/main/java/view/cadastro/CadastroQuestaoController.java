@@ -10,7 +10,7 @@ public class CadastroQuestaoController extends FuncoesComuns {
     
     @FXML
     void voltar(ActionEvent evento) throws IOException {
-        trocarTela(evento, "/view/GerenciarQuestoesView.fxml", "Gerenciamento de Questões");
+        trocarTela(evento, "/view/ProfessorDashboardView.fxml", "Gerenciamento de Questões");
     }
 
     @FXML

@@ -29,8 +29,8 @@ public class GerenciarAlunosController extends FuncoesComuns{
     private TableColumn<Aluno, String> colunaEmail;
     @FXML
     private TableColumn<Aluno, LocalDate> colunaNascimento;
-    @FXML
-    private TableColumn<Aluno, Integer> colunaTurma;
+//    @FXML
+//    private TableColumn<Aluno, Integer> colunaTurma;
 
     private AlunoDAO alunoDAO = new AlunoDAOImpl();
 
@@ -42,7 +42,7 @@ public class GerenciarAlunosController extends FuncoesComuns{
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaNascimento.setCellValueFactory(new PropertyValueFactory<>("dataDeNascimento"));
-        colunaTurma.setCellValueFactory(new PropertyValueFactory<>("idTurma")); // Corrigido para "idTurma"
+        // colunaTurma.setCellValueFactory(new PropertyValueFactory<>("idTurma")); // Corrigido para "idTurma"
 
         carregarAlunos();
     }
@@ -80,15 +80,5 @@ public class GerenciarAlunosController extends FuncoesComuns{
         } else {
             System.out.println("Nenhum aluno selecionado para excluir.");
         }
-    }
-
-    @FXML
-    void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "AdminDashboardView.fxml", "Menu do Administrador");
-    }
-
-    @FXML
-    void handleSair(ActionEvent event) throws IOException {
-        trocarTela(event, "login.fxml", "Login");
     }
 }
