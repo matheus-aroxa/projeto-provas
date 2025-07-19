@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CadastroProfessorController {
+public class CadastroProvaController {
 
     @FXML
     void cancelar(ActionEvent evento) throws IOException {
@@ -21,11 +21,11 @@ public class CadastroProfessorController {
     }
 
     @FXML
-    void cadastrar(ActionEvent evento) throws IOException {
+    void proximo(ActionEvent evento) throws IOException {
         /*
         Aqui chama a lógica de negócio mas também vai voltar depois do cadastro
          */
-        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarProvasView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/GerenciarQuestoesView.fxml"));
         Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
         Scene aba = new Scene(root);
         janela.setScene(aba);
