@@ -10,27 +10,34 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import models.usuarios.Usuario;
 import models.usuarios.professor.Professor;
+import view.cadastro.CadastroProfessorController;
 
 public class GerenciarProfessoresController extends FuncoesComuns {
 
     @FXML
     private TableView<Professor> tabelaProfessores;
     @FXML
-    private TableColumn<Professor, Integer> colunaId;
+    private TableColumn<Usuario, Integer> colunaId;
     @FXML
-    private TableColumn<Professor, String> colunaNome;
+    private TableColumn<Usuario, String> colunaNome;
     @FXML
-    private TableColumn<Professor, Long> colunaCpf;
+    private TableColumn<Usuario, Long> colunaCpf;
     @FXML
-    private TableColumn<Professor, String> colunaEmail;
+    private TableColumn<Usuario, String> colunaEmail;
     @FXML
-    private TableColumn<Professor, LocalDate> colunaNascimento;
+    private TableColumn<Usuario, LocalDate> colunaNascimento;
     @FXML
-    private TableColumn<Professor, Integer> colunaDisciplina;
+    private TableColumn<Professor, String> colunaDisciplina;
 
     private ProfessorDAO professorDAO = new ProfessorDAOImpl();
 
@@ -42,16 +49,16 @@ public class GerenciarProfessoresController extends FuncoesComuns {
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaNascimento.setCellValueFactory(new PropertyValueFactory<>("dataDeNascimento"));
-        colunaDisciplina.setCellValueFactory(new PropertyValueFactory<>("Disciplina"));
+        colunaDisciplina.setCellValueFactory(new PropertyValueFactory<>("disciplina"));
 
-        carregarProfessors();
+        carregarProfessores();
     }
 
-    private void carregarProfessors() {
+    private void carregarProfessores() {
         tabelaProfessores.getItems().clear();
-        List<Professor> Professores = professorDAO.findAll();
-        ObservableList<Professor> observableProfessors = FXCollections.observableArrayList(Professores);
-        tabelaProfessores.setItems(observableProfessors);
+        List<Professor> professores = professorDAO.findAll();
+        ObservableList<Professor> observableProfessores = FXCollections.observableArrayList(professores);
+        tabelaProfessores.setItems(observableProfessores);
     }
 
     @FXML
@@ -61,13 +68,22 @@ public class GerenciarProfessoresController extends FuncoesComuns {
 
     @FXML
     void handleEditarProfessor(ActionEvent event) throws IOException {
-//        Professor selecionado = tabelaProfessores.getSelectionModel().getSelectedItem();
-//        if (selecionado != null) {
-//            System.out.println("Ação: Editar Professor: " + selecionado.getNome());
-//        } else {
-//            System.out.println("Nenhum Professor selecionado para editar.");
-//        }
-        trocarTela(event, "cadastro/cadastroProfessor.fxml", "Edição do Professor");
+       Professor selecionado = tabelaProfessores.getSelectionModel().getSelectedItem();
+       
+       if (selecionado != null) {
+            System.out.println("Ação: Editar Professor: " + selecionado.getNome());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro/cadastroProfessor.fxml"));
+            Parent page = loader.load();
+            CadastroProfessorController controlador = loader.getController();
+            Stage janela = ((Stage) ((Node)event.getSource()).getScene().getWindow());
+
+            controlador.setProfessor(selecionado);
+            janela.setScene(new Scene(page));
+            janela.setTitle("Edição do professor");
+       } else {
+           System.out.println("Nenhum Professor selecionado para editar.");
+       }
     }
 
     @FXML
@@ -76,7 +92,7 @@ public class GerenciarProfessoresController extends FuncoesComuns {
         if (selecionado != null) {
             System.out.println("Ação: Excluir Professor: " + selecionado.getNome());
             professorDAO.removerProfessor(selecionado.getId()); // CORREÇÃO: Usa o método da interface
-            carregarProfessors();
+            carregarProfessores();
         } else {
             System.out.println("Nenhum Professor selecionado para excluir.");
         }

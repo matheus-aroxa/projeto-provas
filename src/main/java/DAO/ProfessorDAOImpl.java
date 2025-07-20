@@ -1,6 +1,5 @@
 package DAO;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +28,7 @@ public class ProfessorDAOImpl implements ProfessorDAO {
     }
 
     @Override
-    public Professor criarProfessor(int id, String nome, long cpf, LocalDate dataDeNascimento, String email,
-            String senha, int idTurma) {
-        //repositorio.addProfessor(id, nome, cpf, dataDeNascimento, email, senha, idTurma); //falta criar métodos de professor no repositório 
+    public Professor criarProfessor(Professor professor) {
         return null;
     }
 

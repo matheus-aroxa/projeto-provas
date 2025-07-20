@@ -17,7 +17,7 @@
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
             </Label>
-            <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="24.0" prefWidth="498.0">
+            <TextField fx:id="campoNome" nodeOrientation="LEFT_TO_RIGHT" prefHeight="24.0" prefWidth="498.0">
                 <HBox.margin>
                     <Insets top="5.0" />
                 </HBox.margin>
@@ -30,7 +30,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </HBox.margin>
                 </Label>
-                <TextField>
+                <TextField fx:id="campoCpf">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin>
@@ -40,7 +40,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </HBox.margin>
                 </Label>
-                <DatePicker prefHeight="24.0" prefWidth="188.0">
+                <DatePicker fx:id="campoData" prefHeight="24.0" prefWidth="188.0">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin>
@@ -53,7 +53,7 @@
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
             </Label>
-            <TextField prefHeight="24.0" prefWidth="219.0">
+            <TextField fx:id="campoEmail" prefHeight="24.0" prefWidth="219.0">
                 <HBox.margin>
                     <Insets top="5.0" />
                 </HBox.margin>
@@ -63,7 +63,7 @@
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
             </Label>
-            <TextField prefHeight="24.0" prefWidth="216.0">
+            <TextField fx:id="campoSenha" prefHeight="24.0" prefWidth="216.0">
                 <HBox.margin>
                     <Insets top="5.0" />
                 </HBox.margin>
@@ -76,7 +76,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </HBox.margin>
                 </Label>
-            <TextField>
+            <TextField fx:id="campoDisciplina">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>

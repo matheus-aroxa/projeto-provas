@@ -42,8 +42,10 @@ public class RepositorioUsuarios {
         usuarios[contador.get()] = new Administrador(contador.incrementAndGet(), nome, cpf, dataDeNascimento, email, senha);
     }
 
-    public void criarProfessor(String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
-        usuarios[contador.get()] = new Professor(contador.incrementAndGet(), nome, cpf, dataDeNascimento, email, senha, idTurma);
+    //String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma
+    public void criarProfessor(Professor professor) {
+        usuarios[contador.get()] = new Professor(contador.incrementAndGet(), professor.getNome(), professor.getCpf(),
+                professor.getDataDeNascimento(), professor.getEmail(), professor.getSenha(), professor.getIdTurma(),professor.getDisciplina());
     }
 
     public void editarAluno(Aluno aluno) {
@@ -60,6 +62,25 @@ public class RepositorioUsuarios {
                 alunoExistente.setEmail(aluno.getEmail());
                 alunoExistente.setSenha(aluno.getSenha());
                 alunoExistente.setIdTurma(aluno.getIdTurma());
+            }
+        }
+    }
+
+    public void editarProfessor(Professor professor) {
+        int posicao = procurarUsuario(professor.getId());
+
+        if (posicao != -1) {
+            Usuario usuarioExistente = usuarios[posicao];
+
+            if (usuarioExistente instanceof Professor) {
+                Professor professorExistente = (Professor) usuarioExistente;
+                professorExistente.setNome(professor.getNome());
+                professorExistente.setCpf(professor.getCpf());
+                professorExistente.setDataDeNascimento(professor.getDataDeNascimento());
+                professorExistente.setEmail(professor.getEmail());
+                professorExistente.setSenha(professor.getSenha());
+                professorExistente.setIdTurma(professor.getIdTurma());
+                professorExistente.setDisciplina(professor.getDisciplina());
             }
         }
     }

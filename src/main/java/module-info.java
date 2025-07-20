@@ -11,6 +11,7 @@ module com.example.projetoprovas {
     opens view.cadastro to javafx.fxml; 
     opens models to javafx.base;
     opens models.usuarios to javafx.base; //pra permitir o javafx ter acesso das classes models"
+    opens models.usuarios.professor to javafx.base; 
     exports DAO;
     exports Exceptions;
     exports models;

@@ -9,6 +9,7 @@ import Exceptions.RequiredArgumentIsNullException;
 import Exceptions.UserNotExistsException;
 import models.usuarios.Aluno;
 import models.usuarios.Usuario;
+import models.usuarios.professor.Professor;
 import repos.RepositorioUsuarios;
 
 public class UsuarioService {
@@ -41,8 +42,14 @@ public class UsuarioService {
         System.out.println("--------------------");
     }
 
-    public void criarProfessor(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-        if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
+    public void criarProfessor(Professor professor) {
+        if (professor.getNome() == null || professor.getNome().isEmpty()
+                || professor.getCpf() == null
+                || professor.getDataDeNascimento() == null
+                || professor.getEmail() == null || professor.getEmail().isEmpty()
+                || professor.getSenha() == null || professor.getSenha().isEmpty()
+                || professor.getIdTurma() == null
+                || professor.getDisciplina() == null || professor.getDisciplina().isEmpty()) {
             throw new RequiredArgumentIsNullException();
         }
 
@@ -55,7 +62,7 @@ public class UsuarioService {
             throw new ArrayIsFullException();
         }
 
-        repositorio.criarProfessor(nome, cpf, dataDeNascimento, email, senha, idTurma);
+        repositorio.criarProfessor(professor);
 
         for (Usuario u : repositorio.getUsuarios()) {
             System.out.println(u);
@@ -102,8 +109,30 @@ public class UsuarioService {
                 || aluno.getIdTurma() == null) {
             throw new RequiredArgumentIsNullException();
         }
-
         repositorio.editarAluno(aluno);
+    }
+
+    public void editarProfessor(Professor professor){
+        if(professor == null){
+            throw new RequiredArgumentIsNullException();
+        }
+
+        if (repositorio.procurarUsuario(professor.getId()) == -1) {
+            throw new UserNotExistsException();
+        }
+
+        if (professor.getNome() == null || professor.getNome().isEmpty()
+                || professor.getCpf() == null
+                || professor.getDataDeNascimento() == null
+                || professor.getEmail() == null || professor.getEmail().isEmpty()
+                || professor.getSenha() == null || professor.getSenha().isEmpty()
+                || professor.getIdTurma() == null
+                || professor.getDisciplina() == null || professor.getDisciplina().isEmpty()) {
+                
+            throw new RequiredArgumentIsNullException();
+        }
+        repositorio.editarProfessor(professor);
+    
     }
 
     public void removerUsuario(int id) {

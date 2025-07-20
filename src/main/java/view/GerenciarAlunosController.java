@@ -74,14 +74,13 @@ public class GerenciarAlunosController extends FuncoesComuns {
             System.out.println("Ação: Editar Aluno: " + selecionado.getNome());
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro/cadastroAluno.fxml"));
-            Parent root = loader.load();
-            CadastroAlunoController controller = loader.getController();
-            Stage stage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+            Parent page = loader.load();
+            CadastroAlunoController controlador = loader.getController();
+            Stage janela = ((Stage) ((Node) event.getSource()).getScene().getWindow());
             
-            controller.setAluno(selecionado);
-            stage.setScene(new Scene(root));
-            stage.setTitle("Edição do Aluno");
-            stage.show();
+            controlador.setAluno(selecionado);
+            janela.setScene(new Scene(page));
+            janela.setTitle("Edição do Aluno");
         } else {
             System.out.println("Nenhum aluno selecionado para editar.");
         }
