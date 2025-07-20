@@ -10,11 +10,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.usuarios.Aluno;
 import models.usuarios.Usuario;
+import view.cadastro.CadastroAlunoController;
 
 public class GerenciarAlunosController extends FuncoesComuns {
 
@@ -62,13 +68,23 @@ public class GerenciarAlunosController extends FuncoesComuns {
 
     @FXML
     void handleEditarAluno(ActionEvent event) throws IOException {
-//        Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
-//        if (selecionado != null) {
-//            System.out.println("Ação: Editar Aluno: " + selecionado.getNome());
-//        } else {
-//            System.out.println("Nenhum aluno selecionado para editar.");
-//        }
-        trocarTela(event, "cadastro/edicaoAluno.fxml", "Edição do Aluno");
+        Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
+
+        if (selecionado != null) {
+            System.out.println("Ação: Editar Aluno: " + selecionado.getNome());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro/cadastroAluno.fxml"));
+            Parent root = loader.load();
+            CadastroAlunoController controller = loader.getController();
+            Stage stage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+            
+            controller.setAluno(selecionado);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Edição do Aluno");
+            stage.show();
+        } else {
+            System.out.println("Nenhum aluno selecionado para editar.");
+        }
     }
 
     @FXML

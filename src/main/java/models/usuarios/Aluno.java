@@ -7,7 +7,7 @@ public class Aluno extends Usuario {
 
     private Integer idTurma;
 
-    public Aluno(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
+    public Aluno(int id, String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
         super(id, nome, cpf, dataDeNascimento, email, senha);
         this.idTurma = idTurma;
     }
@@ -15,7 +15,7 @@ public class Aluno extends Usuario {
     public Aluno() {
     }
 
-    public int getIdTurma() {
+    public Integer getIdTurma() {
         return idTurma;
     }
 

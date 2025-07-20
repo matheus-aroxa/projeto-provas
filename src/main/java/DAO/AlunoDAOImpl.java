@@ -30,9 +30,9 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public Aluno criarAluno(int id, String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma) {
+    public Aluno criarAluno(Aluno aluno) {
         // Este método no seu repositório não retorna o Aluno criado, então adaptamos.
-        repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
+        repositorio.criarAluno(aluno);
         // Para satisfazer a interface, poderíamos buscar o aluno recém-criado, mas por enquanto retornamos null.
         return null;
     }

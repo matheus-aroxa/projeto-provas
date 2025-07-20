@@ -40,7 +40,7 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public long getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 

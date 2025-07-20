@@ -7,99 +7,125 @@ import Exceptions.InvalidIdException;
 import Exceptions.ObjectAlreadyExistsException;
 import Exceptions.RequiredArgumentIsNullException;
 import Exceptions.UserNotExistsException;
+import models.usuarios.Aluno;
 import models.usuarios.Usuario;
 import repos.RepositorioUsuarios;
 
 public class UsuarioService {
-	
-	private RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(10);
-	
-	public void criarAluno(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-		if (nome == "" || cpf == null || dataDeNascimento == null || email == "" || senha == "" || idTurma == null) {
-			throw new RequiredArgumentIsNullException();
-		}
-		
-		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
-		}
 
-		//verificar se tem espaço no array
-		if(repositorio.getContador().get() >= 10){
-			throw new ArrayIsFullException();
-		}
+    private RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(10);
 
-		repositorio.criarAluno(nome, cpf, dataDeNascimento, email, senha, idTurma);
+    public void criarAluno(Aluno aluno) {
+        if (aluno.getNome() == null || aluno.getNome().isEmpty()
+                || aluno.getCpf() == null
+                || aluno.getDataDeNascimento() == null
+                || aluno.getEmail() == null || aluno.getEmail().isEmpty()
+                || aluno.getSenha() == null || aluno.getSenha().isEmpty()
+                || aluno.getIdTurma() == null) {
+            throw new RequiredArgumentIsNullException();
+        }
 
-		for(Usuario u : repositorio.getUsuarios()){
-			System.out.println(u);
-		}
-		System.out.println("--------------------");
-	}
+        if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
+            throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+        }
 
-	public void criarProfessor(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
-			throw new RequiredArgumentIsNullException();
-		}
+        if (repositorio.getContador().get() >= 10) {
+            throw new ArrayIsFullException();
+        }
 
-		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
-		}
+        repositorio.criarAluno(aluno);
 
-		//verificar se tem espaço no array
-		if(repositorio.getContador().get() >= 10){
-			throw new ArrayIsFullException();
-		}
+        for (Usuario u : repositorio.getUsuarios()) {
+            System.out.println(u);
+        }
+        System.out.println("--------------------");
+    }
 
-		repositorio.criarProfessor(nome, cpf, dataDeNascimento, email, senha, idTurma);
+    public void criarProfessor(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
+        if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
+            throw new RequiredArgumentIsNullException();
+        }
 
-		for(Usuario u : repositorio.getUsuarios()){
-			System.out.println(u);
-		}
-		System.out.println("--------------------");
-	}
+        if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
+            throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+        }
 
-	public void criarAdministrador(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha) {
-		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null ) {
-			throw new RequiredArgumentIsNullException();
-		}
+        //verificar se tem espaço no array
+        if (repositorio.getContador().get() >= 10) {
+            throw new ArrayIsFullException();
+        }
 
-		if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
-			throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
-		}
+        repositorio.criarProfessor(nome, cpf, dataDeNascimento, email, senha, idTurma);
 
-		//verificar se tem espaço no array
-		if(repositorio.getContador().get() >= 10){
-			throw new ArrayIsFullException();
-		}
+        for (Usuario u : repositorio.getUsuarios()) {
+            System.out.println(u);
+        }
+        System.out.println("--------------------");
+    }
 
-		repositorio.criarAdministrador(nome, cpf, dataDeNascimento, email, senha);
+    public void criarAdministrador(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha) {
+        if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null) {
+            throw new RequiredArgumentIsNullException();
+        }
 
-		for(Usuario u : repositorio.getUsuarios()){
-			System.out.println(u);
-		}
-		System.out.println("--------------------");
-	}
+        if (repositorio.procurarUsuario(repositorio.getContador().get() + 1) != -1) {
+            throw new ObjectAlreadyExistsException("Não foi possível criar usuário com id: " + (repositorio.getContador().get() + 1));
+        }
 
-	public void removerUsuario(int id){
-		if(id <= 0){
-			throw new InvalidIdException();
-		}
+        //verificar se tem espaço no array
+        if (repositorio.getContador().get() >= 10) {
+            throw new ArrayIsFullException();
+        }
 
-		if(repositorio.procurarUsuario(id) == -1){
-			throw new UserNotExistsException();
-		}
+        repositorio.criarAdministrador(nome, cpf, dataDeNascimento, email, senha);
 
-		repositorio.removerUsuario(id);
-		for(Usuario u : repositorio.getUsuarios()){
-			System.out.println(u);
-		}
-	}
+        for (Usuario u : repositorio.getUsuarios()) {
+            System.out.println(u);
+        }
+        System.out.println("--------------------");
+    }
 
-	public void procurarUsuario(int id){
-		if(id <= 0){
-			throw new InvalidIdException();
-		}
+    public void editarAluno(Aluno aluno) {
+        if (aluno == null) {
+            throw new RequiredArgumentIsNullException();
+        }
 
-		repositorio.procurarUsuario(id);
-	}
+        if (repositorio.procurarUsuario(aluno.getId()) == -1) {
+            throw new UserNotExistsException();
+        }
+
+        if (aluno.getNome() == null || aluno.getNome().isEmpty()
+                || aluno.getCpf() == null
+                || aluno.getDataDeNascimento() == null
+                || aluno.getEmail() == null || aluno.getEmail().isEmpty()
+                || aluno.getSenha() == null || aluno.getSenha().isEmpty()
+                || aluno.getIdTurma() == null) {
+            throw new RequiredArgumentIsNullException();
+        }
+
+        repositorio.editarAluno(aluno);
+    }
+
+    public void removerUsuario(int id) {
+        if (id <= 0) {
+            throw new InvalidIdException();
+        }
+
+        if (repositorio.procurarUsuario(id) == -1) {
+            throw new UserNotExistsException();
+        }
+
+        repositorio.removerUsuario(id);
+        for (Usuario u : repositorio.getUsuarios()) {
+            System.out.println(u);
+        }
+    }
+
+    public void procurarUsuario(int id) {
+        if (id <= 0) {
+            throw new InvalidIdException();
+        }
+
+        repositorio.procurarUsuario(id);
+    }
 }
