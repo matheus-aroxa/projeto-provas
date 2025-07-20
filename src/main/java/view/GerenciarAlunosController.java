@@ -14,21 +14,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.usuarios.Aluno;
+import models.usuarios.Usuario;
 
-public class GerenciarAlunosController extends FuncoesComuns{
+public class GerenciarAlunosController extends FuncoesComuns {
 
     @FXML
     private TableView<Aluno> tabelaAlunos;
     @FXML
-    private TableColumn<Aluno, Integer> colunaId;
+    private TableColumn<Usuario, Integer> colunaId;
     @FXML
-    private TableColumn<Aluno, String> colunaNome;
+    private TableColumn<Usuario, String> colunaNome;
     @FXML
-    private TableColumn<Aluno, Long> colunaCpf;
+    private TableColumn<Usuario, Long> colunaCpf;
     @FXML
-    private TableColumn<Aluno, String> colunaEmail;
+    private TableColumn<Usuario, String> colunaEmail;
     @FXML
-    private TableColumn<Aluno, LocalDate> colunaNascimento;
+    private TableColumn<Usuario, LocalDate> colunaNascimento;
 //    @FXML
 //    private TableColumn<Aluno, Integer> colunaTurma;
 
