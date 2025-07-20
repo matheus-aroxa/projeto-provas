@@ -2,7 +2,11 @@ package services;
 
 import java.time.LocalDate;
 
-import Exceptions.*;
+import Exceptions.ArrayIsFullException;
+import Exceptions.InvalidIdException;
+import Exceptions.ObjectAlreadyExistsException;
+import Exceptions.RequiredArgumentIsNullException;
+import Exceptions.UserNotExistsException;
 import models.usuarios.Usuario;
 import repos.RepositorioUsuarios;
 
@@ -11,7 +15,7 @@ public class UsuarioService {
 	private RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(10);
 	
 	public void criarAluno(String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma) {
-		if (nome == null || cpf == null || dataDeNascimento == null || email == null || senha == null || idTurma == null) {
+		if (nome == "" || cpf == null || dataDeNascimento == null || email == "" || senha == "" || idTurma == null) {
 			throw new RequiredArgumentIsNullException();
 		}
 		
