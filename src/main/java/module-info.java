@@ -6,6 +6,7 @@ module com.example.projetoprovas {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.desktop;
 
     opens view to javafx.fxml;
     opens view.cadastro to javafx.fxml; 
