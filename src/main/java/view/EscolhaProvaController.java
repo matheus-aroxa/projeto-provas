@@ -9,9 +9,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.provas.Prova;
 
 public class EscolhaProvaController extends FuncoesComuns {
@@ -35,6 +40,7 @@ public class EscolhaProvaController extends FuncoesComuns {
         colunaTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
         colunaData.setCellValueFactory(new PropertyValueFactory<>("dataAplicacao"));
         colunaTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        
         carregarProvas();
     }
 
@@ -59,7 +65,27 @@ public class EscolhaProvaController extends FuncoesComuns {
 
     @FXML
     void handleRealizarProva(ActionEvent event) throws IOException {
-        trocarTela(event, "AvaliacaoProvaView.fxml", "Avaliação");
+
+        Prova selecionado = tabelaProvas.getSelectionModel().getSelectedItem();
+        System.out.println(selecionado);
+
+        if (selecionado != null) {
+            System.out.println("Ação : Realizar Prova" + selecionado.getTitulo());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AvaliacaoProvaView.fxml"));
+            Parent page = loader.load();
+            AvaliacaoProvaController controlador = loader.getController();
+            Stage janela = ((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+            controlador.setProva(selecionado);
+            janela.setScene(new Scene(page));
+            janela.setTitle("Avaliação da prova");
+
+        } else {
+            System.out.println("Nenhuma prova selecionada");
+        }
+
+//        trocarTela(event, "AvaliacaoProvaView.fxml", "Avaliação");
     }
 
 }

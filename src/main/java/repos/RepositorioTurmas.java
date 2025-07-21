@@ -1,8 +1,8 @@
 package repos;
 
-import models.Turma;
-import models.usuarios.professor.Professor;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import models.Turma;
 
 public class RepositorioTurmas {
     private Turma[] turmas;
