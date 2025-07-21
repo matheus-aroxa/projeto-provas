@@ -20,9 +20,9 @@
         <TableView fx:id="tabelaProvas" layoutX="125.0" layoutY="85.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
             <columns>
                 <TableColumn fx:id="colunaId" prefWidth="40.0" text="Id" />
-                <TableColumn fx:id="colunaCpf" prefWidth="294.0" text="Titulo" />
-                <TableColumn fx:id="colunaEmail" prefWidth="147.0" text="Data" />
-                <TableColumn fx:id="colunaNascimento" minWidth="0.0" prefWidth="118.0" text="Tipo" />
+                <TableColumn fx:id="colunaTitulo" prefWidth="294.0" text="Titulo" />
+                <TableColumn fx:id="colunaData" prefWidth="147.0" text="Data" />
+                <TableColumn fx:id="colunaTipo" minWidth="0.0" prefWidth="118.0" text="Tipo" />
             </columns>
         </TableView>
 

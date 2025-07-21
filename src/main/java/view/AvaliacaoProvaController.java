@@ -7,6 +7,10 @@ import javafx.fxml.FXML;
 
 public class AvaliacaoProvaController extends FuncoesComuns {
 
+    private void setProva(){
+        
+    }
+
     @FXML
     void anterior(ActionEvent evento) throws IOException {
         trocarTela(evento, "EscolhaProvaView.fxml", "Escolha de Provas");
