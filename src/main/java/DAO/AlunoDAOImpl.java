@@ -8,20 +8,15 @@ import models.usuarios.Usuario;
 import repos.RepositorioUsuarios;
 
 public class AlunoDAOImpl implements ObjectDAO<Aluno> {
-
-    // Pega a instância única do seu repositório de usuários
-    private final RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100); // Defina um tamanho padrão
+    private final RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100);
 
     @Override
     public List<Aluno> findAll() {
         List<Aluno> listaDeAlunos = new ArrayList<>();
         Usuario[] todosOsUsuarios = repositorio.getUsuarios();
 
-        // Itera sobre todos os usuários no repositório
         for (Usuario usuario : todosOsUsuarios) {
-            // Se o usuário não for nulo e for uma instância da classe Aluno...
             if (usuario instanceof Aluno) {
-                // ...adiciona ele na nossa lista de alunos.
                 listaDeAlunos.add((Aluno) usuario);
             }
         }
@@ -30,15 +25,12 @@ public class AlunoDAOImpl implements ObjectDAO<Aluno> {
 
     @Override
     public Aluno criar(Aluno aluno) {
-        // Este método no seu repositório não retorna o Aluno criado, então adaptamos.
         repositorio.criarAluno(aluno);
-        // Para satisfazer a interface, poderíamos buscar o aluno recém-criado, mas por enquanto retornamos null.
         return null;
     }
 
     @Override
     public void remover(int id) {
-        // Chama o método correspondente do seu repositório
         repositorio.removerUsuario(id);
     }
 }

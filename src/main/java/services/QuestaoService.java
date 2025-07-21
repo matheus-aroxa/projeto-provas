@@ -85,8 +85,8 @@ public class QuestaoService {
 
     public Questao[] getQuestoesProva(int idProva) {
         List<Questao> resultado = new ArrayList<>();
-        for (Questao q : repositorio.listar()) { // Use listar() em vez de getQuestoes()
-            if (q != null && q.getIdProva() == idProva) { // Verifique null e ID
+        for (Questao q : repositorio.listar()) {
+            if (q != null && q.getIdProva() == idProva) {
                 resultado.add(q);
             }
         }

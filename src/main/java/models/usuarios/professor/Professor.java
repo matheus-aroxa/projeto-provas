@@ -8,7 +8,7 @@ import models.usuarios.Usuario;
 public class Professor extends Usuario {
 
     private int idTurma;
-    private Salario salario;
+
     private String disciplina;
 
     public Professor(int id, String nome, Long cpf, LocalDate dataDeNascimento, String email, String senha, Integer idTurma, String disciplina) {

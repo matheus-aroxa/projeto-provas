@@ -42,7 +42,7 @@ public class RepositorioUsuarios {
         usuarios[contador.get()] = new Administrador(contador.incrementAndGet(), nome, cpf, dataDeNascimento, email, senha);
     }
 
-    //String nome, long cpf, LocalDate dataDeNascimento, String email, String senha, int idTurma
+
     public void criarProfessor(Professor professor) {
         usuarios[contador.get()] = new Professor(contador.incrementAndGet(), professor.getNome(), professor.getCpf(),
                 professor.getDataDeNascimento(), professor.getEmail(), professor.getSenha(), professor.getIdTurma(),professor.getDisciplina());
@@ -96,13 +96,13 @@ public class RepositorioUsuarios {
     }
 
     public void removerUsuario(int id) {
-        int find = procurarUsuario(id); //verifica se o usuario existe e se existe retorna a posição dele
+        int find = procurarUsuario(id);
         if (find == -1) {
-            return; // se o usuario nao existe nao executa o restante do codigo
+            return;
         }
         for (int i = find; i < usuarios.length - 1; i++) {
-            usuarios[i] = usuarios[i + 1]; // remove os buracos apos a remocao
+            usuarios[i] = usuarios[i + 1];
         }
-        usuarios[usuarios.length - 1] = null; // remove o usuario do array
+        usuarios[usuarios.length - 1] = null;
     }
 }

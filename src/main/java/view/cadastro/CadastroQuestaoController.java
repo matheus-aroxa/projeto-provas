@@ -54,7 +54,6 @@ public class CadastroQuestaoController extends FuncoesComuns {
 
     @FXML
     public void initialize() {
-        // Inicializa os arrays uma única vez
         respostas = new RadioButton[]{respostaA, respostaB, respostaC, respostaD, respostaE};
         campos = new TextField[]{campoA, campoB, campoC, campoD, campoE};
     }
@@ -93,7 +92,6 @@ public class CadastroQuestaoController extends FuncoesComuns {
     @FXML
     void cadastrar(ActionEvent evento) throws IOException {
         try {
-            // Verifica se os arrays foram inicializados
             if (respostas == null || campos == null) {
                 initialize();
             }

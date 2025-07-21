@@ -51,7 +51,7 @@ public class CadastroAlunoController extends FuncoesComuns {
         try {
             UsuarioService usuarioService = new UsuarioService();
             Long cpf = Long.valueOf(campoCpf.getText());
-            Integer idTurma = 1; // Você pode querer tornar isso configurável
+            Integer idTurma = 1;
 
             if (aluno == null) {
                 Aluno novoAluno = new Aluno(0, campoNome.getText(), cpf, campoData.getValue(), campoEmail.getText(), campoSenha.getText(), idTurma) ;    

@@ -34,7 +34,7 @@ public class CadastroController extends FuncoesComuns implements Initializable {
     @FXML
     void cadastro(ActionEvent evento){
         if(escolhaUsuario.getValue() != null){
-            //implementação futura
+
         }else{
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setContentText("Por favor selecione uma opção válida!");

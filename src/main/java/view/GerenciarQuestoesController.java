@@ -2,6 +2,7 @@ package view;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import DAO.ObjectDAO;
 import DAO.QuestaoDAOImpl;
@@ -13,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -110,5 +113,28 @@ public class GerenciarQuestoesController extends FuncoesComuns {
     @FXML
     void handleCadastrarQuestoes(ActionEvent event) throws IOException {
         trocarTela(event, "/view/ProfessorDashboardView.fxml", "Gerenciar Provas");
+    }
+
+    @FXML
+    void handleExcluirQuestao(ActionEvent event) throws IOException{
+        Questao selecionado = tabelaQuestoes.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            System.out.println("Ação: Excluir Questao: " + selecionado.getEnunciado());
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmação");
+            alert.setHeaderText("Tem certeza que deseja excluir esta questão?");
+            alert.setContentText("Questão: " + selecionado.getEnunciado() + "\nEsta ação não pode ser desfeita.");
+
+            Optional<ButtonType> resultado = alert.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                questaoDAO.remover(selecionado.getId());
+                carregaQuestoes();
+                System.out.println("Questão excluída com sucesso.");
+            }
+        } else {
+            System.out.println("Nenhuma questão selecionada para excluir.");
+        }
     }
 }

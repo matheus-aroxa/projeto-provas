@@ -36,13 +36,4 @@ public class ProfessorDAOImpl implements ObjectDAO<Professor> {
         repositorio.removerUsuario(id);
     }
 
-//    @Override
-//    public String getNomePorId(int id) {
-//        Professor professor = usuarioService.procurarUsuario(id); // seu método de busca
-//        if(professor != null) {
-//                return professor.getNome();
-//        }
-//        return "Desconhecido";
-//        }
-
 }

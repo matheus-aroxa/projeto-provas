@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import DAO.AlunoDAOImpl;
 import DAO.ObjectDAO;
@@ -14,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,20 +39,18 @@ public class GerenciarAlunosController extends FuncoesComuns {
     private TableColumn<Usuario, String> colunaEmail;
     @FXML
     private TableColumn<Usuario, LocalDate> colunaNascimento;
-//    @FXML
-//    private TableColumn<Aluno, Integer> colunaTurma;
 
     private ObjectDAO alunoDAO = new AlunoDAOImpl();
 
     @FXML
     public void initialize() {
-        // Configura as colunas para buscar os valores dos atributos da classe Aluno
+
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colunaNascimento.setCellValueFactory(new PropertyValueFactory<>("dataDeNascimento"));
-        // colunaTurma.setCellValueFactory(new PropertyValueFactory<>("idTurma")); // Corrigido para "idTurma"
+
 
         carregarAlunos();
     }
@@ -62,7 +63,7 @@ public class GerenciarAlunosController extends FuncoesComuns {
     }
 
     @FXML
-    void handleNovoAluno(ActionEvent event) throws IOException { //cadastroAluno.fxml
+    void handleNovoAluno(ActionEvent event) throws IOException {
         trocarTela(event, "cadastro/cadastroAluno.fxml", "Cadastro do Aluno");
     }
 
@@ -91,8 +92,18 @@ public class GerenciarAlunosController extends FuncoesComuns {
         Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
             System.out.println("Ação: Excluir Aluno: " + selecionado.getNome());
-            alunoDAO.remover(selecionado.getId()); // CORREÇÃO: Usa o método da interface
-            carregarAlunos();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmação");
+            alert.setHeaderText("Tem certeza que deseja excluir este aluno?");
+            alert.setContentText("Aluno: " + selecionado.getNome() + "\nEsta ação não pode ser desfeita.");
+
+            Optional<ButtonType> resultado = alert.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                alunoDAO.remover(selecionado.getId());
+                carregarAlunos();
+                System.out.println("Prova excluída com sucesso.");
+            }
         } else {
             System.out.println("Nenhum aluno selecionado para excluir.");
         }

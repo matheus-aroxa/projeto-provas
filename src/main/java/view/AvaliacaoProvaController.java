@@ -14,9 +14,7 @@ public class AvaliacaoProvaController extends FuncoesComuns {
 
     @FXML
     void proximo(ActionEvent evento) throws IOException {
-        /*
-        Aqui chama a lógica de negócio mas também vai voltar depois do cadastro
-         */
+
         trocarTela(evento, "EscolhaProvaView.fxml", "Escolha de Provas");
     }
 }

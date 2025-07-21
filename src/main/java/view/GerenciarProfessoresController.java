@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import DAO.ObjectDAO;
 import DAO.ProfessorDAOImpl;
@@ -14,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,7 +46,7 @@ public class GerenciarProfessoresController extends FuncoesComuns {
 
     @FXML
     public void initialize() {
-        // Configura as colunas para buscar os valores dos atributos da classe Professor
+
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -91,8 +94,19 @@ public class GerenciarProfessoresController extends FuncoesComuns {
         Professor selecionado = tabelaProfessores.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
             System.out.println("Ação: Excluir Professor: " + selecionado.getNome());
-            professorDAO.remover(selecionado.getId()); // CORREÇÃO: Usa o método da interface
-            carregarProfessores();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmação");
+            alert.setHeaderText("Tem certeza que deseja excluir este professor?");
+            alert.setContentText("Professor: " + selecionado.getNome() + "\nEsta ação não pode ser desfeita.");
+
+            Optional<ButtonType> resultado = alert.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                professorDAO.remover(selecionado.getId());
+                carregarProfessores();
+                System.out.println("Prova excluída com sucesso.");
+            }
         } else {
             System.out.println("Nenhum Professor selecionado para excluir.");
         }

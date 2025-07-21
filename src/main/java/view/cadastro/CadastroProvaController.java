@@ -94,7 +94,6 @@ public class CadastroProvaController extends FuncoesComuns {
                 provaService.criarProva(novaProva);
                 controlador.setProva(novaProva);
             } else {
-                // Edição da prova existente
                 prova.setTitulo(campoTitulo.getText());
                 prova.setDescricao(campoDescricao.getText());
                 prova.setDataAplicacao(data);

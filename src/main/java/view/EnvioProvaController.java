@@ -16,4 +16,5 @@ public class EnvioProvaController extends FuncoesComuns {
     void handleVoltar(ActionEvent event) throws IOException {
         trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciamento de Provas");
     }
+
 }
