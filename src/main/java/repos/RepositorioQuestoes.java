@@ -24,7 +24,8 @@ public class RepositorioQuestoes {
     }
 
     public void criarQuestao(Questao questao) {
-        questoes[contador.get()] = new Questao(contador.getAndIncrement(), questao.getIdProva(), questao.getEnunciado(), questao.getAlternativas(), questao.getIdResposta());
+        int proximoIndice = contador.getAndIncrement();
+        this.questoes[proximoIndice] = questao;
     }
 
     public void editar(Questao questao) {
@@ -48,13 +49,13 @@ public class RepositorioQuestoes {
     }
 
     public int procurar(int id) {
-    for (int i = 0; i < questoes.length; i++) {
-        if (questoes[i] != null && questoes[i].getId() == id) {
-            return i;
+        for (int i = 0; i < questoes.length; i++) {
+            if (questoes[i] != null && questoes[i].getId() == id) {
+                return i;
+            }
         }
+        return -1;
     }
-    return -1;
-}
 
     public void remover(int id) {
         int pos = procurar(id);
@@ -73,6 +74,10 @@ public class RepositorioQuestoes {
         return Arrays.stream(questoes)
                 .filter(Objects::nonNull)
                 .toArray(Questao[]::new);
+    }
+
+    public int getProximoId() {
+        return contador.get();
     }
 
 }

@@ -16,7 +16,7 @@
     <VBox alignment="CENTER" prefHeight="262.0" prefWidth="569.0">
       <HBox alignment="CENTER" prefHeight="130.0" prefWidth="569.0">
          <children>
-            <Label fx:id="campoEnunciado" alignment="CENTER" contentDisplay="CENTER" text="[Enunciado]" />
+            <Label fx:id="labelEnunciado" alignment="CENTER" contentDisplay="CENTER" text="[Enunciado]" />
          </children>
          <VBox.margin>
             <Insets bottom="10.0" />
@@ -38,13 +38,13 @@
          <children>
             <RadioButton fx:id="respostaA" mnemonicParsing="false" text="A" GridPane.rowIndex="1">
                <toggleGroup>
-                  <ToggleGroup fx:id="respostaQuestao" />
+                  <ToggleGroup fx:id="alternativasGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="respostaB" mnemonicParsing="false" text="B" toggleGroup="$respostaQuestao" GridPane.rowIndex="2" />
-            <RadioButton fx:id="respostaC" mnemonicParsing="false" text="C" toggleGroup="$respostaQuestao" GridPane.rowIndex="3" />
-            <RadioButton fx:id="respostaD" mnemonicParsing="false" text="D" toggleGroup="$respostaQuestao" GridPane.rowIndex="4" />
-            <RadioButton fx:id="respostaE" mnemonicParsing="false" text="E" toggleGroup="$respostaQuestao" GridPane.rowIndex="5" />
+            <RadioButton fx:id="respostaB" mnemonicParsing="false" text="B" toggleGroup="$alternativasGroup" GridPane.rowIndex="2" />
+            <RadioButton fx:id="respostaC" mnemonicParsing="false" text="C" toggleGroup="$alternativasGroup" GridPane.rowIndex="3" />
+            <RadioButton fx:id="respostaD" mnemonicParsing="false" text="D" toggleGroup="$alternativasGroup" GridPane.rowIndex="4" />
+            <RadioButton fx:id="respostaE" mnemonicParsing="false" text="E" toggleGroup="$alternativasGroup" GridPane.rowIndex="5" />
             <Label fx:id="alternativaA" text="[Alternativa A]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="alternativaB" text="[Alternativa B]" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="alternativaC" text="[Alternativa C]" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -54,10 +54,10 @@
       </GridPane>
         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
             <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="395.0">
-                <Button fx:id="btAnterior" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
+                <Button fx:id="btAnterior" mnemonicParsing="false" onAction="#handleAnterior" text="Anterior" />
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="312.0">
-                <Button fx:id="btProximo" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#proximo" text="Proxima">
+                <Button fx:id="btProximo" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleProximo" text="Proxima">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>

@@ -44,7 +44,6 @@ public class EscolhaProvaController extends FuncoesComuns {
         carregarProvas();
     }
 
-
     private void carregarProvas(){
         tabelaProvas.getItems().clear();
         List<Prova> provas = provaDAO.findAll();
