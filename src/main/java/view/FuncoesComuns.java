@@ -8,7 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public abstract class FuncoesComuns {
 
@@ -35,5 +37,20 @@ public abstract class FuncoesComuns {
             e.printStackTrace();
             System.err.println("--- FIM DO ERRO ---");
         }
+    }
+
+    public void abrirPopup(String fxmlPath, String titulo, Window janelaPai) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        Stage popupStage = new Stage();
+        popupStage.setTitle(titulo);
+        popupStage.setScene(new Scene(root));
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.initOwner(janelaPai);
+        popupStage.showAndWait();
+    }
+
+    public void fecharPopup(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
