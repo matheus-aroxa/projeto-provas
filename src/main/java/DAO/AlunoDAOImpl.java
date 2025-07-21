@@ -7,7 +7,7 @@ import models.usuarios.Aluno; // Importe seu repositório
 import models.usuarios.Usuario;
 import repos.RepositorioUsuarios;
 
-public class AlunoDAOImpl implements AlunoDAO {
+public class AlunoDAOImpl implements ObjectDAO<Aluno> {
 
     // Pega a instância única do seu repositório de usuários
     private final RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100); // Defina um tamanho padrão
@@ -29,7 +29,7 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public Aluno criarAluno(Aluno aluno) {
+    public Aluno criar(Aluno aluno) {
         // Este método no seu repositório não retorna o Aluno criado, então adaptamos.
         repositorio.criarAluno(aluno);
         // Para satisfazer a interface, poderíamos buscar o aluno recém-criado, mas por enquanto retornamos null.
@@ -37,7 +37,7 @@ public class AlunoDAOImpl implements AlunoDAO {
     }
 
     @Override
-    public void removerAluno(int id) {
+    public void remover(int id) {
         // Chama o método correspondente do seu repositório
         repositorio.removerUsuario(id);
     }

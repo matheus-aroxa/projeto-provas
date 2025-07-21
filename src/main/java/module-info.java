@@ -6,12 +6,16 @@ module com.example.projetoprovas {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.graphics;
+    requires javafx.base;
 
     opens view to javafx.fxml;
-    opens view.cadastro to javafx.fxml; 
+    opens view.cadastro to javafx.fxml;  
     opens models to javafx.base;
     opens models.usuarios to javafx.base; //pra permitir o javafx ter acesso das classes models"
     opens models.usuarios.professor to javafx.base; 
+    opens models.provas to javafx.base; 
+    
 
     exports DAO;
     exports Exceptions;

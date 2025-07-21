@@ -7,7 +7,7 @@ import java.util.List;
 import models.provas.Prova;
 import repos.RepositorioProvas;
 
-public class ProvaDAOImpl implements ProvaDAO {
+public class ProvaDAOImpl implements ObjectDAO<Prova> {
 
     private final RepositorioProvas repositorio = RepositorioProvas.getInstance(10);
 
@@ -22,12 +22,12 @@ public class ProvaDAOImpl implements ProvaDAO {
     }
 
     @Override
-    public Prova criarProva(Prova prova) {
+    public Prova criar(Prova prova) {
         return null;
     }
 
     @Override
-    public void removerProva(int id) {
+    public void remover(int id) {
         repositorio.remover(id);
     }
 

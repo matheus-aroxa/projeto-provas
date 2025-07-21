@@ -38,15 +38,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton mnemonicParsing="false" text="A">
+            <RadioButton fx:id="respostaA" mnemonicParsing="false" text="A">
                <toggleGroup>
                   <ToggleGroup fx:id="respostaQuestao" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="B" toggleGroup="$respostaQuestao" GridPane.rowIndex="1" />
-            <RadioButton mnemonicParsing="false" text="C" toggleGroup="$respostaQuestao" GridPane.rowIndex="2" />
-            <RadioButton mnemonicParsing="false" text="D" toggleGroup="$respostaQuestao" GridPane.rowIndex="3" />
-            <RadioButton mnemonicParsing="false" text="E" toggleGroup="$respostaQuestao" GridPane.rowIndex="4" />
+            <RadioButton fx:id="respostaB" mnemonicParsing="false" text="B" toggleGroup="$respostaQuestao" GridPane.rowIndex="1" />
+            <RadioButton fx:id="respostaC" mnemonicParsing="false" text="C" toggleGroup="$respostaQuestao" GridPane.rowIndex="2" />
+            <RadioButton fx:id="respostaD" mnemonicParsing="false" text="D" toggleGroup="$respostaQuestao" GridPane.rowIndex="3" />
+            <RadioButton fx:id="respostaE" mnemonicParsing="false" text="E" toggleGroup="$respostaQuestao" GridPane.rowIndex="4" />
             <TextField fx:id="campoA" GridPane.columnIndex="1" />
             <TextField fx:id="campoB" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="campoC" GridPane.columnIndex="1" GridPane.rowIndex="2" />

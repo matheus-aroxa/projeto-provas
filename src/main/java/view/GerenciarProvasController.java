@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import DAO.ProvaDAO;
+import DAO.ObjectDAO;
 import DAO.ProvaDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,7 +35,7 @@ public class GerenciarProvasController extends FuncoesComuns{
     private TableColumn<Prova ,LocalDateTime> colunaData;
 
 
-    private ProvaDAO provaDAO = new ProvaDAOImpl();
+    private ObjectDAO provaDAO = new ProvaDAOImpl();
 
     @FXML
     public void initialize(){
@@ -91,7 +91,7 @@ public class GerenciarProvasController extends FuncoesComuns{
         Prova selecionado = tabelaProvas.getSelectionModel().getSelectedItem();
         if(selecionado != null){
             System.out.println("Ação: Excluir Prova: "+selecionado.getTitulo());
-            provaDAO.removerProva(selecionado.getId());
+            provaDAO.remover(selecionado.getId());
             carregaProvas();
         }else{
             System.out.println("Nenhuma prova selecionada para excluir");

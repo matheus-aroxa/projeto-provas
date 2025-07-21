@@ -12,68 +12,84 @@ import models.provas.Questao;
 import repos.RepositorioQuestoes;
 
 public class QuestaoService {
-	
-	private RepositorioQuestoes repositorio = RepositorioQuestoes.getInstance(10);
-	
-	public void criarQuestao(Questao questao) {
-		if (questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
-		 || questao.getAlternativas() == null) {
-			throw new RequiredArgumentIsNullException();
-		}
 
-		for(String alternativa : questao.getAlternativas())
-			if(alternativa.isEmpty()) throw new RequiredArgumentIsNullException();
-		
-		if (repositorio.procurar(repositorio.getContador().get() + 1) != -1) {
-			throw new ObjectAlreadyExistsException("Não foi possível criar questao com id: " + (repositorio.getContador().get() + 1));
-		}
-		
-		if(repositorio.getContador().get() >= 10){
-			throw new ArrayIsFullException();
-		}
-		
-		repositorio.criarQuestao(questao);
-		
-		for(Questao q : repositorio.getQuestoes()) {
-			System.out.println(q);
-		}
-		System.out.println("---------------------------");
-	}
+    private RepositorioQuestoes repositorio = RepositorioQuestoes.getInstance(10);
 
-	public void editarQuestao(Questao questao){
-		if (questao == null) throw new RequiredArgumentIsNullException();
+    public void criarQuestao(Questao questao) {
 
-		if(repositorio.procurar(questao.getId()) == -1) throw new QuestaoNotExistsException();
+        if (questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
+                || questao.getAlternativas() == null) {
+            throw new RequiredArgumentIsNullException();
+        }
 
-		if(questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
-		 || questao.getAlternativas() == null){
-			throw new RequiredArgumentIsNullException();
-		}
+        for (String alternativa : questao.getAlternativas()) {
+            if (alternativa == null || alternativa.isEmpty()) {
+                throw new RequiredArgumentIsNullException();
+            }
+        }
 
-		for(String alternativa : questao.getAlternativas())
-			if(alternativa.isEmpty()) throw new RequiredArgumentIsNullException();
+        if (repositorio.getContador().get() >= 10) {
+            throw new ArrayIsFullException();
+        }
 
-		repositorio.editar(questao);
-	}
+        if (repositorio.procurar(questao.getId()) != -1) {
+            throw new ObjectAlreadyExistsException("Já existe uma questão com este ID");
+        }
 
-	public void removerQuestao(int id){
-		if(id <= 0) throw new InvalidIdException();
+        repositorio.criarQuestao(questao);
 
-		if(repositorio.procurar(id) == 1) throw new QuestaoNotExistsException();
+        for (Questao q : repositorio.getQuestoes()) {
+            System.out.println(q);
+        }
+        System.out.println("---------------------------");
+    }
 
-		repositorio.remover(id);
-		for(Questao u : repositorio.getQuestoes())
+    public void editarQuestao(Questao questao) {
+        if (questao == null) {
+            throw new RequiredArgumentIsNullException();
+        }
+
+        if (repositorio.procurar(questao.getId()) == -1) {
+            throw new QuestaoNotExistsException();
+        }
+
+        if (questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
+                || questao.getAlternativas() == null) {
+            throw new RequiredArgumentIsNullException();
+        }
+
+        for (String alternativa : questao.getAlternativas()) {
+            if (alternativa.isEmpty()) {
+                throw new RequiredArgumentIsNullException();
+            }
+        }
+
+        repositorio.editar(questao);
+    }
+
+    public void removerQuestao(int id) {
+        if (id <= 0) {
+            throw new InvalidIdException();
+        }
+
+        if (repositorio.procurar(id) == 1) {
+            throw new QuestaoNotExistsException();
+        }
+
+        repositorio.remover(id);
+        for (Questao u : repositorio.getQuestoes()) {
             System.out.println(u);
-            
-	}
+        }
 
-	public Questao[] getQuestoesProva(int idProva){
-		List<Questao> questoes = new ArrayList<>();
-		for(Questao questao : repositorio.getQuestoes()){
-			if(questao.getIdProva() == idProva){
-				questoes.add(questao);
-			}
-		}
-		return (Questao[]) questoes.toArray();
-	}
+    }
+
+    public Questao[] getQuestoesProva(int idProva) {
+        List<Questao> resultado = new ArrayList<>();
+        for (Questao q : repositorio.listar()) { // Use listar() em vez de getQuestoes()
+            if (q != null && q.getIdProva() == idProva) { // Verifique null e ID
+                resultado.add(q);
+            }
+        }
+        return resultado.toArray(new Questao[0]);
+    }
 }

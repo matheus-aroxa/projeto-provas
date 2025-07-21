@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-import DAO.AlunoDAO;
 import DAO.AlunoDAOImpl;
+import DAO.ObjectDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +39,7 @@ public class GerenciarAlunosController extends FuncoesComuns {
 //    @FXML
 //    private TableColumn<Aluno, Integer> colunaTurma;
 
-    private AlunoDAO alunoDAO = new AlunoDAOImpl();
+    private ObjectDAO alunoDAO = new AlunoDAOImpl();
 
     @FXML
     public void initialize() {
@@ -91,7 +91,7 @@ public class GerenciarAlunosController extends FuncoesComuns {
         Aluno selecionado = tabelaAlunos.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
             System.out.println("Ação: Excluir Aluno: " + selecionado.getNome());
-            alunoDAO.removerAluno(selecionado.getId()); // CORREÇÃO: Usa o método da interface
+            alunoDAO.remover(selecionado.getId()); // CORREÇÃO: Usa o método da interface
             carregarAlunos();
         } else {
             System.out.println("Nenhum aluno selecionado para excluir.");

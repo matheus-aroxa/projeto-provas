@@ -6,14 +6,20 @@ import java.time.LocalDateTime;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.provas.Prova;
 import services.ProvaService;
 import view.FuncoesComuns;
+import view.GerenciarQuestoesController;
 
 public class CadastroProvaController extends FuncoesComuns {
 
@@ -42,14 +48,14 @@ public class CadastroProvaController extends FuncoesComuns {
             campoTitulo.setText(prova.getTitulo());
             campoDescricao.setText(prova.getDescricao());
             campoData.setValue(prova.getDataAplicacao().toLocalDate());
-            campoDuracao.setText(prova.getDuracao().toString());
+            campoDuracao.setText(String.valueOf(prova.getDuracao().toHours()));
+
             if (prova.getIsRemoto()) {
                 btRemoto.setSelected(true);
-                btPresencial.setDisable(true);
             } else {
                 btPresencial.setSelected(true);
-                btRemoto.setDisable(true);
             }
+
         }
     }
 
@@ -61,16 +67,24 @@ public class CadastroProvaController extends FuncoesComuns {
     @FXML
     void proximo(ActionEvent evento) throws IOException {
         try {
-            Duration duracao = Duration.ofHours(Integer.valueOf(campoDuracao.getText()));
+            Duration duracao = Duration.ofHours(Long.parseLong(campoDuracao.getText()));
             LocalDateTime data = campoData.getValue().atStartOfDay();
             boolean remoto = btRemoto.isSelected();
-
             ProvaService provaService = new ProvaService();
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GerenciarQuestoesView.fxml"));
+            Parent page = loader.load();
+            GerenciarQuestoesController controlador = loader.getController();
+
+            if (campoTitulo.getText().isEmpty() || campoDescricao.getText().isEmpty()
+                    || campoData.getValue() == null || campoDuracao.getText().isEmpty()) {
+                throw new Exception("Preencha todos os campos obrigatórios");
+            }
+
             if (prova == null) {
-                // Cria nova prova com arrays vazios
+
                 Prova novaProva = new Prova(
-                        0, // ID temporário, será definido pelo serviço
+                        0,
                         campoTitulo.getText(),
                         campoDescricao.getText(),
                         data,
@@ -78,6 +92,7 @@ public class CadastroProvaController extends FuncoesComuns {
                         remoto
                 );
                 provaService.criarProva(novaProva);
+                controlador.setProva(novaProva);
             } else {
                 // Edição da prova existente
                 prova.setTitulo(campoTitulo.getText());
@@ -87,8 +102,11 @@ public class CadastroProvaController extends FuncoesComuns {
                 prova.setIsRemoto(remoto);
 
                 provaService.editarProva(prova);
+                controlador.setProva(prova);
             }
-            trocarTela(evento, "/view/GerenciarQuestoesView.fxml", "Gerenciamento de Questões");
+            Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
+            janela.setScene(new Scene(page));
+            janela.setTitle("Gerenciamento de Questões");
         } catch (Exception e) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setContentText("Erro ao salvar prova: " + e.getMessage());

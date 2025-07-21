@@ -7,7 +7,7 @@ import models.usuarios.Usuario;
 import models.usuarios.professor.Professor;
 import repos.RepositorioUsuarios;
 
-public class ProfessorDAOImpl implements ProfessorDAO {
+public class ProfessorDAOImpl implements ObjectDAO<Professor> {
 
     private final RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100);
 
@@ -25,12 +25,12 @@ public class ProfessorDAOImpl implements ProfessorDAO {
     }
 
     @Override
-    public Professor criarProfessor(Professor professor) {
+    public Professor criar(Professor professor) {
         return null;
     }
 
     @Override
-    public void removerProfessor(int id) {
+    public void remover(int id) {
         repositorio.removerUsuario(id);
     }
 

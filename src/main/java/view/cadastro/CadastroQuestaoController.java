@@ -4,12 +4,20 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.provas.Prova;
 import models.provas.Questao;
+import services.QuestaoService;
 import view.FuncoesComuns;
+import view.GerenciarQuestoesController;
 
 public class CadastroQuestaoController extends FuncoesComuns {
 
@@ -27,11 +35,33 @@ public class CadastroQuestaoController extends FuncoesComuns {
     @FXML
     TextField campoE;
 
+    @FXML
+    RadioButton respostaA;
+    @FXML
+    RadioButton respostaB;
+    @FXML
+    RadioButton respostaC;
+    @FXML
+    RadioButton respostaD;
+    @FXML
+    RadioButton respostaE;
+
+    private RadioButton[] respostas;
+    private TextField[] campos;
+
     private Prova prova;
     private Questao questao;
 
+    @FXML
+    public void initialize() {
+        // Inicializa os arrays uma única vez
+        respostas = new RadioButton[]{respostaA, respostaB, respostaC, respostaD, respostaE};
+        campos = new TextField[]{campoA, campoB, campoC, campoD, campoE};
+    }
+
     public void setProva(Prova prova) {
         this.prova = prova;
+        System.out.println(prova);
     }
 
     public void setQuestao(Questao questao) {
@@ -44,11 +74,14 @@ public class CadastroQuestaoController extends FuncoesComuns {
             String[] alternativas = questao.getAlternativas();
             campoEnunciado.setText(questao.getEnunciado());
 
-            campoA.setText(alternativas[0]);
-            campoB.setText(alternativas[1]);
-            campoC.setText(alternativas[2]);
-            campoD.setText(alternativas[3]);
-            campoE.setText(alternativas[4]);
+            for (int i = 0; i < campos.length && i < alternativas.length; i++) {
+                campos[i].setText(alternativas[i]);
+            }
+
+            for (int i = 0; i < respostas.length; i++) {
+                respostas[i].setSelected(questao.getIdResposta() == i);
+            }
+
         }
     }
 
@@ -60,27 +93,58 @@ public class CadastroQuestaoController extends FuncoesComuns {
     @FXML
     void cadastrar(ActionEvent evento) throws IOException {
         try {
+            // Verifica se os arrays foram inicializados
+            if (respostas == null || campos == null) {
+                initialize();
+            }
 
-            String[] alternativas = {campoA.getText(),
-                campoB.getText(),
-                campoC.getText(),
-                campoD.getText(),
-                campoE.getText()};
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GerenciarQuestoesView.fxml"));
+            Parent page = loader.load();
+            GerenciarQuestoesController controlador = loader.getController();
+
+
+            QuestaoService questaoService = new QuestaoService();
+
+            String[] alternativas = new String[campos.length];
+            for (int i = 0; i < campos.length; i++) {
+                alternativas[i] = campos[i].getText();
+            }
+
+            int resposta = -1;
+            for (int i = 0; i < respostas.length; i++) {
+                if (respostas[i].isSelected()) {
+                    resposta = i;
+                    break;
+                }
+            }
+
+            if (resposta == -1) {
+                throw new Exception("Selecione a resposta correta");
+            }
 
             if (questao == null) {
-                Questao novaQuestao = new Questao(0, prova.getId(), campoEnunciado.getText(), alternativas);
+                Questao novaQuestao = new Questao(0, prova.getId(), campoEnunciado.getText(), alternativas, resposta);
+                questaoService.criarQuestao(novaQuestao);
+                
             } else {
                 questao.setEnunciado(campoEnunciado.getText());
-                questao.setAlternativa(alternativas);
+                questao.setAlternativas(alternativas);
+                questao.setIdResposta(resposta);
+                questaoService.editarQuestao(questao);
             }
+            controlador.setProva(prova);
+            Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
+            janela.setScene(new Scene(page));
+            janela.setTitle("Gerenciamento de Questões");
+            
+
         } catch (Exception e) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setContentText("Erro ao salvar prova: " + e.getMessage());
+            alerta.setContentText("Erro ao salvar questão: " + e.getMessage());
             alerta.setHeaderText("Erro no cadastro");
             alerta.show();
             e.printStackTrace();
         }
-
-        trocarTela(evento, "/view/GerenciarQuestoesView.fxml", "Gerenciamento de Questões");
     }
 }
+
