@@ -22,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.provas.Prova;
 import models.provas.Questao;
-import services.QuestaoService;
 import view.cadastro.CadastroProvaController;
 import view.cadastro.CadastroQuestaoController;
 
@@ -43,7 +42,6 @@ public class GerenciarQuestoesController extends FuncoesComuns {
     }
 
     private ObjectDAO questaoDAO = new QuestaoDAOImpl();
-    private QuestaoService service = new QuestaoService();
 
     @FXML
     public void initialize() {

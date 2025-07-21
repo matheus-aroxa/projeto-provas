@@ -3,7 +3,7 @@ package view;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-
+import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,9 +11,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import models.provas.Prova;
 import models.provas.Questao;
-import services.QuestaoService;
 
 public class AvaliacaoProvaController extends FuncoesComuns {
+
+    private Fachada fachada;
 
     @FXML
     private Label labelEnunciado;
@@ -40,8 +41,7 @@ public class AvaliacaoProvaController extends FuncoesComuns {
 
     public void setProva(Prova prova) {
         this.prova = prova;
-        QuestaoService questaoService = new QuestaoService();
-        this.questoes = Arrays.asList(questaoService.getQuestoesProva(prova.getId()));
+        this.questoes = Arrays.asList(fachada.getQuestaoService().getQuestoesProva(prova.getId()));
 
         if (this.questoes != null && !this.questoes.isEmpty()) {
 

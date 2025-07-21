@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import view.FuncoesComuns;
 
 public class CadastroController extends FuncoesComuns implements Initializable {
+
 
     @FXML
     private ChoiceBox<String> escolhaUsuario;

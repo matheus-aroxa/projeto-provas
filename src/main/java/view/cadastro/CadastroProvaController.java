@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ import view.GerenciarQuestoesController;
 public class CadastroProvaController extends FuncoesComuns {
 
     private Prova prova;
+    private Fachada fachada;
 
     @FXML
     TextField campoTitulo;
@@ -70,7 +72,6 @@ public class CadastroProvaController extends FuncoesComuns {
             Duration duracao = Duration.ofHours(Long.parseLong(campoDuracao.getText()));
             LocalDateTime data = campoData.getValue().atStartOfDay();
             boolean remoto = btRemoto.isSelected();
-            ProvaService provaService = new ProvaService();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GerenciarQuestoesView.fxml"));
             Parent page = loader.load();
@@ -91,7 +92,7 @@ public class CadastroProvaController extends FuncoesComuns {
                         duracao,
                         remoto
                 );
-                provaService.criarProva(novaProva);
+                fachada.getProvaService().criarProva(novaProva);
                 controlador.setProva(novaProva);
             } else {
                 prova.setTitulo(campoTitulo.getText());
@@ -100,7 +101,7 @@ public class CadastroProvaController extends FuncoesComuns {
                 prova.setDuracao(duracao);
                 prova.setIsRemoto(remoto);
 
-                provaService.editarProva(prova);
+                fachada.getProvaService().editarProva(prova);
                 controlador.setProva(prova);
             }
             Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();

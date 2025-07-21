@@ -2,6 +2,7 @@ package view.cadastro;
 
 import java.io.IOException;
 
+import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,6 +15,7 @@ import view.FuncoesComuns;
 public class CadastroProfessorController extends FuncoesComuns {
 
     private Professor professor;
+    private Fachada fachada;
 
     @FXML
     TextField campoNome;
@@ -52,15 +54,14 @@ public class CadastroProfessorController extends FuncoesComuns {
     @FXML
     void cadastrar(ActionEvent evento) throws IOException {
         try {
-            UsuarioService usuarioService = new UsuarioService();
             Long cpf = Long.valueOf(campoCpf.getText());
             Integer idTurma = 1;
 
             if (professor == null) {
                 Professor novoProfessor = new Professor(0, campoNome.getText(), cpf, campoData.getValue(),
                         campoEmail.getText(), campoSenha.getText(), idTurma, campoDisciplina.getText());
-                
-                usuarioService.criarProfessor(novoProfessor);
+
+                fachada.getUsuarioService().criarProfessor(novoProfessor);
             } else {
                 
                 professor.setNome(campoNome.getText());
@@ -69,7 +70,7 @@ public class CadastroProfessorController extends FuncoesComuns {
                 professor.setDataDeNascimento(campoData.getValue());
                 professor.setSenha(campoSenha.getText());
                 professor.setDisciplina(campoDisciplina.getText());
-                usuarioService.editarProfessor(professor);
+                fachada.getUsuarioService().editarProfessor(professor);
             }
             
             trocarTela(evento, "/view/AdminDashboardView.fxml", "Gerenciamento de Professores");

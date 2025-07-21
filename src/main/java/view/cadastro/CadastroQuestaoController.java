@@ -2,6 +2,7 @@ package view.cadastro;
 
 import java.io.IOException;
 
+import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ import view.FuncoesComuns;
 import view.GerenciarQuestoesController;
 
 public class CadastroQuestaoController extends FuncoesComuns {
+
+    private Fachada fachada;
 
     @FXML
     TextArea campoEnunciado;
@@ -101,8 +104,6 @@ public class CadastroQuestaoController extends FuncoesComuns {
             GerenciarQuestoesController controlador = loader.getController();
 
 
-            QuestaoService questaoService = new QuestaoService();
-
             String[] alternativas = new String[campos.length];
             for (int i = 0; i < campos.length; i++) {
                 alternativas[i] = campos[i].getText();
@@ -122,13 +123,13 @@ public class CadastroQuestaoController extends FuncoesComuns {
 
             if (questao == null) {
                 Questao novaQuestao = new Questao(0, prova.getId(), campoEnunciado.getText(), alternativas, resposta);
-                questaoService.criarQuestao(novaQuestao);
+                fachada.getQuestaoService().criarQuestao(novaQuestao);
                 
             } else {
                 questao.setEnunciado(campoEnunciado.getText());
                 questao.setAlternativas(alternativas);
                 questao.setIdResposta(resposta);
-                questaoService.editarQuestao(questao);
+                fachada.getQuestaoService().editarQuestao(questao);
             }
             controlador.setProva(prova);
             Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
