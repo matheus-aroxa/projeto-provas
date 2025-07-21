@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import DAO.ProvaDAO;
-import DAO.ProvaDaoImpl;
+import DAO.ProvaDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +35,7 @@ public class GerenciarProvasController extends FuncoesComuns{
     private TableColumn<Prova ,LocalDateTime> colunaData;
 
 
-    private ProvaDAO provaDAO = new ProvaDaoImpl();
+    private ProvaDAO provaDAO = new ProvaDAOImpl();
 
     @FXML
     public void initialize(){

@@ -10,7 +10,7 @@ import repos.RepositorioUsuarios;
 public class AlunoDAOImpl implements AlunoDAO {
 
     // Pega a instância única do seu repositório de usuários
-    private RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100); // Defina um tamanho padrão
+    private final RepositorioUsuarios repositorio = RepositorioUsuarios.getInstance(100); // Defina um tamanho padrão
 
     @Override
     public List<Aluno> findAll() {

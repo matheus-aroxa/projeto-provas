@@ -1,33 +1,42 @@
 package repos;
 
-import models.provas.Questao;
-
 import java.util.concurrent.atomic.AtomicInteger;
+
+import models.provas.Questao;
 
 public class RepositorioQuestoes {
 
     private Questao[] questoes;
     private static AtomicInteger contador = new AtomicInteger();
     private static RepositorioQuestoes instance;
-    private int tamanho;
-
-    public static RepositorioQuestoes getInstance(int tam){
-        if(instance == null){
-            instance = new RepositorioQuestoes(tam);
-        }
-            return instance;
-    }
 
     private RepositorioQuestoes(int tamanho) {
         this.questoes = new Questao[tamanho];
-        this.tamanho = 0;
     }
 
-    public void adicionar(String enunciado, Integer[] idAlternativas) {
-        questoes[contador.get()] = new Questao(contador.getAndIncrement(),enunciado,idAlternativas);
+    public static RepositorioQuestoes getInstance(int tam) {
+        if (instance == null) {
+            instance = new RepositorioQuestoes(tam);
+        }
+        return instance;
     }
 
-    public Questao[] getAllQuestoes() {
+    public void criarQuestao(Questao questao) {
+        questoes[contador.get()] = new Questao(contador.getAndIncrement(),questao.getIdProva(), questao.getEnunciado(), questao.getAlternativas());
+    }
+
+    public void editar(Questao questao) {
+        int posicao = procurar(questao.getId());
+        if(posicao != -1){
+            Questao questaoExistente = questoes[posicao];
+            
+            questaoExistente.setEnunciado(questao.getEnunciado());
+            questaoExistente.setAlternativa(questao.getAlternativas());
+
+        }
+    }
+
+    public Questao[] getQuestoes() {
         return questoes;
     }
 
@@ -35,40 +44,27 @@ public class RepositorioQuestoes {
         return contador;
     }
 
-    public Integer getTamanho() {
-        return tamanho;
-    }
-
-    public Questao procurar(int id) {
+    public int procurar(int id) {
         for (Questao q : this.questoes) {
             if (q.getId() == id) {
-                return q;
+                return q.getId();
             }
         }
-        return null;
+        return -1;
     }
 
-    public Questao remover(int id) {
-        for (int i = 0; i < tamanho; i++) {
-            if (questoes[i].getId() == id) {
-                Questao questR = questoes[i];
-                for (int j = i; j < tamanho - 1; j++) {
-                    questoes[j] = questoes[j + 1];
-                }
-                questoes[tamanho - 1] = null;
-                tamanho--;
-                return questR;
-            }
-        }
-        return null;
+    public void remover(int id) {
+        int busca = procurar(id);
+        if(busca == -1) return;
+
+        for(int i = 0; i < questoes.length;i++)
+            questoes[i] = questoes[i + 1];
+        
+        questoes[questoes.length -1 ] = null;
     }
 
-
-
-    public Questao[] listar(){
-       return questoes;
+    public Questao[] listar() {
+        return questoes;
     }
-
-    public void editar(Questao quest){};
 
 }

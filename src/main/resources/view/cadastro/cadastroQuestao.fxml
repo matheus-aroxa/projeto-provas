@@ -19,7 +19,7 @@
       <HBox prefHeight="130.0" prefWidth="569.0">
          <children>
             <Label text="Enunciado :" />
-            <TextArea prefHeight="37.0" prefWidth="500.0" />
+            <TextArea fx:id="campoEnunciado" prefHeight="37.0" prefWidth="500.0" />
          </children>
          <VBox.margin>
             <Insets bottom="10.0" />
@@ -47,11 +47,11 @@
             <RadioButton mnemonicParsing="false" text="C" toggleGroup="$respostaQuestao" GridPane.rowIndex="2" />
             <RadioButton mnemonicParsing="false" text="D" toggleGroup="$respostaQuestao" GridPane.rowIndex="3" />
             <RadioButton mnemonicParsing="false" text="E" toggleGroup="$respostaQuestao" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="campoA" GridPane.columnIndex="1" />
+            <TextField fx:id="campoB" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="campoC" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="campoD" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="campoE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">

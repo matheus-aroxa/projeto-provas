@@ -1,23 +1,23 @@
 package DAO;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import models.provas.Prova;
 import repos.RepositorioProvas;
 
-public class ProvaDaoImpl implements ProvaDAO {
+public class ProvaDAOImpl implements ProvaDAO {
 
-    private RepositorioProvas repositorio = RepositorioProvas.getInstance(10);
+    private final RepositorioProvas repositorio = RepositorioProvas.getInstance(10);
 
     @Override
     public List<Prova> findAll() {
         List<Prova> listaDeProvas = new ArrayList<>();
         Prova[] todasAsProvas = repositorio.getProvas();
 
-        for (Prova prova : todasAsProvas) {            
-            listaDeProvas.add(prova);
-        }
+        listaDeProvas.addAll(Arrays.asList(todasAsProvas));
+        
         return listaDeProvas;
     }
 

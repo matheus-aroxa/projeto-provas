@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 public class Questao {
     private int id;
+    private int idProva;
     private String enunciado;
-    private Integer[] idAlternativas;
+    private String[] alternativas;
 
-    public Questao(int id, String enunciado, Integer[] idAlternativas) {
+    public Questao(int id, int idProva, String enunciado, String[] alternativas) {
         this.id = id;
+        this.idProva = idProva;
         this.enunciado = enunciado;
-        this.idAlternativas = idAlternativas;
+        this.alternativas = alternativas;
     }
 
     public Questao() {
@@ -24,6 +26,14 @@ public class Questao {
         this.id = id;
     }
 
+    public int getIdProva() {
+        return idProva;
+    }
+
+    public void setIdProva(int id) {
+        this.idProva = id;
+    }
+
     public String getEnunciado() {
         return enunciado;
     }
@@ -32,12 +42,12 @@ public class Questao {
         this.enunciado = enunciado;
     }
 
-    public Integer[] getIdAlternativas() {
-        return idAlternativas;
+    public String[] getAlternativas() {
+        return alternativas;
     }
 
-    public void setIdAlternativas(Integer[] idAlternativas) {
-        this.idAlternativas = idAlternativas;
+    public void setAlternativa(String[] alternativas) {
+        this.alternativas = alternativas;
     }
 
     @Override
@@ -45,11 +55,8 @@ public class Questao {
         return "Questão{" +
                 "id=" + id +
                 ", enunciado='" + enunciado + '\'' +
-                ", idAlternativas=" + Arrays.toString(idAlternativas) +
+                ", alternativas=" + Arrays.toString(alternativas) +
                 '}';
     }
     
-    public void editarEnunciado(Questao questao, String enu){ questao.setEnunciado(enu);}
-
-    public void editarAlternativas(Questao questao, Integer[] id){ questao.setIdAlternativas(id);} // isso aqui ta zoado
 }

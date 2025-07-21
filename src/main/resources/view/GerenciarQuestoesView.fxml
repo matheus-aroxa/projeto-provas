@@ -20,7 +20,7 @@
         <TableView fx:id="tabelaQuestoes" layoutX="24.0" layoutY="85.0" prefHeight="300.0" prefWidth="701.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
             <columns>
                 <TableColumn fx:id="colunaId" prefWidth="40.0" text="Nº" />
-                <TableColumn fx:id="colunaCpf" prefWidth="660.0" text="Titulo" />
+                <TableColumn fx:id="colunaEnunciado" prefWidth="660.0" text="Enunciado" />
             </columns>
         </TableView>
 
