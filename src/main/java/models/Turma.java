@@ -9,14 +9,14 @@ import java.util.List;
 public class Turma {
     private int id;
     private String nome;
-    private Professor professor;
+    private int idProfessor;
     private List<Integer> alunos;
     private List<Prova> provas;
 
-    public Turma(int id, String nome, Professor professor) {
+    public Turma(int id, String nome, int professor) {
         this.id = id;
         this.nome = nome;
-        this.professor = professor;
+        idProfessor = professor;
         this.alunos = new ArrayList<>();
         this.provas = new ArrayList<>();
     }
@@ -40,12 +40,12 @@ public class Turma {
         this.nome = nome;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public int getIdProfessor() {
+        return idProfessor;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
     }
 
     public List<Integer> getAlunos() {

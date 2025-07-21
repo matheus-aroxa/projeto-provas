@@ -20,7 +20,7 @@ public class RepositorioTurmas {
         return instance;
     }
 
-    public void adicionar( String nome, Professor professor) { //seria bom mudar de Professor para id de professor
+    public void adicionar( String nome, int professor) { //seria bom mudar de Professor para id de professor
         turmas[contador.get()] = new Turma(contador.getAndIncrement(),nome,professor);
     }
 

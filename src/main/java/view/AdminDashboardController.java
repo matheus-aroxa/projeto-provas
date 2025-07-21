@@ -33,7 +33,7 @@ public class AdminDashboardController extends FuncoesComuns {
     }
 
     public void turmas(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "paneTurmaAdm.fxml");
+        trocarAba(contentArea, "GerenciarTurmaView.fxml");
     }
 
     public void settings(ActionEvent event) throws IOException {
