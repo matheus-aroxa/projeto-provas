@@ -12,11 +12,10 @@ public class QuestaoDAOImpl implements ObjectDAO<Questao>{
     private final RepositorioQuestoes repositorio = RepositorioQuestoes.getInstance(10);
 
     @Override
-    public List<Questao> findAll() {
-        List<Questao> listaDeQuestoes = new ArrayList<>();
-        listaDeQuestoes.addAll(Arrays.asList(repositorio.getQuestoes()));
-        return listaDeQuestoes;    
-    }
+public List<Questao> findAll() {
+    Questao[] questoes = repositorio.listar();
+    return new ArrayList<>(Arrays.asList(questoes));
+}
 
     @Override
     public Questao criar(Questao questao) {

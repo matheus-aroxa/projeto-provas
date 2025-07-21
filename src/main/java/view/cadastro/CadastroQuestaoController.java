@@ -23,31 +23,14 @@ import view.GerenciarQuestoesController;
 public class CadastroQuestaoController extends FuncoesComuns {
 
     private Fachada fachada;
-
     @FXML
     TextArea campoEnunciado;
 
     @FXML
-    TextField campoA;
-    @FXML
-    TextField campoB;
-    @FXML
-    TextField campoC;
-    @FXML
-    TextField campoD;
-    @FXML
-    TextField campoE;
+    TextField campoA, campoB, campoC, campoD, campoE;
 
     @FXML
-    RadioButton respostaA;
-    @FXML
-    RadioButton respostaB;
-    @FXML
-    RadioButton respostaC;
-    @FXML
-    RadioButton respostaD;
-    @FXML
-    RadioButton respostaE;
+    RadioButton respostaA, respostaB, respostaC, respostaD, respostaE;
 
     private RadioButton[] respostas;
     private TextField[] campos;
@@ -104,6 +87,8 @@ public class CadastroQuestaoController extends FuncoesComuns {
             GerenciarQuestoesController controlador = loader.getController();
 
 
+            QuestaoService questaoService = new QuestaoService();
+
             String[] alternativas = new String[campos.length];
             for (int i = 0; i < campos.length; i++) {
                 alternativas[i] = campos[i].getText();
@@ -124,7 +109,14 @@ public class CadastroQuestaoController extends FuncoesComuns {
             if (questao == null) {
                 Questao novaQuestao = new Questao(0, prova.getId(), campoEnunciado.getText(), alternativas, resposta);
                 fachada.getQuestaoService().criarQuestao(novaQuestao);
-                
+
+                novaQuestao.setIdProva(prova.getId());
+                novaQuestao.setEnunciado(campoEnunciado.getText());
+                novaQuestao.setAlternativas(alternativas);
+                novaQuestao.setIdResposta(resposta);
+
+                questaoService.criarQuestao(novaQuestao);
+
             } else {
                 questao.setEnunciado(campoEnunciado.getText());
                 questao.setAlternativas(alternativas);
@@ -135,7 +127,6 @@ public class CadastroQuestaoController extends FuncoesComuns {
             Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
             janela.setScene(new Scene(page));
             janela.setTitle("Gerenciamento de Questões");
-            
 
         } catch (Exception e) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -146,4 +137,3 @@ public class CadastroQuestaoController extends FuncoesComuns {
         }
     }
 }
-

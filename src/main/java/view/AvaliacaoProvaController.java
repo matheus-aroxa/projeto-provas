@@ -6,6 +6,7 @@ import java.util.List;
 import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -18,25 +19,27 @@ public class AvaliacaoProvaController extends FuncoesComuns {
 
     @FXML
     private Label labelEnunciado;
-
     @FXML
     private ToggleGroup alternativasGroup;
     @FXML
-    private Label alternativaA,alternativaB,alternativaC,alternativaD,alternativaE;
+    private Label alternativaA, alternativaB, alternativaC, alternativaD, alternativaE;
     @FXML
     private RadioButton respostaA, respostaB, respostaC, respostaD, respostaE;
     @FXML
-    private javafx.scene.control.Button btProximo, btAnterior;
+    private Button btProximo, btAnterior;
 
     private Prova prova;
     private List<Questao> questoes;
     private int[] respostas;
-    private int questaoAtual;
+    private int questaoAtual = 0;
+
     private List<RadioButton> radioButtons;
+    private List<Label> alternativeLabels;
 
     @FXML
     private void initialize() {
         radioButtons = Arrays.asList(respostaA, respostaB, respostaC, respostaD, respostaE);
+        alternativeLabels = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE); // ADICIONADO
     }
 
     public void setProva(Prova prova) {
@@ -44,38 +47,42 @@ public class AvaliacaoProvaController extends FuncoesComuns {
         this.questoes = Arrays.asList(fachada.getQuestaoService().getQuestoesProva(prova.getId()));
 
         if (this.questoes != null && !this.questoes.isEmpty()) {
-
             this.respostas = new int[this.questoes.size()];
             Arrays.fill(this.respostas, -1);
-
             carregarQuestao();
         } else {
-            // Tratar caso de prova sem questões
             labelEnunciado.setText("Esta prova não contém questões.");
             btAnterior.setDisable(true);
             btProximo.setDisable(true);
+
+            for (int i = 0; i < radioButtons.size(); i++) {
+                radioButtons.get(i).setVisible(false);
+                alternativeLabels.get(i).setVisible(false);
+            }
         }
     }
 
-     private void carregarQuestao() {
-        // Limpa a seleção anterior
-        alternativasGroup.selectToggle(null);
+    private void carregarQuestao() {
+        if (alternativasGroup.getSelectedToggle() != null) {
+            alternativasGroup.getSelectedToggle().setSelected(false);
+        }
 
         Questao questao = questoes.get(questaoAtual);
-        
         labelEnunciado.setText(questao.getEnunciado());
 
-        List<String> alternativas = Arrays.asList(questao.getAlternativas());
-        for (int i = 0; i < radioButtons.size(); i++) {
-            if (i < alternativas.size()) {
-                radioButtons.get(i).setText(alternativas.get(i));
+        String[] alternativas = questao.getAlternativas();
+
+        for (int i = 0; i < alternativeLabels.size(); i++) {
+            if (i < alternativas.length) {
+                alternativeLabels.get(i).setText(alternativas[i]);
+                alternativeLabels.get(i).setVisible(true);
                 radioButtons.get(i).setVisible(true);
             } else {
-                radioButtons.get(i).setVisible(false); // Esconde rádios não utilizados
+                alternativeLabels.get(i).setVisible(false);
+                radioButtons.get(i).setVisible(false);
             }
         }
 
-        // Restaura a resposta do usuário se ele já respondeu esta questão
         if (respostas[questaoAtual] != -1) {
             radioButtons.get(respostas[questaoAtual]).setSelected(true);
         }
@@ -86,13 +93,11 @@ public class AvaliacaoProvaController extends FuncoesComuns {
     private void salvarRespostaAtual() {
         RadioButton selectedRadio = (RadioButton) alternativasGroup.getSelectedToggle();
         if (selectedRadio != null) {
-            int respostaIndex = radioButtons.indexOf(selectedRadio);
-            respostas[questaoAtual] = respostaIndex;
+            respostas[questaoAtual] = radioButtons.indexOf(selectedRadio);
         } else {
-            respostas[questaoAtual] = -1; // Nenhuma alternativa selecionada
+            respostas[questaoAtual] = -1;
         }
     }
-
 
     @FXML
     void handleAnterior(ActionEvent event) {
@@ -106,13 +111,10 @@ public class AvaliacaoProvaController extends FuncoesComuns {
     @FXML
     void handleProximo(ActionEvent event) throws IOException {
         salvarRespostaAtual();
-
         if (questaoAtual < questoes.size() - 1) {
-            // Se não for a última questão, avança
             questaoAtual++;
             carregarQuestao();
         } else {
-            // Se for a última questão (botão "Finalizar"), finaliza a prova
             finalizarProva(event);
         }
     }
@@ -120,23 +122,11 @@ public class AvaliacaoProvaController extends FuncoesComuns {
     private void finalizarProva(ActionEvent event) throws IOException {
         System.out.println("Prova finalizada!");
         System.out.println("Respostas salvas: " + Arrays.toString(respostas));
-        
-        // Aqui você pode adicionar a lógica para salvar o array 'respostas' no banco de dados
-        // associado ao aluno e à prova.
-        
-        // Exemplo: voltando para o menu do aluno
         trocarTela(event, "AlunoDashboardView.fxml", "Menu do Aluno");
     }
-    
-    private void atualizarEstadoBotoes() {
-        // Desabilita "Anterior" na primeira questão
-        btAnterior.setDisable(questaoAtual == 0);
 
-        // Muda o texto de "Próximo" para "Finalizar" na última questão
-        if (questaoAtual == questoes.size() - 1) {
-            btProximo.setText("Finalizar");
-        } else {
-            btProximo.setText("Próximo");
-        }
+    private void atualizarEstadoBotoes() {
+        btAnterior.setDisable(questaoAtual == 0);
+        btProximo.setText(questaoAtual == questoes.size() - 1 ? "Finalizar" : "Próxima");
     }
 }

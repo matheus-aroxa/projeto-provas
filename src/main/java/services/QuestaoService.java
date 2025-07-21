@@ -2,10 +2,10 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Exceptions.ArrayIsFullException;
 import Exceptions.InvalidIdException;
-import Exceptions.ObjectAlreadyExistsException;
 import Exceptions.QuestaoNotExistsException;
 import Exceptions.RequiredArgumentIsNullException;
 import models.provas.Questao;
@@ -15,34 +15,35 @@ public class QuestaoService {
 
     private RepositorioQuestoes repositorio = RepositorioQuestoes.getInstance(10);
 
-    public void criarQuestao(Questao questao) {
+    // services/QuestaoService.java (CORRIGIDO)
 
-        if (questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
-                || questao.getAlternativas() == null) {
+public void criarQuestao(Questao questao) {
+    
+    if (questao.getEnunciado() == null || questao.getEnunciado().isEmpty()
+            || questao.getAlternativas() == null) {
+        throw new RequiredArgumentIsNullException();
+    }
+
+    for (String alternativa : questao.getAlternativas()) {
+        if (alternativa == null || alternativa.isEmpty()) {
             throw new RequiredArgumentIsNullException();
         }
-
-        for (String alternativa : questao.getAlternativas()) {
-            if (alternativa == null || alternativa.isEmpty()) {
-                throw new RequiredArgumentIsNullException();
-            }
-        }
-
-        if (repositorio.getContador().get() >= 10) {
-            throw new ArrayIsFullException();
-        }
-
-        if (repositorio.procurar(questao.getId()) != -1) {
-            throw new ObjectAlreadyExistsException("Já existe uma questão com este ID");
-        }
-
-        repositorio.criarQuestao(questao);
-
-        for (Questao q : repositorio.getQuestoes()) {
-            System.out.println(q);
-        }
-        System.out.println("---------------------------");
     }
+
+    if (repositorio.getContador().get() >= 10) {
+        throw new ArrayIsFullException();
+    }
+
+    int novoId = repositorio.getProximoId();
+    questao.setId(novoId);
+
+    repositorio.criarQuestao(questao);
+
+    for (Questao q : repositorio.getQuestoes()) {
+        System.out.println(q);
+    }
+    System.out.println("---------------------------");
+}
 
     public void editarQuestao(Questao questao) {
         if (questao == null) {
@@ -84,12 +85,15 @@ public class QuestaoService {
     }
 
     public Questao[] getQuestoesProva(int idProva) {
-        List<Questao> resultado = new ArrayList<>();
-        for (Questao q : repositorio.listar()) {
-            if (q != null && q.getIdProva() == idProva) {
-                resultado.add(q);
-            }
-        }
-        return resultado.toArray(new Questao[0]);
+    // Validação básica do input
+    if (idProva <= 0) {
+        throw new IllegalArgumentException("ID da prova deve ser um número positivo");
     }
+
+    // Filtra diretamente as questões do repositório
+    return repositorio.listar().stream()
+            .filter(Objects::nonNull) // Remove questões nulas se existirem
+            .filter(q -> q.getIdProva() == idProva)
+            .toArray(Questao[]::new);
+}
 }
