@@ -1,7 +1,6 @@
 package DAO;
 
 import models.Turma;
-import models.usuarios.professor.Professor;
 
 public interface TurmaDAO {
 

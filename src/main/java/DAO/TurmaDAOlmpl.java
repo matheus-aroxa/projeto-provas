@@ -1,13 +1,7 @@
 package DAO;
 
 import models.Turma;
-import models.usuarios.Aluno;
-import models.usuarios.Usuario;
-import models.usuarios.professor.Professor;
 import repos.RepositorioTurmas;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TurmaDAOlmpl implements TurmaDAO{
     private final RepositorioTurmas repositorio = RepositorioTurmas.getInstance(100);

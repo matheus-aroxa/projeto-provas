@@ -1,10 +1,12 @@
 package view;
 
-import DAO.ProfessorDAO;
+
+import java.io.IOException;
+
+import DAO.ObjectDAO;
 import DAO.ProfessorDAOImpl;
 import DAO.TurmaDAO;
 import DAO.TurmaDAOlmpl;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Turma;
-import models.usuarios.Usuario;
-
-import java.io.IOException;
-import java.util.List;
+import models.usuarios.professor.Professor;
 
 public class GerenciarTurmaController extends FuncoesComuns{
 
@@ -33,7 +32,7 @@ public class GerenciarTurmaController extends FuncoesComuns{
     private TableColumn<Turma, Integer> colunaAlunos;
 
     private TurmaDAO turmaDAO = new TurmaDAOlmpl();
-    private ProfessorDAO professorDAO = new ProfessorDAOImpl();
+    private ObjectDAO<Professor> professorDAO = new ProfessorDAOImpl();
 
     public void initialize(){
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
