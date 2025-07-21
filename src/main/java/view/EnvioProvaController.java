@@ -9,11 +9,11 @@ public class EnvioProvaController extends FuncoesComuns {
 
     @FXML
     void handleEnviarProva(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarProvasView.fxml", "Gerenciamento de Provas");
+        trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciamento de Provas");
     }
 
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarProvasView.fxml", "Gerenciamento de Provas");
+        trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciamento de Provas");
     }
 }

@@ -25,7 +25,7 @@ public class AlunoDashboardController extends FuncoesComuns {
     }
 
     public void provas(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "");
+        trocarAba(contentArea, "EscolhaProvaView.fxml");
     }
 
     public void notas(ActionEvent event) throws IOException {

@@ -4,12 +4,19 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import models.provas.Prova;
 
 public class GerenciarQuestoesController extends FuncoesComuns {
 
+    private Prova prova;
+
+    public void setProva(Prova prova){
+        this.prova = prova;
+    }
+
     @FXML
     void handleVoltar(ActionEvent event) throws IOException {
-        trocarTela(event, "ProfessorDashboardView.fxml", "Gerenciar Provas");
+        trocarTela(event, "cadastro/cadastroProva.fxml", "Gerenciar Provas");
     }
 
     @FXML
@@ -24,6 +31,6 @@ public class GerenciarQuestoesController extends FuncoesComuns {
 
     @FXML
     void handleCadastrarQuestoes(ActionEvent event) throws IOException {
-        trocarTela(event, "GerenciarProvasView.fxml", "Gerenciar Provas");
+        trocarTela(event, "/view/ProfessorDashboardView.fxml", "Gerenciar Provas");
     }
 }

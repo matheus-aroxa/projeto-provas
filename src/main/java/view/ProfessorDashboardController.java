@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -27,7 +25,7 @@ public class ProfessorDashboardController extends FuncoesComuns {
     }
 
     public void provas(ActionEvent event) throws IOException {
-        trocarAba(contentArea, "");
+        trocarAba(contentArea, "GerenciarProvasView.fxml");
     }
 
     public void notas(ActionEvent event) throws IOException {

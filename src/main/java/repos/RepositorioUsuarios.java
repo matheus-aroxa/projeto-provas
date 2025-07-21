@@ -74,6 +74,7 @@ public class RepositorioUsuarios {
 
             if (usuarioExistente instanceof Professor) {
                 Professor professorExistente = (Professor) usuarioExistente;
+                
                 professorExistente.setNome(professor.getNome());
                 professorExistente.setCpf(professor.getCpf());
                 professorExistente.setDataDeNascimento(professor.getDataDeNascimento());

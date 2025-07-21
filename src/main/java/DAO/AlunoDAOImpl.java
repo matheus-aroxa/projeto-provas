@@ -1,12 +1,11 @@
 package DAO;
 
-import models.usuarios.Aluno;
-import models.usuarios.Usuario;
-import repos.RepositorioUsuarios; // Importe seu repositório
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import models.usuarios.Aluno; // Importe seu repositório
+import models.usuarios.Usuario;
+import repos.RepositorioUsuarios;
 
 public class AlunoDAOImpl implements AlunoDAO {
 
