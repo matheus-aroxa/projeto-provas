@@ -1,7 +1,8 @@
 package services;
 
+import java.util.List;
+
 import models.Turma;
-import models.usuarios.professor.Professor;
 import repos.RepositorioTurmas;
 
 public class TurmaService {
@@ -14,5 +15,9 @@ public class TurmaService {
             return true;
         }
         return false;
+    }
+
+    public List<Turma> listarTodasAsTurmas() {
+        return repositorio.listarTodas();
     }
 }
