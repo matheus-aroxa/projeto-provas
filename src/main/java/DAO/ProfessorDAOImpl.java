@@ -36,4 +36,17 @@ public class ProfessorDAOImpl implements ObjectDAO<Professor> {
         repositorio.removerUsuario(id);
     }
 
+    public String getNomePorId(int id) {
+        Professor professor = repositorio.getProfessor(id); // seu método de busca
+        if(professor != null) {
+                return professor.getNome();
+        }
+        return "Desconhecido";
+        }
+
+        public int getIdPorNome(String nome){
+        int id = repositorio.getProfessorByName(nome);
+        return id;
+        }
+
 }
