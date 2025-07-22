@@ -11,4 +11,8 @@ public interface ProfessorDAO {
     public Professor criarProfessor(Professor professor);
 
     public void removerProfessor(int id);
+
+    public String getNomePorId(int id);
+
+    public int getIdPorNome(String nome);
 }

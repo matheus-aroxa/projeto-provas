@@ -19,7 +19,6 @@
                     <columns>
                         <TableColumn fx:id="colunaNome" prefWidth="75.0" text="Nome" />
                         <TableColumn fx:id="colunaId" prefWidth="75.0" text="ID " />
-                        <TableColumn fx:id="colunaProfessor" prefWidth="75.0" text="Professor" />
                   <TableColumn fx:id="colunaAlunos" prefWidth="75.0" text="Alunos" />
                     </columns>
                     <columnResizePolicy>

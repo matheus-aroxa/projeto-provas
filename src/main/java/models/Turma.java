@@ -24,6 +24,12 @@ public class Turma {
     public Turma() {
     }
 
+    public Turma(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+        this.alunos = new ArrayList<>();
+    }
+
     public int getId() {
         return id;
     }
@@ -62,5 +68,15 @@ public class Turma {
 
     public void setProvas(List<Prova> provas) {
         this.provas = provas;
+    }
+
+    public int getQuantAlunos() {
+        return alunos == null ? 0 : alunos.size();
+    }
+
+    public void adicionarAluno(int idAluno) {
+        if (!alunos.contains(idAluno)) {
+            alunos.add(idAluno);
+        }
     }
 }

@@ -2,6 +2,11 @@ package repos;
 
 import models.Turma;
 import models.usuarios.professor.Professor;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RepositorioTurmas {
@@ -20,8 +25,12 @@ public class RepositorioTurmas {
         return instance;
     }
 
-    public void adicionar( String nome, int professor) { //seria bom mudar de Professor para id de professor
+    public void adicionar( String nome, int professor) {
         turmas[contador.get()] = new Turma(contador.getAndIncrement(),nome,professor);
+    }
+
+    public void add(String nome) {
+        turmas[contador.get()] = new Turma(contador.getAndIncrement(),nome);
     }
 
     public Turma procurar(int id) {
@@ -33,13 +42,25 @@ public class RepositorioTurmas {
         return null;
     }
 
+    public Turma buscarAlunoPorId(int id) {
+        for (int i = 0; i < tam; i++) {
+            if (turmas[i].getId() == id) {
+                return turmas[i];
+            }
+        }
+        return null;
+    }
+
     public Turma[] getAllTurmas() {
-        return turmas;
+        if(turmas != null) {
+            return turmas;
+        }
+        return null;
     }
 
     public Turma remover(int id) {
-        for(int i = 0; i < turmas.length; i++) {
-            if(turmas[i].getId() == id) {
+        for(int i = 0; i < tam; i++) {
+            if(turmas[i] != null || turmas[i].getId() == id) {
                 Turma ex = turmas[i];
                 for(int j = i; j < tam - 1; j++) {
                     turmas[j] = turmas[j + 1];
@@ -51,6 +72,4 @@ public class RepositorioTurmas {
         }
         return null;
     }
-
-    public void updateTurma(Turma turma){};
 }
