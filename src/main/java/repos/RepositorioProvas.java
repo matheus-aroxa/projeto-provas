@@ -70,4 +70,13 @@ public class RepositorioProvas {
         provas[provas.length - 1] = null;
     }
 
+    public Prova buscarPorId(int id) {
+        for (int i = 0; i < provas.length; i++) {
+            if (provas[i] != null && provas[i].getId() == id) {
+                return provas[i];
+            }
+        }
+        return null;
+    }
+
 }

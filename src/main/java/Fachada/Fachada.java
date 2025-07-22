@@ -12,12 +12,27 @@ public class Fachada {
 
     private QuestaoService questaoService;
 
+    private static Fachada instance;
+
+    private Fachada() {
+        this.usuarioService = new UsuarioService();
+        this.provaService = new ProvaService();
+        this.questaoService = new QuestaoService();
+    }
+
+    
     public Fachada(UsuarioService usuarioService, ProvaService provaService, QuestaoService questaoService) {
         this.usuarioService = usuarioService;
         this.provaService = provaService;
         this.questaoService = questaoService;
     }
-
+    
+    public static Fachada getInstance() {
+        if (instance == null) {
+            instance = new Fachada();
+        }
+        return instance;
+    }
     public UsuarioService getUsuarioService() {
         return usuarioService;
     }

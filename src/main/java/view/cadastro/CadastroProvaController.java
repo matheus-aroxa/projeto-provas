@@ -18,14 +18,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.provas.Prova;
-import services.ProvaService;
 import view.FuncoesComuns;
 import view.GerenciarQuestoesController;
 
 public class CadastroProvaController extends FuncoesComuns {
 
     private Prova prova;
-    private Fachada fachada;
+    
 
     @FXML
     TextField campoTitulo;
@@ -39,6 +38,12 @@ public class CadastroProvaController extends FuncoesComuns {
     TextField campoDuracao;
     @FXML
     RadioButton btPresencial;
+    
+    private Fachada fachada = Fachada.getInstance();
+    
+    public CadastroProvaController(){
+        this.fachada = Fachada.getInstance();
+    }
 
     public void setProva(Prova prova) {
         this.prova = prova;
@@ -57,7 +62,6 @@ public class CadastroProvaController extends FuncoesComuns {
             } else {
                 btPresencial.setSelected(true);
             }
-
         }
     }
 

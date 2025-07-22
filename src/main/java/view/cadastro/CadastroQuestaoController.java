@@ -22,7 +22,7 @@ import view.GerenciarQuestoesController;
 
 public class CadastroQuestaoController extends FuncoesComuns {
 
-    private Fachada fachada;
+    private Fachada fachada = Fachada.getInstance();
     @FXML
     TextArea campoEnunciado;
 
@@ -86,7 +86,6 @@ public class CadastroQuestaoController extends FuncoesComuns {
             Parent page = loader.load();
             GerenciarQuestoesController controlador = loader.getController();
 
-
             QuestaoService questaoService = new QuestaoService();
 
             String[] alternativas = new String[campos.length];
@@ -107,17 +106,19 @@ public class CadastroQuestaoController extends FuncoesComuns {
             }
 
             if (questao == null) {
+                // 1. Verifica se a prova foi definida antes de usá-la
+                if (this.prova == null) {
+                    throw new Exception("A prova associada não foi definida.");
+                }
+
+                // 2. Cria o objeto já com todos os dados
                 Questao novaQuestao = new Questao(0, prova.getId(), campoEnunciado.getText(), alternativas, resposta);
+
+                // 3. Usa a Fachada para criar a questão UMA ÚNICA VEZ
                 fachada.getQuestaoService().criarQuestao(novaQuestao);
 
-                novaQuestao.setIdProva(prova.getId());
-                novaQuestao.setEnunciado(campoEnunciado.getText());
-                novaQuestao.setAlternativas(alternativas);
-                novaQuestao.setIdResposta(resposta);
-
-                questaoService.criarQuestao(novaQuestao);
-
             } else {
+                // A lógica de edição está correta
                 questao.setEnunciado(campoEnunciado.getText());
                 questao.setAlternativas(alternativas);
                 questao.setIdResposta(resposta);

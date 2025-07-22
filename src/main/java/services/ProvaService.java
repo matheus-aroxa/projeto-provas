@@ -1,71 +1,41 @@
 package services;
 
-import Exceptions.ArrayIsFullException;
-import Exceptions.InvalidIdException;
-import Exceptions.ObjectAlreadyExistsException;
-import Exceptions.ProvaNotExistsException;
-import Exceptions.RequiredArgumentIsNullException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import models.provas.Prova;
-import repos.RepositorioProvas;
+import repos.RepositorioProvas; // Importe o repositório
 
 public class ProvaService {
 
-    private RepositorioProvas repositorio = RepositorioProvas.getInstance(10);
+    // O serviço conversa diretamente com o repositório
+    private RepositorioProvas repositorioProvas = RepositorioProvas.getInstance(10);
 
     public void criarProva(Prova prova) {
-
-    if (prova.getTitulo() == null || prova.getTitulo().isEmpty()
-            || prova.getDataAplicacao() == null
-            || prova.getDescricao() == null || prova.getDescricao().isEmpty()
-            || prova.getDuracao() == null) {
-        throw new RequiredArgumentIsNullException();
+        if (prova == null || prova.getTitulo() == null || prova.getTitulo().isEmpty()) {
+            // Lançar uma exceção apropriada aqui
+            throw new IllegalArgumentException("Prova ou título não pode ser nulo/vazio.");
+        }
+        // Lógica para gerar ID, se necessário, e salvar
+        repositorioProvas.criarProva(prova); // Assumindo que o repositório tem um método criar()
     }
-
-    if (repositorio.getContador().get() >= repositorio.getProvas().length) {
-        throw new ArrayIsFullException();
-    }
-
-    int novoId = repositorio.getContador().get() + 1;
-    prova.setId(novoId);
-
-    if (repositorio.procurar(novoId) != -1) {
-        throw new ObjectAlreadyExistsException("Já existe uma prova com o ID: " + novoId);
-    }
-
-    repositorio.criarProva(prova);
-    for(Prova u : repositorio.getProvas())
-        System.out.println(u);
-}
 
     public void editarProva(Prova prova) {
-
-        if (prova == null) {
-            throw new RequiredArgumentIsNullException();
-        }
-
-        if (repositorio.procurar(prova.getId()) == -1) {
-            throw new ProvaNotExistsException();
-        }
-
-        if (prova.getTitulo() == null || prova.getTitulo().isEmpty()
-                || prova.getDataAplicacao() == null
-                || prova.getDescricao() == null || prova.getDescricao().isEmpty()
-                || prova.getDuracao() == null) {
-            throw new RequiredArgumentIsNullException();
-        }
-
-        repositorio.editarProva(prova);
-
+        // Lógica para editar a prova no repositório
+        repositorioProvas.editarProva(prova);
     }
 
-    public void removerProva(int id) {
-        if(id <= 0) throw new InvalidIdException();
-
-        if(repositorio.procurar(id) == 1) throw new ProvaNotExistsException();
-
-        repositorio.remover(id);
-        for(Prova u : repositorio.getProvas())
-            System.out.println(u);
+    public List<Prova> listarTodas() {
+        // Retorna uma lista de todas as provas não nulas
+        return Arrays.stream(repositorioProvas.getProvas())
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
+    public Prova buscarPorId(int id) {
+        // Lógica para buscar uma prova específica
+        return repositorioProvas.buscarPorId(id);
+    }
 }

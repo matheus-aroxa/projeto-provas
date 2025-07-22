@@ -3,8 +3,7 @@ package view;
 import java.io.IOException;
 import java.util.List;
 
-import DAO.ObjectDAO;
-import DAO.ProvaDAOImpl;
+import Fachada.Fachada;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,8 +30,8 @@ public class EscolhaProvaController extends FuncoesComuns {
     private TableColumn<Prova, String> colunaData;
     @FXML
     private TableColumn<Prova, String> colunaTipo;
-
-    private ObjectDAO<Prova> provaDAO = new ProvaDAOImpl();
+    // private ObjectDAO<Prova> provaDAO = new ProvaDAOImpl();
+    private Fachada fachada = Fachada.getInstance();
 
     @FXML
     public void initialize(){
@@ -46,7 +45,7 @@ public class EscolhaProvaController extends FuncoesComuns {
 
     private void carregarProvas(){
         tabelaProvas.getItems().clear();
-        List<Prova> provas = provaDAO.findAll();
+        List<Prova> provas = fachada.getProvaService().listarTodas();
         ObservableList<Prova> observableProvas = FXCollections.observableArrayList(provas);
         tabelaProvas.setItems(observableProvas);
     }
