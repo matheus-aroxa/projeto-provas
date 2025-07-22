@@ -1,10 +1,11 @@
 package view;
 
+import java.io.IOException;
+import java.util.List;
+
 import DAO.ObjectDAO;
 import DAO.ProfessorDAOImpl;
-import DAO.TurmaDAO;
 import DAO.TurmaDAOlmpl;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,11 +19,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.Turma;
-import models.usuarios.Usuario;
 import models.usuarios.professor.Professor;
-
-import java.io.IOException;
-import java.util.List;
+import view.cadastro.CadastroATurmaController;
 
 public class GerenciarTurmaController extends FuncoesComuns{
 
@@ -35,7 +33,7 @@ public class GerenciarTurmaController extends FuncoesComuns{
     @FXML
     private TableColumn<Turma, Integer> colunaAlunos;
 
-    private TurmaDAO turmaDAO = new TurmaDAOlmpl();
+    private TurmaDAOlmpl turmaDAO = new TurmaDAOlmpl();
     private ObjectDAO<Professor> professorDAO = new ProfessorDAOImpl();
 
     public void initialize(){
@@ -52,7 +50,7 @@ public class GerenciarTurmaController extends FuncoesComuns{
 
     private void carregarTurmas() {
         tabelaTurmas.getItems().clear();
-        Turma[] turmas = turmaDAO.getAllTurmas();
+        List<Turma> turmas = turmaDAO.findAll();
         ObservableList<Turma> observableTurmas = FXCollections.observableArrayList(turmas);
         tabelaTurmas.setItems(observableTurmas);
     }

@@ -1,18 +1,12 @@
 package view.cadastro;
 
-import DAO.ProfessorDAO;
-import DAO.ProfessorDAOImpl;
-import DAO.TurmaDAO;
 import DAO.TurmaDAOlmpl;
-import Exceptions.RequiredArgumentIsNullException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import models.Turma;
 import view.FuncoesComuns;
-import  javafx.scene.control.TextField;
 
 public class CadastroTurmaController extends FuncoesComuns {
 
@@ -22,7 +16,7 @@ public class CadastroTurmaController extends FuncoesComuns {
     Text messageText;
 
 
-    private TurmaDAO turmaDAO = new TurmaDAOlmpl();
+    private TurmaDAOlmpl turmaDAO = new TurmaDAOlmpl();
 
     @FXML
     void handleCadastrar(ActionEvent event){
