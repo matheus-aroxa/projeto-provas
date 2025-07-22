@@ -1,10 +1,9 @@
 package models;
 
-import models.provas.Prova;
-import models.usuarios.professor.Professor;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import models.provas.Prova;
 
 public class Turma {
     private int id;
@@ -22,12 +21,14 @@ public class Turma {
     }
 
     public Turma() {
+        this.provas = new ArrayList<>();
     }
 
     public Turma(int id, String nome) {
         this.id = id;
         this.nome = nome;
         this.alunos = new ArrayList<>();
+        this.provas = new ArrayList<>();
     }
 
     public int getId() {
@@ -68,6 +69,10 @@ public class Turma {
 
     public void setProvas(List<Prova> provas) {
         this.provas = provas;
+    }
+
+    public void adicionarProva(Prova prova){
+        this.provas.add(prova);
     }
 
     public int getQuantAlunos() {

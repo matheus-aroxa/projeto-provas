@@ -83,9 +83,35 @@ public class GerenciarProvasController extends FuncoesComuns {
     }
 
     @FXML
-    void handleEnviarProva(ActionEvent event) throws IOException {
-        trocarTela(event, "EnvioProvaView.fxml", "Enviar Prova");
+void handleEnviarProva(ActionEvent event) throws IOException {
+    
+    Prova provaSelecionada = tabelaProvas.getSelectionModel().getSelectedItem();
+
+    
+    if (provaSelecionada != null) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EnvioProvaView.fxml"));
+        Parent page = loader.load();
+
+        EnvioProvaController controlador = loader.getController();
+
+ 
+        controlador.setProva(provaSelecionada);
+
+ 
+        Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        janela.setScene(new Scene(page));
+        janela.setTitle("Enviar Prova para Turmas");
+        janela.show();
+
+    } else {
+    
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Aviso");
+        alert.setHeaderText("Nenhuma prova selecionada");
+        alert.setContentText("Por favor, selecione uma prova na tabela para poder enviá-la.");
+        alert.showAndWait();
     }
+}
 
     @FXML
     void handleExcluirProva(ActionEvent event) throws IOException {

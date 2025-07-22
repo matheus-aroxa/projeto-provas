@@ -39,11 +39,6 @@ public class GerenciarTurmaController extends FuncoesComuns{
     public void initialize(){
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-//        colunaProfessor.setCellValueFactory(cellData -> {
-//            Turma turma = cellData.getValue();
-//            String nomeProfessor = professorDAO.getNomePorId(turma.getIdProfessor());
-//            return new ReadOnlyStringWrapper(nomeProfessor);
-//        });
         colunaAlunos.setCellValueFactory(new PropertyValueFactory<>("quantAlunos"));
         carregarTurmas();
     }
