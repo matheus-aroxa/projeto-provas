@@ -8,6 +8,7 @@ import Exceptions.InvalidIdException;
 import Exceptions.ObjectAlreadyExistsException;
 import Exceptions.QuestaoNotExistsException;
 import Exceptions.RequiredArgumentIsNullException;
+import models.provas.Prova;
 import models.provas.Questao;
 import repos.RepositorioQuestoes;
 
@@ -91,5 +92,9 @@ public class QuestaoService {
             }
         }
         return resultado.toArray(new Questao[0]);
+    }
+
+    public List<Questao> findAll() {
+        return repositorio.findAll();
     }
 }

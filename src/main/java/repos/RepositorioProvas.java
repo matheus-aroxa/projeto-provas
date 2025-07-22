@@ -1,5 +1,7 @@
 package repos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import models.provas.Prova;
@@ -70,4 +72,15 @@ public class RepositorioProvas {
         provas[provas.length - 1] = null;
     }
 
+    public List<Prova> findAll() {
+        List<Prova> provasEncontradas = new ArrayList<>();
+
+        for (Prova prova : this.provas) {
+            if (prova != null) {
+                provasEncontradas.add(prova);
+            }
+        }
+
+        return provasEncontradas;
+    }
 }

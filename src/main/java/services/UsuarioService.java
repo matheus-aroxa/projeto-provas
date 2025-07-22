@@ -1,6 +1,7 @@
 package services;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import Exceptions.ArrayIsFullException;
 import Exceptions.InvalidIdException;
@@ -156,5 +157,10 @@ public class UsuarioService {
         }
 
         repositorio.procurarUsuario(id);
+    }
+
+
+    public List<Usuario> findAll(){
+        return repositorio.findAll();
     }
 }
