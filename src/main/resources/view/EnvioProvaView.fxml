@@ -17,10 +17,10 @@
         </Label>
         <Button fx:id="voltarButton" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="30.0" prefWidth="80.0" text="Voltar" />
 
-        <TableView fx:id="tabelaQuestoes" layoutX="24.0" layoutY="85.0" prefHeight="300.0" prefWidth="701.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
+        <TableView fx:id="tabelaTurmas" layoutX="24.0" layoutY="85.0" prefHeight="300.0" prefWidth="701.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0">
             <columns>
                 <TableColumn fx:id="colunaId" prefWidth="40.0" text="ID" />
-                <TableColumn fx:id="colunaCpf" prefWidth="660.0" text="Nº de alunos" />
+                <TableColumn fx:id="colunaNome" prefWidth="660.0" text="Nº de alunos" />
             </columns>
         </TableView>
 
