@@ -88,6 +88,27 @@ public class RepositorioUsuarios {
         }
     }
 
+    public Professor getProfessor(int id) {
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i] != null && usuarios[i].getId() == id) {
+                Professor professor = (Professor) usuarios[i];
+                return professor;
+            }
+        }
+        return null;
+    }
+
+    public int getProfessorByName(String nome) {
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i] != null && usuarios[i].getNome().equals(nome)) {
+                int professor = usuarios[i].getId();
+               // Professor professor = (Professor) usuarios[i];
+                return professor;
+            }
+        }
+        return -1;
+    }
+
     public int procurarUsuario(int id) {
         for (int i = 0; i < usuarios.length; i++) {
             if (usuarios[i] != null && usuarios[i].getId() == id) {

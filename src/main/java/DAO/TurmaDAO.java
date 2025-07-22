@@ -2,11 +2,15 @@ package DAO;
 
 import models.Turma;
 
+import java.util.List;
+
 public interface TurmaDAO {
 
-    public Turma[] getAllTurmas();
+    public List<Turma> getAllTurmas();
 
-    public Turma adicionar(Turma turma);
+    public Turma adicionar(String nome, int idProfessor);
+
+    public Turma add(String nome);
 
     public void remover(int id);
 }

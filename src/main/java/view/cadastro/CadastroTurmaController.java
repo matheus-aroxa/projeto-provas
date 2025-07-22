@@ -1,48 +1,33 @@
 package view.cadastro;
 
-import DAO.TurmaDAO;
 import DAO.TurmaDAOlmpl;
-import Exceptions.RequiredArgumentIsNullException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import models.Turma;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import view.FuncoesComuns;
-import  javafx.scene.control.TextField;
 
 public class CadastroTurmaController extends FuncoesComuns {
 
     @FXML
     TextField campoNome;
     @FXML
-    TextField campoProfessor;
-    @FXML
-    TextField campoId;
+    Text messageText;
 
-    private TurmaDAO turmaDAO = new TurmaDAOlmpl();
+
+    private TurmaDAOlmpl turmaDAO = new TurmaDAOlmpl();
 
     @FXML
     void handleCadastrar(ActionEvent event){
-        try {
             String nome = campoNome.getText();
-            int idProfessor = Integer.parseInt(campoProfessor.getText());
-            int idTurma = Integer.parseInt(campoId.getText());
 
-            if (nome == null || campoId.getText() == null || campoProfessor.getText() == null) {
-                throw new RequiredArgumentIsNullException("Campos Obrigatórios!");
+            if (nome == null) {
+                messageText.setFill(Color.RED);
+                messageText.setText("Campos Inválidos!");
             }
-
-            Turma turma = new Turma(idTurma, nome, idProfessor);
-            turmaDAO.adicionar(turma);
-
+            turmaDAO.add(nome);
             fecharPopup(event);
-        } catch (RequiredArgumentIsNullException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Entrada");
-            alert.setHeaderText("Campo inválido");
-            alert.setContentText("Por favor, insira valores válidos nos campos!");
-            alert.showAndWait();
-        }
     }
 
     @FXML

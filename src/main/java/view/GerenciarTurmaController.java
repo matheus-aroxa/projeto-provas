@@ -1,22 +1,26 @@
 package view;
 
-
 import java.io.IOException;
+import java.util.List;
 
 import DAO.ObjectDAO;
 import DAO.ProfessorDAOImpl;
-import DAO.TurmaDAO;
 import DAO.TurmaDAOlmpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.Turma;
 import models.usuarios.professor.Professor;
+import view.cadastro.CadastroATurmaController;
 
 public class GerenciarTurmaController extends FuncoesComuns{
 
@@ -27,11 +31,9 @@ public class GerenciarTurmaController extends FuncoesComuns{
     @FXML
     private TableColumn<Turma, String> colunaNome;
     @FXML
-    private TableColumn<Turma, String> colunaProfessor;
-    @FXML
     private TableColumn<Turma, Integer> colunaAlunos;
 
-    private TurmaDAO turmaDAO = new TurmaDAOlmpl();
+    private TurmaDAOlmpl turmaDAO = new TurmaDAOlmpl();
     private ObjectDAO<Professor> professorDAO = new ProfessorDAOImpl();
 
     public void initialize(){
@@ -48,14 +50,31 @@ public class GerenciarTurmaController extends FuncoesComuns{
 
     private void carregarTurmas() {
         tabelaTurmas.getItems().clear();
-        Turma[] turmas = turmaDAO.getAllTurmas();
+        List<Turma> turmas = turmaDAO.findAll();
         ObservableList<Turma> observableTurmas = FXCollections.observableArrayList(turmas);
         tabelaTurmas.setItems(observableTurmas);
     }
 
     @FXML
-    void handleNovoAluno(ActionEvent event){
-        trocarTela(event, "cadastro/cadastroATurma.fxml", "Cadastro de Turma");
+    void handleNovoAluno(ActionEvent event) throws IOException{
+        Turma turmaSelecionada = tabelaTurmas.getSelectionModel().getSelectedItem();
+
+        if (turmaSelecionada == null) {
+            System.out.println("Nenhuma turma selecionada.");
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cadastro/cadastroATurma.fxml"));
+        Parent root = loader.load();
+
+        CadastroATurmaController controller = loader.getController();
+        controller.setTurmaSelecionada(turmaSelecionada);
+
+        Stage stage = new Stage();
+        stage.setTitle("Adicionar Aluno à Turma");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+        carregarTurmas();
     }
 
     @FXML
