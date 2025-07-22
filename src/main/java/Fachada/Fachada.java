@@ -1,12 +1,12 @@
 package Fachada;
 
+import services.EmailService;
 import services.ProvaService;
 import services.QuestaoService;
-import services.EmailService;
 import services.UsuarioService;
 
 public class Fachada {
-
+    private static Fachada instance;
     private UsuarioService usuarioService;
 
     private ProvaService provaService;
@@ -22,6 +22,13 @@ public class Fachada {
         this.servicoEmail = new EmailService();
     }
 
+    public static Fachada getInstance() {
+        if (instance == null) {
+            instance = new Fachada();
+        }
+        return instance;
+    }
+    
     public UsuarioService getUsuarioService() {
         return usuarioService;
     }

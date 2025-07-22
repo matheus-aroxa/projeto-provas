@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.util.List;
 
+import Fachada.Fachada;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class EnvioProvaController extends FuncoesComuns {
     private TableColumn<Turma, String> colunaNome;
 
     private TurmaService turmaService = new TurmaService();
+    Fachada fachada = Fachada.getInstance();
     private Prova prova;
 
     @FXML
@@ -65,6 +67,7 @@ void handleEnviarProva(ActionEvent event) throws IOException {
         alert.setTitle("Sucesso");
         alert.setHeaderText("Prova enviada com sucesso!");
         alert.setContentText("A prova '" + this.prova.getTitulo() + "' foi associada à turma '" + turmaSelecionada.getNome() + "'.");
+        
         alert.showAndWait();
         
         

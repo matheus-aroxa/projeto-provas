@@ -15,6 +15,9 @@ import models.usuarios.professor.Professor;
 
 public class LoginController extends FuncoesComuns {
 
+    private static String usuarioAtual;
+    private static String senhaAtual;
+
     private Fachada fachada = new Fachada();
 
     @FXML
@@ -47,6 +50,8 @@ public class LoginController extends FuncoesComuns {
 
         if(usuario.equals("admin") && senha.equals("123")) {
             irTelaAdm(event);
+            usuarioAtual = "admin";
+            senhaAtual = "123";
         }
 
         if(user != null){

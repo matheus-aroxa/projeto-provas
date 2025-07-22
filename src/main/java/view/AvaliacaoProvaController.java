@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
 import Fachada.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,7 @@ import models.provas.Questao;
 
 public class AvaliacaoProvaController extends FuncoesComuns {
 
-    private Fachada fachada  = new Fachada();
+    
 
     @FXML
     private Label labelEnunciado;
@@ -33,6 +34,7 @@ public class AvaliacaoProvaController extends FuncoesComuns {
     private int[] respostas;
     private int questaoAtual;
     private List<RadioButton> radioButtons;
+    private Fachada fachada  = Fachada.getInstance();
 
     @FXML
     private void initialize() {
