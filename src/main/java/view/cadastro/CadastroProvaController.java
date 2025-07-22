@@ -25,7 +25,7 @@ import view.GerenciarQuestoesController;
 public class CadastroProvaController extends FuncoesComuns {
 
     private Prova prova;
-    private Fachada fachada;
+    private Fachada fachada  = new Fachada();
 
     @FXML
     TextField campoTitulo;

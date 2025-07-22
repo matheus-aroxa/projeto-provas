@@ -34,7 +34,7 @@
          </AnchorPane>
          <Button layoutX="74.0" layoutY="155.0" mnemonicParsing="false" text="Relatório por Disciplina" />
          <Button layoutX="253.0" layoutY="155.0" mnemonicParsing="false" text="Relatório Completo" />
-         <Button layoutX="185.0" layoutY="293.0" mnemonicParsing="false" text="Fazer Backup" />
+         <Button id="backup" onAction="#handleFazerBackup" layoutX="185.0" layoutY="293.0" mnemonicParsing="false" text="Fazer Backup" />
         </children>
     </AnchorPane>
 

@@ -2,6 +2,7 @@ package Fachada;
 
 import services.ProvaService;
 import services.QuestaoService;
+import services.EmailService;
 import services.UsuarioService;
 
 public class Fachada {
@@ -12,10 +13,13 @@ public class Fachada {
 
     private QuestaoService questaoService;
 
-    public Fachada(UsuarioService usuarioService, ProvaService provaService, QuestaoService questaoService) {
-        this.usuarioService = usuarioService;
-        this.provaService = provaService;
-        this.questaoService = questaoService;
+    private EmailService servicoEmail;
+
+    public Fachada() {
+        this.usuarioService = new UsuarioService();
+        this.provaService = new ProvaService();
+        this.questaoService = new QuestaoService();
+        this.servicoEmail = new EmailService();
     }
 
     public UsuarioService getUsuarioService() {
@@ -40,5 +44,13 @@ public class Fachada {
 
     public void setQuestaoService(QuestaoService questaoService) {
         this.questaoService = questaoService;
+    }
+
+    public EmailService getServicoEmail() {
+        return servicoEmail;
+    }
+
+    public void setServicoEmail(EmailService servicoEmail) {
+        this.servicoEmail = servicoEmail;
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport_questoes" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="11223344-5566-7788-9900-aabbccddeeff">
+    <field name="id" class="java.lang.Integer"/>
+    <field name="enunciado" class="java.lang.String"/>
+    <field name="alternativas" class="java.lang.String[]"/>
+    <field name="idResposta" class="java.lang.Integer"/>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="aabbccdd-eeff-0011-2233-445566778899"/>
+                <textElement verticalAlignment="Middle"><font isBold="true"/><paragraph leftIndent="5"/></textElement>
+                <text><![CDATA[Questões da Prova]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="45">
+            <textField>
+                <reportElement x="10" y="0" width="535" height="15" uuid="ffeeddcc-bbaa-9988-7766-554433221100"/>
+                <textFieldExpression><![CDATA[$F{id} + ") " + $F{enunciado}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="20" y="15" width="525" height="15" uuid="a0b1c2d3-e4f5-a6b7-c8d9-e0f1a2b3c4d5"/>
+                <textElement><font size="9" isItalic="true"/></textElement>
+                <textFieldExpression><![CDATA["Alternativas: " + java.util.Arrays.toString($F{alternativas})]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="20" y="30" width="525" height="15" uuid="c5b4a3d2-e1f0-d9c8-b7a6-f5e4d3c2b1a0"/>
+                <textElement><font size="9" isItalic="true"/></textElement>
+                <textFieldExpression><![CDATA["Resposta Correta (índice): " + $F{idResposta}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

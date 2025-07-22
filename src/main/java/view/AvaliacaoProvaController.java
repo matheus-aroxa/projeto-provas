@@ -14,7 +14,7 @@ import models.provas.Questao;
 
 public class AvaliacaoProvaController extends FuncoesComuns {
 
-    private Fachada fachada;
+    private Fachada fachada  = new Fachada();
 
     @FXML
     private Label labelEnunciado;

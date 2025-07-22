@@ -22,7 +22,7 @@ import view.GerenciarQuestoesController;
 
 public class CadastroQuestaoController extends FuncoesComuns {
 
-    private Fachada fachada;
+    private Fachada fachada  = new Fachada();
 
     @FXML
     TextArea campoEnunciado;

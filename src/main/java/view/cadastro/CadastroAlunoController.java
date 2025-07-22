@@ -14,7 +14,7 @@ import view.FuncoesComuns;
 
 public class CadastroAlunoController extends FuncoesComuns {
 
-    private Fachada fachada;
+    private Fachada fachada = new Fachada();
 
     private Aluno aluno;
 

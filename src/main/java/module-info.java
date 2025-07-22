@@ -8,7 +8,8 @@ module com.example.projetoprovas {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
     requires javafx.base;
-    requires java.desktop;
+    requires jakarta.mail;
+    requires jasperreports;
 
     opens view to javafx.fxml;
     opens view.cadastro to javafx.fxml; 

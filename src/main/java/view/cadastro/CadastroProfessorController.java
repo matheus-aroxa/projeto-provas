@@ -15,7 +15,7 @@ import view.FuncoesComuns;
 public class CadastroProfessorController extends FuncoesComuns {
 
     private Professor professor;
-    private Fachada fachada;
+    private Fachada fachada = new Fachada();
 
     @FXML
     TextField campoNome;

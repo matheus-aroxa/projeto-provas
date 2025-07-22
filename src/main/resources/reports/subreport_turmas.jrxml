@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport_turmas" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fcfbfaf9-e9e8-d7d6-c5c4-b3b2a1a09f9e">
+    <field name="id" class="java.lang.Integer"/>
+    <field name="nome" class="java.lang.String"/>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"/>
+                <textElement verticalAlignment="Middle"><font isBold="true"/><paragraph leftIndent="5"/></textElement>
+                <text><![CDATA[Turmas Associadas]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="15">
+            <textField>
+                <reportElement x="10" y="0" width="545" height="15" uuid="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"/>
+                <textFieldExpression><![CDATA["- ID: " + $F{id} + ", Nome: " + $F{nome}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
