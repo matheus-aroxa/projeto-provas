@@ -163,4 +163,8 @@ public class UsuarioService {
     public List<Usuario> findAll(){
         return repositorio.findAll();
     }
+
+    public Usuario findByEmail(String email){
+        return repositorio.findUsuarioByEmail(email);
+    }
 }

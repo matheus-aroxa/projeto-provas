@@ -140,4 +140,13 @@ public class RepositorioUsuarios {
 
         return usuariosEncontrados;
     }
+
+    public Usuario findUsuarioByEmail(String email) {
+        for (Usuario usuario : this.usuarios) {
+            if (usuario != null && usuario.getEmail().equalsIgnoreCase(email)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
 }
