@@ -1,6 +1,8 @@
 package repos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import models.usuarios.Administrador;
@@ -104,5 +106,17 @@ public class RepositorioUsuarios {
             usuarios[i] = usuarios[i + 1];
         }
         usuarios[usuarios.length - 1] = null;
+    }
+
+    public List<Usuario> findAll() {
+        List<Usuario> usuariosEncontrados = new ArrayList<>();
+
+        for (Usuario usuario : this.usuarios) {
+            if (usuario != null) {
+                usuariosEncontrados.add(usuario);
+            }
+        }
+
+        return usuariosEncontrados;
     }
 }

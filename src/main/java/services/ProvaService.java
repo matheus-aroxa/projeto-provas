@@ -8,6 +8,8 @@ import Exceptions.RequiredArgumentIsNullException;
 import models.provas.Prova;
 import repos.RepositorioProvas;
 
+import java.util.List;
+
 public class ProvaService {
 
     private RepositorioProvas repositorio = RepositorioProvas.getInstance(10);
@@ -68,4 +70,8 @@ public class ProvaService {
             System.out.println(u);
     }
 
+
+    public List<Prova> findAll() {
+        return repositorio.findAll();
+    }
 }
